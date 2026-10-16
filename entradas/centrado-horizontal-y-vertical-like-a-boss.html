@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <title>Centrado horizontal y vertical «like a boss» - Flerex Blog</title>
+    
+     
+        <meta name="description" content="Si llevas tiempo diseñando tus propios skins o incluso creando tablillas, fijo que has tenido la necesidad de centrar algo alguna vez. Lo más probable es que tengas un método para centrar de manera horizontal, pero cuando intentas centrar de manera vertical, mágicamente el centrado se vuelve un dolor de cabeza. En las siguientes líneas haré que eso se acabe de una vez por todas." />
+        <script src="/js/prism.js"></script>
+    <script src="/js/prism-markup-templating.js"></script>
+    <script src="/js/prism-php.js"></script>
+    <script src="/js/clipboard.js"></script>
+    <script src="/js/prism-line-numbers.js"></script>
+    <script src="/js/prism-toolbar.js"></script>
+    <script src="/js/prism-copy-to-clipboard.js"></script>
+    <script src="/js/table-contents.js"></script>
+
+    
+    <link href="/css/app.css?id=15fbddac165dda994b3e" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/prism-tomorrow.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="/css/prism-line-numbers.css">
+    <link rel="stylesheet" href="/css/prism-toolbar.css">
+
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/images/apple-touch.png">
+    
+    <link rel="mask-icon" href="/svg/code.svg" color="#C16BC7">
+
+    <script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+</head>
+<body class="reading-mode">
+
+<header id="header">
+    <div class="container">
+        <div id="logo">
+            <a href="/" aria-label="Inicio"></a>
+        </div>
+        <nav class="navbar">
+            <div class="navbar__group">
+                <ul>
+                    <li><a class="navbar-link" href="/">Inicio</a></li>
+                </ul>
+            </div>
+            <div class="navbar__group">
+                <ul>
+                                    </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<div id="outer-wrapper">
+    <div id="wrap" class="container">
+        <main id="main">
+                <article class="post">
+        <header class="post__header">
+            <h1>Centrado horizontal y vertical «like a boss»</h1>
+                            <img class="post__featured-image" src="/storage/featured/7.jpg" alt="">
+                        <div class="post__meta">
+                <div class="post__meta-item post__author">
+                    <div class="avatar">
+    <img src="https://secure.gravatar.com/avatar/8a8ded00a6f158bd28da1ae3c6181198.jpg?s=100&amp;d=mm&amp;r=g" title="Flerex" alt="">
+</div>                    <span class="post__author-name">Flerex</span>
+                </div>
+                <div class="post__extra">
+                    <div class="post__extra-info">
+
+                    <div class="post__date">
+                        <ion-icon name="ios-calendar"></ion-icon>
+                        <span>27 de agosto de 2017</span>                    </div>
+                                            <div class="post__category">
+                            <a href="/categorias/articulos">
+                                <ion-icon name="ios-folder" title="Categoría"></ion-icon>
+                                <span>Artículos</span>
+                            </a>
+                        </div>
+                                        <div class="post-preview__info-elm post-preview__edited">
+        <ion-icon name="ios-medical" title="Actualizado el"></ion-icon>
+        <span>6 de marzo de 2019</span>    </div>
+                    </div>
+                    <div class="post__tags">
+                        <div class="post-preview__tags taglist">
+                    <div class="taglist__tag"><a href="/etiquetas/css">CSS</a></div>
+            </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="table-contents" hidden>
+            <div class="table-contents__title">Tabla de contenidos</div>
+            <div class="table-contents__content"></div>
+        </div>
+        <div class="post__content text-container">Menos de 24h y ya escribo otra guía. Me parece justo, llevaba un mes sin publicar nada; aunque he de admitir que me gusta esta «serie», si es que se le puede llamar así.
+
+Ahora toca el turno de los centrados, algo tan simple y que a su vez mucha gente implementa mal. Antes de empezar, vamos a situarnos. Cuando nos referimos a centrar tenemos que saber que existen dos formas de centrar las cosas: horizontal (con respecto al eje de las X) y vertical (con respecto al eje de las Y). A parte de esto, existen dos posibilidades para centrar dependiendo de si el elemento se comporta como un bloque o como texto. Es decir, tenemos 2<sup>2</sup> posibilidades para centrar.
+
+<!--more-->
+<h2>Centrado horizontal</h2>
+<h3><code>&lt;center&gt;</code> o <code>align="center"</code>, los métodos del demonio</h3>
+La etiqueta <code>&lt;center&gt;</code> es una etiqueta obsoleta, al mismo tiempo que añadir la propiedad <code>align="center"</code> al padre del texto que quieres centrar.
+<ul>
+ 	<li><code>&lt;center&gt;</code> lo que hace es crear un elemento de tipo <code>block</code> al rededor de todo su contenido. Dicho elemento lo que hacía (cuando no estaba obsoleto) era centrar los elementos de tipo bloque que fuesen hijos, además de todo el texto.</li>
+ 	<li><code>align="center"</code> sigue una lógica similar a la anterior. Aunque su uso fuese recomendado desde que se desaconsejó el uso de <code>&lt;center&gt;</code>, a día de hoy están ambas al mismo nivel de maldad.</li>
+</ul>
+Como ya dije en la publicación anterior, el HTML debe ser siempre sintáctico y tener un significado para el contenido, no para su presentación. Por ello fueron rápidamente descartados.
+<h3>Texto</h3>
+Una vez mencionado los métodos malos para centrar de forma horizontal, vamos a analizar las alternativas correctas (o mejor dicho, alternativa) de centrar texto con CSS y, posteriormente, las de los bloques.
+<h4><code>text-align: center</code>, el método para dominarlos a todos</h4>
+Este es el único método que deberías utilizar para centrar textos (por no decir el único —viable—, je je). Por lo general, se aplica la propiedad al padre y automáticamente centra el texto, dejando sin modificar las dimensiones del contenido.
+
+Hay que destacar que esta propiedad se hereda en los hijos sucesivos a no ser que se diga lo contrario en uno de ellos y que las dimensiones de ninguno de estos se ven modificados (si fuesen bloques).
+
+Vamos a verlo mejor con un poco de código:
+<pre class="line-numbers"><code class="language-markup">&lt;div id="contenedor"&gt;
+    &lt;div id="contenido"&gt;
+        &lt;div id="inception"&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea iste ipsa ex sapiente rerum, alias unde atque debitis soluta iure quam exercitationem mollitia magni similique, dolores molestias ut, voluptates at?&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<pre class="line-numbers"><code class="language-css">#contenedor {
+    width: 700px;
+    background-color: #4DC6BB;
+    padding: 20px;
+}
+
+#contenido {
+    width: 400px;
+    background-color: #FAC44D;
+    padding: 20px;
+}
+
+#inception {
+    width: 200px;
+    padding: 20px;
+    display: inline-block;
+    background-color: #FF6227;
+}</code></pre>
+<figure><img class="aligncenter size-full wp-image-458" src="/storage/old/2017/08/1.png" alt="" width="750" height="334"></figure>
+Vamos ahora a aplicar la propiedad <code>text-align: center;</code> a <code>#contenedor</code>:
+<figure><img class="aligncenter size-full wp-image-460" src="/storage/old/2017/08/2.png" alt="" width="751" height="338"></figure>
+En la anterior captura podemos ver como el texto contenido en <code>#inception</code> está ahora centrado, como era de esperar. Aunque la propiedad está colocada en su «abuelo», como no hemos especificado lo contrario en ninguno de los descendientes de éste, la propiedad se hereda hasta llegar a <code>#inception</code>.
+
+Además, el propio <code>#inception</code> también está centrado. ¿Cómo es esto posible? Flerex, ¿no habías dicho que solo servía para texto?
+
+Sí, es cierto. Pero si te fijas incluí también la propiedad <code>display: inline-block</code> a <code>#inception</code>, que lo hace comportarse como un bloque que sigue el flujo del <code>baseline</code> del texto (es decir, se comporta como si fuese texto aunque conserva algunas características de los bloques).
+
+He hecho esto para haceros ver que sí que se pueden centrar bloques con este método, pero no es por norma general el método que se debería usar. Solo en algunos casos específicos convertir un elemento bloque a <code>inline-block</code> puede resultar útil. De lo contrario, podemos llegar a problemas con la alineación al <code>baseline</code> como comenté ayer en «<a href="https://flerex.tumblr.com/post/164649756643/columnas-like-a-boss">Columnas “like a boss”</a>».
+<h3>Bloques</h3>
+En el ejemplo anterior ya hemos visto una posibilidad de cómo centrar un bloque, aunque no es un buen método. La manera ideal de centrar un bloque está en las próximas líneas, pero antes vamos a decir cómo <strong>no</strong> se debe centrar un bloque.
+<h4><code>position</code>, el método de los matados</h4>
+Tanto <code>position</code> con valor <code>relative</code> como <code>absolute</code> son métodos horribles para centrar. Requieren de que saquemos la calculadora para calcular cuántos pixeles tenemos que separar nuestro elemento desde el borde izquierdo, teniendo en cuenta su propio ancho. Muy engorroso. Tan engorroso que ni le dedicaré mucho tiempo.
+
+El método con <code>position: absolute</code> es el siguiente:
+<ol>
+ 	<li>Ponemos <code>position: relative</code> en el padre para que los hijos lo tomen como referencia.</li>
+ 	<li>Al hijo le añadimos la propiedad <code>position: absolute</code> (recuerda que desde el momento que pongas ese valor, el elemento no existirá para el padre a la hora de calcular las dimensiones del mismo, por lo que es posible que perdieses la altura y anchura si el elemento influyese en ellas).</li>
+ 	<li>Ahora tenemos que mover el elemento. Vamos a pensarlo con respecto a la izquierda, aunque sería lo mismo si se hiciese con respecto a la derecha. Ponemos la propiedad <code>left: 50%</code> para mover nuestro elemento la cantidad exacta de la <strong>mitad del ancho del padre</strong>.</li>
+ 	<li>Obviamente esto no estaría centrado, puesto que estaríamos moviendo nuestro elemento desde su esquina superior izquierda, no desde su propio centro. Para solucionarlo, tendríamos que reposicionar el elemento un poco más a la izquierda con exactamente la mitad de su ancho. Una forma de hacerlo sería <code>margin-left: -{la mitad del ancho del elemento}px;</code> o, si no quieres sacar la calculadora, <code>transform: translateX(-50%)</code>.</li>
+</ol>
+El método con <code>position: relative</code> es aún más de locos puesto que habría que hacerlo todo con calculadora. Aún así solo funcionaría si el ancho del elemento fuese fijo (y no siempre es así). El método con <code>absolute</code> tampoco funcionaría con ancho variable si se usase el truco de <code>margin</code> (aunque sí funcionaría con <code>transform</code>).
+<h4><code>margin-left: auto; margin-right: auto;</code>, el método bueno</h4>
+Sí señor. Esta es la forma en la que lo deberías estar haciendo. La propiedad <code>margin</code> con valor <code>auto</code> a ambos lados de un bloque lo centra perfectamente con respecto a su padre, sin más líos y sin ser tan engorroso como los anteriores trucos.
+<pre class="line-numbers"><code class="language-css">#contenido {
+    margin-left: auto;
+    margin-right: auto;
+}</code></pre>
+<figure><img class="aligncenter size-full wp-image-459" src="/storage/old/2017/08/3.png" alt="" width="755" height="338"></figure>
+La propiedad funciona porque el valor <code>auto</code> al margen indica que debe aprovechar tanto espacio como tenga disponible. Si solo colocásemos el valor <code>auto</code> al lado izquierdo, se movería el bloque totalmente a la derecha. Al hacerlo tanto en <em>babor</em> como en <em>estribor</em> garantizamos que se utilice de forma equitativa el espacio a ambos lados.
+
+Con este método solo el elemento al que le aplicamos la propiedad se ve afectado, y esto es algo bueno, puesto que hace el CSS más predecible.
+<h4><em>Flexbox</em>, el método «like a boss»</h4>
+Sí, ya hemos llegado aquí. El momento de las guías de la serie «like a boss» donde predico sobre lo bueno que es <em>flexbox</em>. En este caso, <em>flexbox</em> va a aparecer varias veces en esta guía.
+
+Aunque quizás no merezca la pena en un principio utilizar <em>flexbox</em> para centrar de forma horizontal al tener efectos «secundarios» sobre cómo se comportan los elementos hijos, una vez que lo dominas a la perfección verás que será tu primera opción.
+
+La forma de centrar los elementos con <em>flexbox</em> es la siguiente:
+<ol>
+ 	<li>Aplicamos al padre del elemento o elementos que queremos centrar la propiedad <code>display: flex;</code>.</li>
+ 	<li>Por defecto, <em>flexbox</em> hace que todos los hijos estén en una misma línea, el eje de las X. El comportamiento normal del flujo de los bloques es que uno se debe colocar bajo el otro. Para obviar esto en <em>flexbox</em> tenemos la propiedad y valor <code>flex-direction: column;</code>, que pasa a trabajar sobre el eje de las Y. Aunque no es exactamente lo mismo y sigue teniendo otros comportamientos ajenos al comportamiento normal de flujo (véase la documentación de <em>flexbox</em> para información más detallada), nos servirá para la mayor parte de los casos.</li>
+ 	<li>Añade la propiedad <code>align-items: center;</code> si estás trabajando sobre el eje de las Y (es decir, si has añadido <code>flex-direction: column;</code> o <code>justify-content: center;</code> si no lo has añadido (por ejemplo, si solo tenías un elemento no sería necesario cambiar el eje de trabajo).</li>
+</ol>
+<pre class="line-numbers"><code class="language-css">#contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}</code></pre>
+<figure><img class="aligncenter size-full wp-image-459" src="/storage/old/2017/08/3.png" alt="" width="755" height="338"></figure>
+Aún así, <em>flexbox</em> sigue teniendo comportamientos especiales que hay que tener en cuenta. Por ejemplo, los elementos siempre ocuparán todo el espacio del eje alternativo (el eje con el que no estés trabajando, las Y si no has puesto <code>flex-direction: column;</code> y viceversa).
+
+Todos estos comportamientos dejan de ser un problema cuando se aprende <em>flexbox</em>, por lo que te invito a buscar en internet información sobre él para dominarlo a la perfección y aprovecharte de todas sus capacidades.
+<h2>Centrado vertical</h2>
+Aquí llega la gallina de los huevos de oro. Lo que seguramente estabas esperando. El centrado horizontal son juegos de niños y todo el mundo lo sabe. No hay que ser muy genio para saber que <code>&lt;center&gt;</code> es de malos desarrolladores y que <code>margin</code> es bastante <code>straightforward</code>.
+
+El problema que tiene el centrado vertical es que, mientras que por defecto el ancho de los bloques toman todo el espacio disponible, el alto solo toma el espacio necesario para mostrar el contenido (¿¿¿POR QUÉ??? No me lo preguntes a mí. Yo no soy 100tifiko. Venga, ya está con los memes del 2000).
+
+Utilizar un <code>margin-top: auto</code> y <code>margin-bottom: auto</code> simplemente haría que dichos valores se calculasen a cero. En realidad no se puede porque, en resumen, provocaría que el navegador entrase en un bucle infinito a la hora de calcular las alturas.
+
+Entonces… si no se puede, ¿cómo se centra de forma vertical?
+<h3>Texto</h3>
+<h4><code>line-height</code>, el método masoca</h4>
+Existe un método bastante curioso para centrar el texto que implicaría poner la propiedad <code>line-height</code> a exactamente el mismo valor que la altura del elemento. Obviamente esto solo da problemas, puesto que no se podría tener varias líneas de texto, pero funciona en cosas simples como por ejemplo una navegación.
+
+Si no lo he dejado ya a entender, este no es un buen método.
+<h4><code>vertical-align: middle;</code>, para los que son unos morbosos de las tablas</h4>
+Otro truco bastante original es utilizar la propiedad <code>vertical-alignment: middle;</code>. Como supongo que ya sabrás, esta propiedad está ideada para trabajar con elementos <code>inline</code> y <code>table-cell</code>. Los elementos <code>inline</code> los vamos a descartar porque es una tontería trabajar con ellos. El método que vamos a analizar es el siguiente:
+<ol>
+ 	<li>Convierte tu elemento en un <code>table-cell</code> con <code>display: table-cell;</code>.</li>
+ 	<li>Por limitaciones, tiene que haber un padre con <code>display: table;</code></li>
+ 	<li>Añade a la celda, la propiedad <code>vertical-alignment: middle;</code></li>
+ 	<li>Añade al padre <code>width: 100%;</code> para que se comporte como un bloque.</li>
+</ol>
+¿Engorroso, verdad? ¿Quién ha dicho que el CSS era sencillo?
+<h4><em>flexbox</em>, again</h4>
+Este es el método para centrar verticalmente textos que me he dado cuenta que es el mejor. Como el método es igual que para centrar bloques, lo dejaré para el final, para la guinda del pastel.
+<h3>Bloques</h3>
+<h4><code>position: relative;</code> y <code>position: absolute;</code>, the return of the <em>matados</em></h4>
+Si no te habías dado cuenta cuando ya hablé de los position en el centrado vertical, te voy a comentar que también se podría haber utilizado el mismo método pero en vez de trabajar con la izquierda, trabajando con la parte superior (incluso con la inferior). Tan solo tendrías que hacer los mismo pasos, pero poner <code>top: 50%;</code> y compensar el tamaño del elemento restándolo con <code>margin-top: -{la mitad del elemento}px;</code> o el equivalente CSS3 <code>transform: translateY(-50%)</code>.
+<h4><em>flexbox</em>. (<em>Not this again</em>&nbsp;?)</h4>
+¡Volvemos a los ejes! Yaaay. Centrar de forma vertical con <em>flexbox</em> es absurdamente simple. Tan solo tenemos que volver a tener en cuenta que el comportamiento de los elementos cambia con <em>flexbox</em> aplicado, por lo que tenemos que ser conscientes de ello.
+
+Como ya he explicado así un poco por encima cómo funcionan los ejes, voy a suponer que vamos a alinear elementos que están sobre el eje de las X (el por defecto).
+
+Para centrar un elemento, ya sea de tipo en línea o bloque, tan solo tenemos que añadir <code>display: flex</code> a su padre, junto con la propiedad <code>align-items: center;</code> (justo lo contrario que antes). Automáticamente todos los hijos serán centrados verticalmente. Y ya está.
+
+<hr>
+
+Hasta aquí todos los métodos que se me han ocurrido para centrar. Es posible que se me haya escapado alguno que otro, pero básicamente la intención de esta guía era aclarar qué métodos son los correctos. Recuerda:
+<ul>
+ 	<li>Para <strong>centrar de forma horizontal</strong>, utiliza el valor <code>auto</code> en los <code>margin</code> horizontales o, si sabes <em>flexbox</em> y lo estabas utilizando porque está relacionado con tu estructura, utilízalo directamente.</li>
+ 	<li>Para <strong>centrar de forma vertical</strong>, la mejor alternativa es directamente utilizar <em>flexbox</em>.</li>
+</ul>
+Como ya te habrás podido dar cuenta leyendo esta guía, no es el objetivo de la misma el enseñar a utilizar la tecnología Flexbox. Actualmente hay infinidad de guías por internet que lo explican mejor de lo que yo podría. Si estás interesado en aprender todas sus posibilidades, no dudes en hacer una rápida búsqueda en tu buscador favorito.</div>
+    </article>
+
+        </main>
+
+        <aside id="sidebar">
+
+        <div class="widget">
+            <div class="widget__heading">Categorias</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/actualizaciones">Actualizaciones</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/articulos">Artículos</a></span>
+                        <span class="bubble">7</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/codigos">Códigos</a></span>
+                        <span class="bubble">14</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/guias">Guías</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/meta">Meta</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/miscelanea">Miscelánea</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/recursos">Recursos</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/servicios">Servicios</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                            </ul>
+        </div>
+
+        <div class="widget">
+            <div class="widget__heading">Etiquetas</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/criticas">Críticas</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/css">CSS</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/desarrollo">Desarrollo</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/estandares">Estándares</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fainvision">FA/Invision</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/famodernbb">FA/ModernBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb2">FA/phpBB2</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb3">FA/phpBB3</a></span>
+                        <span class="bubble">19</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fapunbb">FA/PunBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fm-helper">FM-Helper</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/foroactivo">Foroactivo</a></span>
+                        <span class="bubble">22</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/jcink">Jcink</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/phpbb">phpBB</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                            </ul>
+        </div>
+
+
+    </aside>
+    </div>
+</div>
+<footer id="footer">
+    <div class="footer__content container">
+        <span>&copy; Flerex Blog 2025</span>
+    </div>
+</footer>
+</body>
+</html>

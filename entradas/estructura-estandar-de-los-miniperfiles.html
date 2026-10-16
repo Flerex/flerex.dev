@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <title>Estructura estándar de los miniperfiles - Flerex Blog</title>
+    
+     
+        <meta name="description" content="Con esta edición de la plantilla viewtopic_body conseguirás, con conocimientos mínimos de las plantillas de Foroactivo, tener una estructura muy simple en los miniperfiles que te permitirá hacer las personalizaciones más comunes de los foros RPG." />
+        <script src="/js/prism.js"></script>
+    <script src="/js/prism-markup-templating.js"></script>
+    <script src="/js/prism-php.js"></script>
+    <script src="/js/clipboard.js"></script>
+    <script src="/js/prism-line-numbers.js"></script>
+    <script src="/js/prism-toolbar.js"></script>
+    <script src="/js/prism-copy-to-clipboard.js"></script>
+    <script src="/js/table-contents.js"></script>
+
+    
+    <link href="/css/app.css?id=15fbddac165dda994b3e" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/prism-tomorrow.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="/css/prism-line-numbers.css">
+    <link rel="stylesheet" href="/css/prism-toolbar.css">
+
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/images/apple-touch.png">
+    
+    <link rel="mask-icon" href="/svg/code.svg" color="#C16BC7">
+
+    <script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+</head>
+<body class="reading-mode">
+
+<header id="header">
+    <div class="container">
+        <div id="logo">
+            <a href="/" aria-label="Inicio"></a>
+        </div>
+        <nav class="navbar">
+            <div class="navbar__group">
+                <ul>
+                    <li><a class="navbar-link" href="/">Inicio</a></li>
+                </ul>
+            </div>
+            <div class="navbar__group">
+                <ul>
+                                    </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<div id="outer-wrapper">
+    <div id="wrap" class="container">
+        <main id="main">
+                <article class="post">
+        <header class="post__header">
+            <h1>Estructura estándar de los miniperfiles</h1>
+                        <div class="post__meta">
+                <div class="post__meta-item post__author">
+                    <div class="avatar">
+    <img src="https://secure.gravatar.com/avatar/8a8ded00a6f158bd28da1ae3c6181198.jpg?s=100&amp;d=mm&amp;r=g" title="Flerex" alt="">
+</div>                    <span class="post__author-name">Flerex</span>
+                </div>
+                <div class="post__extra">
+                    <div class="post__extra-info">
+
+                    <div class="post__date">
+                        <ion-icon name="ios-calendar"></ion-icon>
+                        <span>3 de junio de 2017</span>                    </div>
+                                            <div class="post__category">
+                            <a href="/categorias/actualizaciones">
+                                <ion-icon name="ios-folder" title="Categoría"></ion-icon>
+                                <span>Actualizaciones</span>
+                            </a>
+                        </div>
+                                        <div class="post-preview__info-elm post-preview__edited">
+        <ion-icon name="ios-medical" title="Actualizado el"></ion-icon>
+        <span>17 de julio de 2019</span>    </div>
+                    </div>
+                    <div class="post__tags">
+                        <div class="post-preview__tags taglist">
+                    <div class="taglist__tag"><a href="/etiquetas/estandares">Estándares</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/faphpbb3">FA/phpBB3</a></div>
+            </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="table-contents" hidden>
+            <div class="table-contents__title">Tabla de contenidos</div>
+            <div class="table-contents__content"></div>
+        </div>
+        <div class="post__content text-container">A la hora de personalizar los perfiles, mucha gente (yo me incluyo) ha ideado selectores que muchas veces son muy engorrosos o ineficientes cuando se podrían hacer de otra forma. Para crear selectores reutilizables en cualquier foro, propongo un estándar de estructura de los perfiles bastante lógica, básica y fácil de entender.
+
+<strong>Recomiendo utilizar esta estructura en cualquier foro o diseño nuevo.</strong> Nada más empezar a diseñar, instala esta estructura para hacer tu vida más simple.
+
+En esta entrada básicamente explicaré cómo instalar esta estructura y finalmente proporcionaré algunos selectores para que veáis cuánto se simplifican los que hasta ahora se estaban utilizando.
+<h2>Características</h2>
+¿Por qué utilizar esta estructura?
+<ul>
+ 	<li>Permite crear un estándar de selectores simples y reutilizables.</li>
+ 	<li>Simplifica la estructura de los perfiles.</li>
+ 	<li>Permite personalizar el perfil de nuevas formas antes no accesibles.</li>
+ 	<li>Está mejor organizado.
+<!-- more --></li>
+</ul>
+<h2>Instalación</h2>
+Vete a la plantilla <code>viewtopic_body</code> y <strong>busca</strong>:
+<pre class="line-numbers"><code class="language-markup">&lt;div class="postprofile" id="profile{postrow.displayed.U_POST_ID}"&gt;
+    &lt;!-- div class="online2"&gt;&lt;/div--&gt;
+    &lt;dl&gt;&lt;dt&gt;
+            {postrow.displayed.POSTER_AVATAR}
+            &lt;br&gt;&lt;strong style="font-size:1.2em"&gt;{postrow.displayed.POSTER_NAME}&lt;/strong&gt;
+        &lt;/dt&gt;
+        &lt;dd&gt;{postrow.displayed.POSTER_RANK_NEW}{postrow.displayed.RANK_IMAGE}&lt;/dd&gt;
+        &lt;dd&gt;&lt;br&gt;&lt;/dd&gt;
+        &lt;dd&gt;
+            &lt;!-- BEGIN profile_field --&gt;
+            {postrow.displayed.profile_field.LABEL} {postrow.displayed.profile_field.CONTENT}{postrow.displayed.profile_field.SEPARATOR}
+            &lt;!-- END profile_field --&gt;
+            {postrow.displayed.POSTER_RPG}
+        &lt;/dd&gt;
+        &lt;dd&gt;&lt;br&gt;&lt;/dd&gt;
+        &lt;dd&gt;
+            {postrow.displayed.PROFILE_IMG} {postrow.displayed.PM_IMG} {postrow.displayed.EMAIL_IMG}&lt;!-- BEGIN contact_field --&gt; {postrow.displayed.contact_field.CONTENT}&lt;!-- END contact_field --&gt;
+        &lt;/dd&gt;
+    &lt;/dl&gt;&lt;/div&gt;
+</code></pre>
+<strong>Sustitúyelo</strong> por:
+<pre class="line-numbers"><code class="language-markup">&lt;div class="postprofile" id="profile{postrow.displayed.U_POST_ID}"&gt;
+    &lt;div class="postprofile-avatar"&gt;{postrow.displayed.POSTER_AVATAR}&lt;/div&gt;
+    &lt;div class="postprofile-username"&gt;{postrow.displayed.POSTER_NAME}&lt;/div&gt;
+    &lt;div class="postprofile-rank"&gt;{postrow.displayed.POSTER_RANK_NEW}{postrow.displayed.RANK_IMAGE}&lt;/div&gt;
+    &lt;div class="postprofile-fields"&gt;
+        &lt;!-- BEGIN profile_field --&gt;
+        &lt;div class="postprofile-field"&gt;
+            &lt;span class="postprofile-field-label"&gt;{postrow.displayed.profile_field.LABEL}&lt;/span&gt;
+            &lt;span class="postprofile-field-content"&gt;{postrow.displayed.profile_field.CONTENT}&lt;/span&gt;
+            &lt;span class="postprofile-field-separator"&gt;{postrow.displayed.profile_field.SEPARATOR}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;!-- END profile_field --&gt;
+    &lt;/div&gt;
+    &lt;div class="postprofile-rpg"&gt;{postrow.displayed.POSTER_RPG}&lt;/div&gt;
+    &lt;div class="postprofile-contact"&gt;
+        &lt;span class="postprofile-contact-profile"&gt;{postrow.displayed.PROFILE_IMG}&lt;/span&gt;
+        &lt;span class="postprofile-contact-pm"&gt;{postrow.displayed.PM_IMG}&lt;/span&gt;
+        &lt;span class="postprofile-contact-email"&gt;{postrow.displayed.EMAIL_IMG}&lt;/span&gt;
+        &lt;!-- BEGIN contact_field --&gt;
+        &lt;span class="postprofile-contact-field"&gt;{postrow.displayed.contact_field.CONTENT}&lt;/span&gt;
+        &lt;!-- END contact_field --&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+¡Ya está! ¿Qué creías, que iba a ser muy complicado?
+<h2>Selectores disponibles</h2>
+<ul>
+ 	<li><code>.postprofile-rpg</code>: Contiene todos los campos generados de la hoja de personaje.</li>
+ 	<li><code>.postprofile-contact</code>: Contiene todos los campos de contacto del perfil.</li>
+ 	<li><code>.postprofile-field</code>: Cada uno de los campos del perfil.</li>
+ 	<li><code>.postprofile-fields</code>: Nótese la «s». Contiene todos los <strong>campos</strong> del perfil.</li>
+ 	<li><code>.postprofile-field-label</code>: Contiene el nombre del campo de perfil.</li>
+ 	<li><code>.postprofile-field-content</code>: Contiene el contenido del campo de perfil.</li>
+ 	<li><code>.postprofile-field-separator</code>: Contiene el separador del campo de perfil.</li>
+ 	<li><code>.postprofile-contact-profile</code>: Contiene el botón de ir al perfil.</li>
+ 	<li><code>.postprofile-contact-pm</code>: Contiene el botón de enviar mensaje privado.</li>
+ 	<li><code>.postprofile-contact-email</code>: Contiene el botón de enviar email.</li>
+ 	<li><code>.postprofile-contact-field</code>: Cada botón de contacto que no es niguno de los tres anteriores. Por limitaciones de Foroactivo no es posible identificar cada botón de contacto personalizado sin recurir a JavaScript.</li>
+ 	<li><code>.postprofile-rank</code>: Contiene el rango del usuario.</li>
+ 	<li><code>.postprofile-username</code>: Contiene el nombre del usuario.</li>
+ 	<li><code>.postprofile-avatar</code>: Contiene el avatar.</li>
+</ul>
+<h2>Ejemplos de códigos</h2>
+<h3>Fijar el tamaño del avatar</h3>
+<pre class="line-numbers"><code class="language-css">.postprofile-avatar img {
+    width: 200px;
+    height: 200px;
+}
+</code></pre>
+<h3>No permitir que el tamaño del avatar sea más grande que el perfil</h3>
+Si no tienes el anterior código, colocar este es una buena medida de seguridad.
+<pre class="line-numbers"><code class="language-css">.postprofile-avatar img {
+    max-width: 100%;
+}
+</code></pre>
+<h3>Cambiar el tamaño o fuente del nombre del usuario</h3>
+<pre class="line-numbers"><code class="language-css">.postprofile-username {
+    /* Tamaño de fuente */
+    font-size: 20px;
+    /* Tipo de fuente */
+    font-family: 'Helvetica Neue', sans-serif; /* Recuerda que siempre debes poner de último sans-serif, serif, etc. dependiendo del tipo de fuente */
+}
+</code></pre>
+Y ahora mismo no se me ocurren más. ???? Si quieres que añada alguno más envíame un mensaje privado.</div>
+    </article>
+
+        </main>
+
+        <aside id="sidebar">
+
+        <div class="widget">
+            <div class="widget__heading">Categorias</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/actualizaciones">Actualizaciones</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/articulos">Artículos</a></span>
+                        <span class="bubble">7</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/codigos">Códigos</a></span>
+                        <span class="bubble">14</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/guias">Guías</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/meta">Meta</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/miscelanea">Miscelánea</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/recursos">Recursos</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/servicios">Servicios</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                            </ul>
+        </div>
+
+        <div class="widget">
+            <div class="widget__heading">Etiquetas</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/criticas">Críticas</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/css">CSS</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/desarrollo">Desarrollo</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/estandares">Estándares</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fainvision">FA/Invision</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/famodernbb">FA/ModernBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb2">FA/phpBB2</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb3">FA/phpBB3</a></span>
+                        <span class="bubble">19</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fapunbb">FA/PunBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fm-helper">FM-Helper</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/foroactivo">Foroactivo</a></span>
+                        <span class="bubble">22</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/jcink">Jcink</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/phpbb">phpBB</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                            </ul>
+        </div>
+
+
+    </aside>
+    </div>
+</div>
+<footer id="footer">
+    <div class="footer__content container">
+        <span>&copy; Flerex Blog 2025</span>
+    </div>
+</footer>
+</body>
+</html>

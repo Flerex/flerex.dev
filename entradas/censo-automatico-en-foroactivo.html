@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <title>Censo Automático en Foroactivo - Flerex Blog</title>
+    
+     
+        <meta name="description" content="Se acabaron los días en los que cada vez que un usuario se registraba en tu foro tenías que editar un montón de códigos HTML para que estuviese al día. En el siguiente artículo aprenderás a poner un bonito censo en tu foro que se actualice eficientemente de forma automática gracias a FM Helper." />
+        <script src="/js/prism.js"></script>
+    <script src="/js/prism-markup-templating.js"></script>
+    <script src="/js/prism-php.js"></script>
+    <script src="/js/clipboard.js"></script>
+    <script src="/js/prism-line-numbers.js"></script>
+    <script src="/js/prism-toolbar.js"></script>
+    <script src="/js/prism-copy-to-clipboard.js"></script>
+    <script src="/js/table-contents.js"></script>
+
+    
+    <link href="/css/app.css?id=15fbddac165dda994b3e" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/prism-tomorrow.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="/css/prism-line-numbers.css">
+    <link rel="stylesheet" href="/css/prism-toolbar.css">
+
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/images/apple-touch.png">
+    
+    <link rel="mask-icon" href="/svg/code.svg" color="#C16BC7">
+
+    <script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+</head>
+<body class="reading-mode">
+
+<header id="header">
+    <div class="container">
+        <div id="logo">
+            <a href="/" aria-label="Inicio"></a>
+        </div>
+        <nav class="navbar">
+            <div class="navbar__group">
+                <ul>
+                    <li><a class="navbar-link" href="/">Inicio</a></li>
+                </ul>
+            </div>
+            <div class="navbar__group">
+                <ul>
+                                    </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<div id="outer-wrapper">
+    <div id="wrap" class="container">
+        <main id="main">
+                <article class="post">
+        <header class="post__header">
+            <h1>Censo Automático en Foroactivo</h1>
+                            <img class="post__featured-image" src="/storage/featured/26.png" alt="">
+                        <div class="post__meta">
+                <div class="post__meta-item post__author">
+                    <div class="avatar">
+    <img src="https://secure.gravatar.com/avatar/8a8ded00a6f158bd28da1ae3c6181198.jpg?s=100&amp;d=mm&amp;r=g" title="Flerex" alt="">
+</div>                    <span class="post__author-name">Flerex</span>
+                </div>
+                <div class="post__extra">
+                    <div class="post__extra-info">
+
+                    <div class="post__date">
+                        <ion-icon name="ios-calendar"></ion-icon>
+                        <span>1 de marzo de 2018</span>                    </div>
+                                            <div class="post__category">
+                            <a href="/categorias/codigos">
+                                <ion-icon name="ios-folder" title="Categoría"></ion-icon>
+                                <span>Códigos</span>
+                            </a>
+                        </div>
+                                        <div class="post-preview__info-elm post-preview__edited">
+        <ion-icon name="ios-medical" title="Actualizado el"></ion-icon>
+        <span>13 de diciembre de 2018</span>    </div>
+                    </div>
+                    <div class="post__tags">
+                        <div class="post-preview__tags taglist">
+                    <div class="taglist__tag"><a href="/etiquetas/fainvision">FA/Invision</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/famodernbb">FA/ModernBB</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/faphpbb2">FA/phpBB2</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/faphpbb3">FA/phpBB3</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/fapunbb">FA/PunBB</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/fm-helper">FM-Helper</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/foroactivo">Foroactivo</a></div>
+            </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="table-contents" hidden>
+            <div class="table-contents__title">Tabla de contenidos</div>
+            <div class="table-contents__content"></div>
+        </div>
+        <div class="post__content text-container">Uno de los mayores incordios con los que me topé en los foros de rol eran esos censos que había que actualizar cada vez que un usuario se registra. Aprovechando el reciente lanzamiento de FM Helper (qué casualidad, ¡vaya!) vamos a poner fin a el tener que actualizar un censo para siempre.
+
+En las siguientes líneas explicaré cómo hacer un censo totalmente automatizado y completamente personalizable, sin comprometer la eficiencia de nuestro foro.
+<h2><a id="funcionamiento" class="anchor" href="/censo-automatico/#funcionamiento"></a>Funcionamiento</h2>
+El código generará una lista con cada grupo público visible (es decir, los que aparecen en la leyenda) con su nombre y la cantidad de miembros en dicho grupo a su lado.
+
+Ten en cuenta que no se consideran miembros a los moderadores de los grupos.
+<h2><a id="prerequisitos" class="anchor" href="/censo-automatico/#prerequisitos"></a>Prerequisitos</h2>
+<ul>
+ 	<li>Tu foro debe tener instalado <a href="/entradas/fm-helper">FM Helper</a>.</li>
+</ul>
+<h2><a id="instalacion" class="anchor" href="/censo-automatico/#instalacion"></a>Instalación</h2>
+Añade el siguiente código en <code>overall_header</code> después de la definición de FM Helper:
+<pre class="line-numbers"><code class="language-markup">
+&lt;script type="text/javascript"&gt;
+!(function() {
+
+const settings = {
+	census_id: 'census', /* id del elemento ul donde se va a generar la informacion */
+	max_cached: 7, /* tiempo máximo en días que puede estar en caché. Por defecto se actualiza cada semana */
+	excluded_groups: [], /* una lista separada por comas con la id de cada grupo que será excluido de la lista. ejemplo: [1, 2, 3] */
+	color: 0, /* 0 para no utilizar color, 1 para que cada elemento tenga el color del grupo y 2 para que lo tenga de fondo */
+	link: false, /* crear un enlace a cada grupo */
+};
+
+H.getGroups(null, settings.max_cached).then(groups =&gt; {
+	return Promise.all(groups.map(group =&gt; group.getMemberAmount(null, settings.max_cached))).then(arr =&gt; {
+		return arr.map((el, i) =&gt; [groups[i], el]);
+	});
+}).then(data =&gt; {
+
+	const fragment = document.createDocumentFragment(),
+	li = document.createElement('LI'),
+	count = document.createElement('SPAN'),
+	name = count.cloneNode(),
+	clonablelink = document.createElement('A');
+
+	count.classList.add('census-count');
+	name.classList.add('census-name');
+
+	if (settings.excluded_groups.length)
+		data = data.filter(el =&gt; settings.excluded_groups.indexOf(parseInt(el[0].id)) == -1);
+
+	const cssProperty = (() =&gt; {
+		switch(settings.color) {
+			case 2:
+				return 'background-color';
+			case 1:
+				return 'color';
+			default:
+				return null;
+		}
+	})();
+
+	data.forEach(el =&gt; {
+
+		const cont = li.cloneNode(),
+		nameel = name.cloneNode(),
+		countel = count.cloneNode(),
+		group = el[0],
+		link = clonablelink.cloneNode();
+
+		cont.classList.add(`census-group-${H.slugify(group.name)}`);
+
+		if (cssProperty)
+			cont.style[cssProperty] = group.color;
+
+		[{ name: nameel.textContent }, countel.textContent] = el;
+
+		if(settings.link) {
+			link.setAttribute('href', group.getURL());
+			link.appendChild(nameel);
+			link.appendChild(countel);
+			cont.appendChild(link);
+		} else {
+			cont.appendChild(nameel);
+			cont.appendChild(countel);
+		}
+
+		fragment.appendChild(cont);
+
+		
+	});
+
+	const embedFrag = frag =&gt; {
+		const el = document.getElementById(settings.census_id);
+		el &amp;&amp; el.appendChild(frag);
+	};
+	
+	if (document.readyState !== "loading") embedFrag(fragment);
+	else document.addEventListener('DOMContentLoaded', () =&gt; { embedFrag(fragment) });
+
+});
+
+})();
+&lt;/script&gt;
+</code></pre>
+Ahora puedes colocar en cualquier parte del foro donde se acepte HTML el siguiente código:
+<pre class="line-numbers"><code class="language-markup">&lt;ul id="census"&gt;&lt;/ul&gt;</code></pre>
+<h2><a id="configuracion" class="anchor" href="/censo-automatico/#configuracion"></a>Configuración</h2>
+Al principio del código podrás ver una constante <code>settings</code> desde donde se puede cambiar varios aspectos del funcionamiento del código. Aunque los comentarios son bastante <em>self-explanatory</em> intentaré explicarlos de forma más detallada a continuación:
+<ul>
+ 	<li><code>census_id</code>: La id del elemento <code>ul</code> en el que se van a generar los <code>li</code> con la lista de grupos y su contador de usuarios. Por defecto el <code>ul</code> que aparece en el apartado de instalación contiene la id <code>ul#census</code>.</li>
+ 	<li><code>max_cached</code>: El número de días que un contador puede pasar sin actualizarse. Por ejemplo: la primera vez que un usuario entra al foro el grupo «Gryffindor» tiene 2 usuarios dentro. Dos días después se añade otro usuario más al grupo. Como por defecto esta opción son 7 días, el usuario no verá que «Gryffindor» tiene 3 usuarios hasta que acabe la semana.</li>
+ 	<li><code>excluded_groups</code>: Un vector de enteros (una lista de números separados por comas entre corchetes) donde los números son las IDs de los grupos (los números que aparecen en la URL de los grupos) que no deben aparecer en el censo. Imagínate que tienes un grupo «Administración» y otro «Moderadores» (sus URL, <code>/g23-administracion</code> y <code>/g24-moderadores</code> respectivamente) que no quieres que aparezcan en el censo. En tal caso tendrías que marcar esta opción como <code>excluded_groups: [23, 24],</code>.</li>
+ 	<li><code>color</code>: Un número que puede tomar los siguientes valores:
+<ul>
+ 	<li> <code>2</code>: Los <code>li</code> generados por el código tendrán cada uno el color de fondo del color de su grupo.</li>
+ 	<li><code>1</code>: Lo mismo que en el caso anterior pero el color será en el texto.</li>
+ 	<li><code>0</code> : No se añadirá ningún color.</li>
+</ul>
+</li>
+ 	<li><code>link</code>: Un booleano que puede tomar valor <code>true</code> o <code>false</code> para mostrar o no incluir un enlace a cada grupo.</li>
+</ul>
+<h2><a id="personalizacion" class="anchor" href="/censo-automatico/#personalizacion"></a>Personalización</h2>
+<img class="aligncenter size-full wp-image-440" src="/storage/old/2018/03/Screen-Shot-2018-03-25-at-18.02.25.png" alt="" width="731" height="506" />
+
+Como siempre la personalización depende de cada foro, pero si estás interesado en darle un diseño al censo como el que aparece en la imagen anterior, sigue los siguientes pasos:
+<ol>
+ 	<li>Crea un módulo en tu foro con la opción de mostrar la tabla activada.</li>
+ 	<li>Añade el código <code>ul#census</code> del apartado de la instalación en el contenido del módulo.</li>
+ 	<li>Añade el siguiente CSS a tu foro:
+<pre class="line-numbers"><code class="language-css">#census {
+	padding: 0;
+	list-style: none;
+}
+
+#census li {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 5px 0;
+	padding: 5px;
+	font-weight: bold;
+}
+
+#census li:not(:last-child) {
+	border-bottom: 1px solid #FFF;
+}
+
+#census .census-count {
+	padding: 3px 5px;
+	-webkit-text-fill-color: #fff;
+	background-color: currentColor;
+	border-radius: 5px;
+}</code></pre>
+</li>
+</ol></div>
+    </article>
+
+        </main>
+
+        <aside id="sidebar">
+
+        <div class="widget">
+            <div class="widget__heading">Categorias</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/actualizaciones">Actualizaciones</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/articulos">Artículos</a></span>
+                        <span class="bubble">7</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/codigos">Códigos</a></span>
+                        <span class="bubble">14</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/guias">Guías</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/meta">Meta</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/miscelanea">Miscelánea</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/recursos">Recursos</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/servicios">Servicios</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                            </ul>
+        </div>
+
+        <div class="widget">
+            <div class="widget__heading">Etiquetas</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/criticas">Críticas</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/css">CSS</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/desarrollo">Desarrollo</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/estandares">Estándares</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fainvision">FA/Invision</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/famodernbb">FA/ModernBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb2">FA/phpBB2</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb3">FA/phpBB3</a></span>
+                        <span class="bubble">19</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fapunbb">FA/PunBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fm-helper">FM-Helper</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/foroactivo">Foroactivo</a></span>
+                        <span class="bubble">22</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/jcink">Jcink</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/phpbb">phpBB</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                            </ul>
+        </div>
+
+
+    </aside>
+    </div>
+</div>
+<footer id="footer">
+    <div class="footer__content container">
+        <span>&copy; Flerex Blog 2026</span>
+    </div>
+</footer>
+</body>
+</html>

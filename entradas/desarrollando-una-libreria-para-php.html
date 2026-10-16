@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <title>Desarrollando una librería para PHP - Flerex Blog</title>
+    
+     
+        <meta name="description" content="Rompiendo con la temática del blog, explico de manera resumida el proceso que he tenido que seguir para publicar mi primera librería para PHP de código abierto." />
+        <script src="/js/prism.js"></script>
+    <script src="/js/prism-markup-templating.js"></script>
+    <script src="/js/prism-php.js"></script>
+    <script src="/js/clipboard.js"></script>
+    <script src="/js/prism-line-numbers.js"></script>
+    <script src="/js/prism-toolbar.js"></script>
+    <script src="/js/prism-copy-to-clipboard.js"></script>
+    <script src="/js/table-contents.js"></script>
+
+    
+    <link href="/css/app.css?id=15fbddac165dda994b3e" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/prism-tomorrow.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="/css/prism-line-numbers.css">
+    <link rel="stylesheet" href="/css/prism-toolbar.css">
+
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/images/apple-touch.png">
+    
+    <link rel="mask-icon" href="/svg/code.svg" color="#C16BC7">
+
+    <script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+</head>
+<body class="reading-mode">
+
+<header id="header">
+    <div class="container">
+        <div id="logo">
+            <a href="/" aria-label="Inicio"></a>
+        </div>
+        <nav class="navbar">
+            <div class="navbar__group">
+                <ul>
+                    <li><a class="navbar-link" href="/">Inicio</a></li>
+                </ul>
+            </div>
+            <div class="navbar__group">
+                <ul>
+                                    </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<div id="outer-wrapper">
+    <div id="wrap" class="container">
+        <main id="main">
+                <article class="post">
+        <header class="post__header">
+            <h1>Desarrollando una librería para PHP</h1>
+                            <img class="post__featured-image" src="/storage/featured/42.png" alt="">
+                        <div class="post__meta">
+                <div class="post__meta-item post__author">
+                    <div class="avatar">
+    <img src="https://secure.gravatar.com/avatar/8a8ded00a6f158bd28da1ae3c6181198.jpg?s=100&amp;d=mm&amp;r=g" title="Flerex" alt="">
+</div>                    <span class="post__author-name">Flerex</span>
+                </div>
+                <div class="post__extra">
+                    <div class="post__extra-info">
+
+                    <div class="post__date">
+                        <ion-icon name="ios-calendar"></ion-icon>
+                        <span>25 de enero de 2021</span>                    </div>
+                                            <div class="post__category">
+                            <a href="/categorias/articulos">
+                                <ion-icon name="ios-folder" title="Categoría"></ion-icon>
+                                <span>Artículos</span>
+                            </a>
+                        </div>
+                                                            </div>
+                    <div class="post__tags">
+                        <div class="post-preview__tags taglist">
+                    <div class="taglist__tag"><a href="/etiquetas/desarrollo">Desarrollo</a></div>
+            </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="table-contents" hidden>
+            <div class="table-contents__title">Tabla de contenidos</div>
+            <div class="table-contents__content"></div>
+        </div>
+        <div class="post__content text-container"><div class="notice info">
+<div class="notice__title">Informaci&oacute;n</div>
+<div class="notice__content"><p>Esta entrada, primera en romper un poco con la tem&aacute;tica del blog, relata de manera sencilla los pasos que he seguido para desarrollar una librer&iacute;a PHP. &nbsp;Si quieres ir directamente al <strong>repositorio del proyecto</strong> y echarle un vistazo haz clic <a href="https://github.com/Flerex/spain-gas">aqu&iacute;</a>.</p>
+<p>Ten en cuenta tambi&eacute;n que este texto no pretende ser did&aacute;ctico, por lo menos no al nivel de detallar el procedimiento real, sino de dar una visi&oacute;n <em>desde arriba</em>.</p>
+</div>
+</div>
+<p>Si algo me gusta de la comunidad creada al rededor del lenguaje PHP es la cantidad de librer&iacute;as de terceros disponibles para a&ntilde;adir a tu proyecto como dependencia. Independientemente del caso de uso que necesites, siempre hay una librer&iacute;a disponible para usar en Packagist.</p>
+<p>No obstante, Hace un par de d&iacute;as requer&iacute;a de una herramienta para interactuar con la <strong>API de Geoportal Gasolineras</strong>&nbsp;que mantiene el Ministerio de Transici&oacute;n Econ&oacute;mica de Espa&ntilde;a. Esta API obtiene informaci&oacute;n de todas las gasolineras de Espa&ntilde;a, informaci&oacute;n como puede ser el precio de los combustibles, su localizaci&oacute;n o los servicios que ofrecen.&nbsp;</p>
+<p>Desafortunadamente, no existe a d&iacute;a de hoy ninguna herramienta que permita a los desarrolladores interactuar con ella. Tras investigar un poco, solo pude encontrar un script que se encarga de descargar los datos y un proyecto en JavaScript no muy bien documentado. Vamos, que si quer&iacute;a interactuar con la API deber&iacute;a hacerlo a mano.</p>
+<p>Por si no fuera suficiente, al ponerme a ello descubr&iacute; que la API no es para nada intuitiva y requiere de un trabajo inicial para descubrir todos sus <em>endpoints</em> y los par&aacute;metros que recibe, devuelve y c&oacute;mo se comportan. Esto supuso una perfecta oportunidad para desarrollar una librer&iacute;a a medida que no solo me sirviese a mi, sino a cualquiera que en un futuro se encontrase en mi misma situaci&oacute;n de necesidad. De esta maneera, aporto mi granito de arena a la comunidad de Software Libre, que me ha ayudado a mi durante todos estos a&ntilde;os.</p>
+<h2>Haciendo ingenier&iacute;a inversa</h2>
+<p>La API de Geoportal Gasolineras <strong>no est&aacute; documentada</strong> en ning&uacute;n sitio ni es visible al p&uacute;blico, el &uacute;nico servicio que proporcionan es el de un mapa en <a href="https://geoportalgasolineras.es/#/Inicio" target="_blank" rel="noopener">su p&aacute;gina web</a> que permite ver las gasolineras y sus datos, filtrando los resultados mostrados a trav&eacute;s de ciertos par&aacute;metros.</p>
+<p>Aqu&iacute; es cuando nos podemos dar de cuenta de un detalle: jugueteando con el mapa, ampli&aacute;ndolo y cambiando los filtros, se aprecia que el cambio de las gasolineras no es instant&aacute;neo. Como toda interfaz interactiva en un navegador, esta se realiza utilizando JavaScript. Este tipo de aplicaciones web suelen abstraer el funcionamiento del componente de la capa de datos, solicitando as&iacute; los datos mediante peticiones AJAX hechas a APIs HTTP (normalmente REST).</p>
+<figure class="wp-block-image enlarged"><img src="../storage/images/posts/42/1.png" alt="" />
+<figcaption>Las peticiones de red lanzadas en segundo plano, con uno de los endpoints seleccionados.<br /><br /></figcaption>
+</figure>
+<p>Utilizando las herramientas de desarrollador del navegador y, en concreto, el visor de red, podemos ver c&oacute;mo se realizan nueva peticiones HTTP cada vez que ampliamos el mapa o cambiamos los filtros. Aqu&iacute; es donde podemos obtener los endpoints que est&aacute; utilizando el mapa: la API. En especifico se puede apreciar los siguientes tipos de peticiones AJAX:</p>
+<ul>
+<li>Una petici&oacute;n cuando seleccionamos una provincia para <strong>obtener los municipios</strong>&nbsp;de dicha provincia y mostrarlos en un <code>select</code> para seguir filtrando por municipio.</li>
+<li>Una petici&oacute;n cuando cambiamos los filtros para <strong>obtener la lista de gasolineras y su localizaci&oacute;n</strong>.</li>
+<li>Una petici&oacute;n cuando amplimos el map lo suficente, que mostrar&aacute; la <strong>informaci&oacute;n para cada gasolinera</strong> y que se actualiza cuando nos movemos por el mapa.</li>
+<li>Varias peticiones para cargar diversos recursos como peque&ntilde;as imgen que forman el mosaico del mapa.</li>
+</ul>
+<p><br />Una vez tenemos los <em>endpoints</em>&nbsp;m&aacute;s relevantes, es hora de documentarlos para saber qu&eacute; par&aacute;metros reciben y de qu&eacute; forma. En este caso los desarrolladores del la web optaron por utilizar peticiones POST que reciben los par&aacute;metros en el cuerpo en formato JSON. Un poco extra&ntilde;o, sobre todo teniendo en cuenta que se env&iacute;an todos los posibles par&aacute;metros a la vez, est&eacute;n o no vac&iacute;os. Un poco sucio, pero me facilita el trabajo para encontrar las claves de los par&aacute;metros para filtrar los resultados.</p>
+<p>Lo que quiz&aacute;s no ha sido tan maravilloso es el hecho de que algunos <em>endpoints</em>, a pesar de enviar los par&aacute;metros como JSON, en vez de devolverlos en JSON lo hacen en XML. No quiero preguntar. Tendremos que tenerlo en cuenta a la hora de implementar la librer&iacute;a para parsear correctamente el XML y <em>mapear</em> su informaci&oacute;n.</p>
+<h2>Dise&ntilde;ando la arquitectura</h2>
+<p>Los detalles de implementaci&oacute;n, honestamente, no le importan a nadie. Una vez la librer&iacute;a est&eacute; desarrollada, gracias al poder de la <em>abstracci&oacute;n</em>, solo ser&aacute;n problema del que tenga que mantenerla. Sin embargo, s&iacute; es importante dise&ntilde;ar una buena interfaz con la que la librer&iacute;a ser&aacute; utilizada.</p>
+<p>Inspirado en el mundo de Laravel y, en espec&iacute;fico Eloquent, me pareci&oacute; una buena idea ocultar los <em>endpoints</em>&nbsp;en una fachada y utilizar el patr&oacute;n construcci&oacute;n para realizar la petici&oacute;n, para as&iacute; poder personalizarla, al haber <strong>muchos par&aacute;metros opcionales</strong>. Adem&aacute;s, <strong>elimin&eacute; al m&aacute;ximo de mis posibilidades la necesidad de utilizar n&uacute;meros m&aacute;gicos</strong>, gracias a la introducci&oacute;n de enumeraciones que contienen desde las posibles combinaciones de provincias, hasta los tipos de combustibles. &iquest;El resultado? Una forma muy fluida de interactuar con la API.</p>
+<p>Ve&aacute;molos con un antes y un despu&eacute;s. Aqu&iacute; se pude ver c&oacute;mo se deb&iacute;a acceder antes a la API para obtener una lista de gasolineras. Pasando todos los par&aacute;metros (medio), a&uacute;n sin necesitarlos, y luego parseando el JSON resultante (derecha).</p>
+<figure class="wp-block-image enlarged"><img src="../storage/images/posts/42/2.png" alt="" />
+<figcaption>Un ejemplo de c&oacute;mo se env&iacute;an los datos en la API desde la web del ministerio.</figcaption>
+</figure>
+<p>Y as&iacute; es c&oacute;mo ahora se puede realizar de manera sencilla con la interfaz que proporciona la librer&iacute;a:</p>
+<pre class="language-php"><code>$stations = GasApi::locateGasStations()
+    -&gt;serviceType(ServiceType::SELF_SERVICE())
+    -&gt;fuel(Fuel::DIESEL_A())
+    -&gt;get();</code></pre>
+<h2>Creando la librer&iacute;a</h2>
+<p>Muy bien, el c&oacute;digo est&aacute; listo, correctamente probado con PHPUnit y funcional, me dec&iacute;a. Pero, &iquest;ahora qu&eacute; se necesita hacer para poder instalarlo con <code>composer</code>? Resulta que tener tu librer&iacute;a disponible al p&uacute;blico es muy sencillo. Tan solo es necesario, iniciar tu proyecto como un proyecto de composer. Esto simplemente requiere de un <code>composer.json</code> en la ra&iacute;z del proyecto, configur&aacute;ndolo con peque&ntilde;os detalles como un nombre.&nbsp;</p>
+<p>Esto ya lo hab&iacute;a hecho para poder a&ntilde;adir otras librer&iacute;as al proyecto en las que me he basado para realizar la implementaci&oacute;n y tambi&eacute;n las pruebas. Sin embargo, es muy sencillo de inicializar utilizando el comando <code>composer init</code> dentro del proyecto y siguiendo los pasos que la propia herramienta te da.</p>
+<p>Una vez hecho eso, el siguiente paso es registrarse en <a href="https://packagist.org">Packagist</a>. Packagist es el repositorio de todas las librer&iacute;as que se pueden instalar cuando hacemos <code>composer require flerex/spain-gas</code>. Abrir al p&uacute;blico la librer&iacute;a es tan sencillo como sincronizar nuestra cuenta de GitHub con Packagist y a&ntilde;adir a su lista nuestro repositorio.</p>
+<h2>Ultimando detalles</h2>
+<p>Independientemente de la funcionalidad que hayamos implementado, lo m&aacute;s importante es documentar todas las funcionalidades para que el que encuentre nuestra librer&iacute;a pueda entender <em>at a glance</em>&nbsp;de lo que se est&aacute; hablando y c&oacute;mo funciona. Para ello, a&ntilde;ad&iacute; un <code>Readme.md</code> con los endpoints disponibles, la informaci&oacute;n que devuelven cada uno de ellos y algunos ejemplos de uso. Adem&aacute;s, a&ntilde;ad&iacute; una Wiki en la que se entra en profundidad sobre todo lo que se puede hacer con cada uno de los <em>endpoints</em>.&nbsp;</p>
+<p>Para facilitar el desarrollo en IDEs como PhpStorm tambi&eacute;n he a&ntilde;adido <strong>comentarios PHPDoc</strong> para mostrar documentaci&oacute;n extra y mostrar <em>magic methods</em>&nbsp;disponibles que el IDE no es capaz de reconocer de manera est&aacute;tica.</p>
+<h2>Licencia</h2>
+<p>Como ya sabemos, hacer p&uacute;blico nuestro repositorio no implica que el proyecto sea Software Libre. Por defecto, la ausencia de una licencia implica que los derechos est&aacute;n reservados al autor.</p>
+<p>Para permitir que el c&oacute;digo se pueda utilizar y compartir es necesario asignarle una licencia, por ejemplo, a&ntilde;adiendo el texto legal en un fichero LICENSE en el repositorio. Como no soy un experto en licencias, he echado de mano de <a href="https://choosealicense.com">esta herramienta</a> que te ayuda a decantarte por una de las muchas licencias de software.</p>
+<hr />
+<p>Este es todo el proceso que he tenido que seguir para desarrollar mi primera librer&iacute;a Open Source para PHP. Si quieres echarle un vistazo no dudes en darle un visita al <a href="https://github.com/Flerex/spain-gas">repositorio</a> y, ya de paso, dale una estrella.</p></div>
+    </article>
+
+        </main>
+
+        <aside id="sidebar">
+
+        <div class="widget">
+            <div class="widget__heading">Categorias</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/actualizaciones">Actualizaciones</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/articulos">Artículos</a></span>
+                        <span class="bubble">7</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/codigos">Códigos</a></span>
+                        <span class="bubble">14</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/guias">Guías</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/meta">Meta</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/miscelanea">Miscelánea</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/recursos">Recursos</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/servicios">Servicios</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                            </ul>
+        </div>
+
+        <div class="widget">
+            <div class="widget__heading">Etiquetas</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/criticas">Críticas</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/css">CSS</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/desarrollo">Desarrollo</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/estandares">Estándares</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fainvision">FA/Invision</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/famodernbb">FA/ModernBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb2">FA/phpBB2</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb3">FA/phpBB3</a></span>
+                        <span class="bubble">19</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fapunbb">FA/PunBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fm-helper">FM-Helper</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/foroactivo">Foroactivo</a></span>
+                        <span class="bubble">22</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/jcink">Jcink</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/phpbb">phpBB</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                            </ul>
+        </div>
+
+
+    </aside>
+    </div>
+</div>
+<footer id="footer">
+    <div class="footer__content container">
+        <span>&copy; Flerex Blog 2026</span>
+    </div>
+</footer>
+</body>
+</html>

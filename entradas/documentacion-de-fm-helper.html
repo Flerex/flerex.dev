@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <title>Documentación de FM Helper - Flerex Blog</title>
+    
+     
+        <meta name="description" content="La documentación de la primera librería del blog, FM Helper. Aquí encontrarás descripciones detalladas sobre todos los métodos y propiedades disponibles, los objetos que se devuelven y cómo poder utilizarlos." />
+        <script src="/js/prism.js"></script>
+    <script src="/js/prism-markup-templating.js"></script>
+    <script src="/js/prism-php.js"></script>
+    <script src="/js/clipboard.js"></script>
+    <script src="/js/prism-line-numbers.js"></script>
+    <script src="/js/prism-toolbar.js"></script>
+    <script src="/js/prism-copy-to-clipboard.js"></script>
+    <script src="/js/table-contents.js"></script>
+
+    
+    <link href="/css/app.css?id=15fbddac165dda994b3e" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/prism-tomorrow.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="/css/prism-line-numbers.css">
+    <link rel="stylesheet" href="/css/prism-toolbar.css">
+
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/images/apple-touch.png">
+    
+    <link rel="mask-icon" href="/svg/code.svg" color="#C16BC7">
+
+    <script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+</head>
+<body class="reading-mode">
+
+<header id="header">
+    <div class="container">
+        <div id="logo">
+            <a href="/" aria-label="Inicio"></a>
+        </div>
+        <nav class="navbar">
+            <div class="navbar__group">
+                <ul>
+                    <li><a class="navbar-link" href="/">Inicio</a></li>
+                </ul>
+            </div>
+            <div class="navbar__group">
+                <ul>
+                                    </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<div id="outer-wrapper">
+    <div id="wrap" class="container">
+        <main id="main">
+                <article class="post">
+        <header class="post__header">
+            <h1>Documentación de FM Helper</h1>
+                            <img class="post__featured-image" src="/storage/featured/23.jpg" alt="">
+                        <div class="post__meta">
+                <div class="post__meta-item post__author">
+                    <div class="avatar">
+    <img src="https://secure.gravatar.com/avatar/8a8ded00a6f158bd28da1ae3c6181198.jpg?s=100&amp;d=mm&amp;r=g" title="Flerex" alt="">
+</div>                    <span class="post__author-name">Flerex</span>
+                </div>
+                <div class="post__extra">
+                    <div class="post__extra-info">
+
+                    <div class="post__date">
+                        <ion-icon name="ios-calendar"></ion-icon>
+                        <span>1 de marzo de 2018</span>                    </div>
+                                            <div class="post__category">
+                            <a href="/categorias/plugins">
+                                <ion-icon name="ios-folder" title="Categoría"></ion-icon>
+                                <span>Plugins</span>
+                            </a>
+                        </div>
+                                        <div class="post-preview__info-elm post-preview__edited">
+        <ion-icon name="ios-medical" title="Actualizado el"></ion-icon>
+        <span>13 de diciembre de 2018</span>    </div>
+                    </div>
+                    <div class="post__tags">
+                        <div class="post-preview__tags taglist">
+                    <div class="taglist__tag"><a href="/etiquetas/fm-helper">FM-Helper</a></div>
+            </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="table-contents" hidden>
+            <div class="table-contents__title">Tabla de contenidos</div>
+            <div class="table-contents__content"></div>
+        </div>
+        <div class="post__content text-container">FM Helper es una librería de métodos y propiedades con la finalidad de hacer el desarrollo en Foroactivo más sencillo. Estos métodos devuelven la información más común necesaria a la hora de crear scripts.
+
+En esta librería están disponibles un objeto a través de las variables globales <code>H</code> y <code>_</code>, también a través de su contenedor original <code>FLX.helper</code>, teniendo que escribir más caracteres.
+<h2><a id="configuracion-por-defecto" class="anchor" href="/documentacion-de-fm-helper/#configuracion-por-defecto"></a>Configuración por defecto</h2>
+<ul>
+ 	<li><code>CACHE_EXPIRACY</code>: <code>30</code> días por defecto. Muchos de los métodos de esta librería utilizan AJAX detrás de los objetos <code>Promise</code> para devolver información desde los servidores de Foroactivo. Estas operaciones son más o menos costosas, por lo que para evitar tener que realizarlas para obtener información básica, un sistema de cache ha sido implementado en cada petición.Esto significa que no tienes que preocuparte de ningún tipo de agujero de eficiencia cuando utilizas los métodos de FM Helper. Sin embargo, puede haber casos en los que necesites tener siempre la última versión de la información. Para estos casos se proporciona la posibilidad de añadir un argumento opcional <code>expiracy</code> en los métodos, el cual se corresponde al número de días máximos para que la información cacheada se considere caduco. Obviamente si este argumento toma el valor <code>0</code>, la información no será cacheada y el valor actual será siempre obtenido.</li>
+</ul>
+<h2><a id="objetos" class="anchor" href="/documentacion-de-fm-helper/#objetos"></a>Objetos</h2>
+<ul>
+ 	<li><code>User</code>: Representa a un usuario del foro. Métodos como <code>H.getUser()</code> o propiedades como <code>H.user</code> devuelven objetos <code>User</code>.
+<h3>Propiedades</h3>
+<ul>
+ 	<li><code>id</code>: Un entero con la ID del usuario.</li>
+ 	<li><code>username</code>: Una cadena de texto con el nombre del usuario</li>
+ 	<li><code>avatar</code>: La url del avatar del usuario como string.</li>
+ 	<li><code>rank</code>: El rango del usuario. Ten en cuenta que puede contener HTML. Véase el método <code>getRankAsText()</code>.</li>
+ 	<li><code>posts</code>: Un entero con el número de mensajes del usuario</li>
+ 	<li><code>level</code>: Una cadena de texto que representa el nivel de un usuario (puede ser <code>mod</code>, <code>admin</code>, <code>user</code> o <code>guest</code> para moderadores, administradores, usuarios e invitados respectivamente).</li>
+ 	<li><code>color</code>: Una cadena de texto con el color del usuario en el formato por defecto del navegador del usuario. Puede ser <code>null</code> si el usuario no está en ningún grupo o <code>undefined</code> si no se ha podido calcular.</li>
+</ul>
+<h3>Métodos</h3>
+<ul>
+ 	<li><code>getRankAsText()</code>: Devuelve el texto del rango del usuario sin ningún tipo de HTML.</li>
+ 	<li><code>getGroup()</code>: Devuelve una promesa con el grupo del usuario. Realiza una llamada a <code>H.getGroups()</code> en segundo plano. Si el método es llamado desde el objeto <code>currentUser</code>, una llamada a <code>H.getUser()</code> también será realizada. Todo esto con la configuración por defecto de <code>CACHE_EXPIRACY</code>.</li>
+ 	<li><code>getURL()</code>: Devuelve una cadena de texto con una URL válida al perfil del usuario.</li>
+</ul>
+</li>
+ 	<li><code>Group</code>: Representa a un grupo de usuarios. Métodos como <code>H.getGroups()</code> o <code>User.prototype.getGroup</code> devuelven objetos <code>Group</code>.
+<h3>Propiedades</h3>
+<ul>
+ 	<li><code>id</code>: El identificador del grupo</li>
+ 	<li><code>name</code>: El nombre del grupo</li>
+ 	<li><code>color</code>: El color del grupo en el formato por defecto del navegador</li>
+</ul>
+<h3>Métodos</h3>
+<ul>
+ 	<li><code>getMemberAmount([cb] [, expiracy])</code>: Devuelve una promesa con el número de miembros que pertenecen al grupo.
+<ul>
+ 	<li>Un argumento de <em>callback</em> <code>cb</code> puede ser proporcionado para ser llamado una vez que la promesa sea resuelta. Esta función <em>callback</em>automáticamente recibe el resultado como parámetro de entrada.</li>
+ 	<li>Un argumento <code>expiracy</code> puede ser proporcionado para sobreescribir la configuración por defecto de <code>CACHE_EXPIRACY</code>.</li>
+</ul>
+</li>
+ 	<li><code>getURL()</code>: Devuelve una cadena de texto con una URL válida al grupo.</li>
+</ul>
+</li>
+</ul>
+<h2><a id="propiedades-disponibles" class="anchor" href="/documentacion-de-fm-helper/#propiedades-disponibles"></a>Propiedades disponibles</h2>
+<ul>
+ 	<li><code>H.user</code> y su atajo <code>H.u</code>. Contiene un objeto <code>User</code> que representa el usuario actualmente conectado. Estas propiedades solo estarán disponibles si el usuario está conectado. Puedes comprobar si el usuario está conectado y, en consecuencia, si estas propiedades están disponibles con <code>H.isLoggedIn()</code>.</li>
+</ul>
+<h2><a id="metodos-disponibles" class="anchor" href="/documentacion-de-fm-helper/#metodos-disponibles"></a>Métodos disponibles</h2>
+Algunos de los métodos pueden depender en el DOM para funcionar. Esto significa que el usuario deberá utilizarlos dentro de una llamada <code>document.ready</code> para poder usarlos.
+<ul>
+ 	<li><code>H.isLoggedIn()</code>: Devuelve <code>true</code> si el visitante es un usuario conectado. Es equivalente a <code>(H.user == true)</code>.</li>
+ 	<li><code>H.userLevel()</code>: Devuelve una cadena de texto con el nivel del usuario actual. Los valores posibles son <code>admin</code>, <code>mod</code>, <code>user</code> o <code>guest</code>.</li>
+ 	<li><code>H.getUser(id[, cb] [, expiracy])</code>: Devuelve un objeto <code>Promise</code> a un objeto <code>User</code> del usuario con id <code>id</code>. Una petición AJAX está siendo usada por detrás.
+<ul>
+ 	<li>Un argumento de <em>callback</em> <code>cb</code> puede ser proporcionado para ser llamado una vez que la promesa sea resuelta. Esta función <em>callback</em>automáticamente recibe el objeto <code>User</code> resultante como parámetro de entrada.</li>
+ 	<li>Un argumento <code>expiracy</code> puede ser proporcionado para sobreescribir la configuración por defecto de <code>CACHE_EXPIRACY</code>. Esto puede ser marcado como <code>0</code> para que no se cachee el usuario. Útil si se necesita fiabilidad de que se está obteniendo siempre el valor más actual del número de mensajes del usuario, por ejemplo.</li>
+</ul>
+<strong>Atención:</strong> Debido a algunas limitaciones, la propiedad <code>level</code> y, en consecunecia, el método <code>getLevel()</code> siempre devolverán <code>undefined</code>.</li>
+ 	<li><code>H.getVersion()</code>: Devuelve una cadena de texto con la versión del foro. Los valores posibles son <code>phpBB3</code>, <code>phpBB2</code>, <code>PunBB</code>, <code>Invision</code> y <code>ModernBB</code>. <strong>Depende del DOM</strong></li>
+ 	<li><code>H.get(url [, options])</code>: <em>Wrapper</em> sobre una llamada AJAX utilizando la API de Fetch. Devuelve automáticamente el objeto documento de la página sobre la que se ha hecho la petición. Admite los siguientes argumentos:
+<ul>
+ 	<li><code>url</code>: Una cadena de texto con la URL sobre la que hacer la petición.</li>
+ 	<li><code>options</code>: Un objeto con las opciones. Puede tener una propiedad <code>data</code>con otro objeto representando las <em>query</em> a enviar con la URL o y cualquier otra propiedad equivalentes a las opciones de la API Fetch.</li>
+</ul>
+</li>
+ 	<li><code>H.enableDebugMode()</code>: Pone el foro en «Modo depuración», el cual evita que el CSS sea guardado en cache por los navegadores. Muy útil cuando se están desarrollando <em>skins</em> y al actualizar no aparecen los cambios.</li>
+ 	<li><code>H.slugify(str)</code>: Transforma una cadena de texto en otra cadena que se puede utilizar en URLs. Los acentos son eliminados, los espacios y otros caracteres especiales son reemplazados por guiones. Los guiones contiguos entre ellos son eliminados.</li>
+ 	<li><code>H.attachScriptToChat(fn)</code>: Ejecuta una función en el DOM de todos lso chatboxes una vez el evento <code>load</code> ha sido lanzado en ellos. Por favor, ten en cuenta que debido a limitaciones de Foroactivo, la función será solo ejecutada en los chatbox embedidos (incrustados) y no en el accesible en la dirección <code>/chatbox</code>.</li>
+ 	<li><code>H.getGroups([cb] [, expiracy])</code>: Devuelve una promesa con un vector que contiene todos los grupos del foro como objetos <code>Group</code>.
+<ul>
+ 	<li>Si una función <em>callback</em> <code>cb</code> es proporcionada, esta será ejecutada una vez la promesa sea resuelta y recibirá el resultado de la misma como parámetro de entrada.</li>
+ 	<li>Si el argumento <code>expiracy</code> es proporcionado, entonces se sobreescribirá el valor por defecto de la opción <code>CACHE_EXPIRACY</code>.</li>
+</ul>
+</li>
+ 	<li><code>H.currentUser(property)</code>: Devuelve el valor de la propiedad <code>property</code> del objeto <code>currentUser</code>. Es equivalente a <code>H.user['property']</code> o <code>H.user.property</code>. Solo disponible si el usuario está conectado.</li>
+</ul></div>
+    </article>
+
+        </main>
+
+        <aside id="sidebar">
+
+        <div class="widget">
+            <div class="widget__heading">Categorias</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/actualizaciones">Actualizaciones</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/articulos">Artículos</a></span>
+                        <span class="bubble">7</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/codigos">Códigos</a></span>
+                        <span class="bubble">14</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/guias">Guías</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/meta">Meta</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/miscelanea">Miscelánea</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/recursos">Recursos</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/servicios">Servicios</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                            </ul>
+        </div>
+
+        <div class="widget">
+            <div class="widget__heading">Etiquetas</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/criticas">Críticas</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/css">CSS</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/desarrollo">Desarrollo</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/estandares">Estándares</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fainvision">FA/Invision</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/famodernbb">FA/ModernBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb2">FA/phpBB2</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb3">FA/phpBB3</a></span>
+                        <span class="bubble">19</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fapunbb">FA/PunBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fm-helper">FM-Helper</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/foroactivo">Foroactivo</a></span>
+                        <span class="bubble">22</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/jcink">Jcink</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/phpbb">phpBB</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                            </ul>
+        </div>
+
+
+    </aside>
+    </div>
+</div>
+<footer id="footer">
+    <div class="footer__content container">
+        <span>&copy; Flerex Blog 2025</span>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <title>Columnas «like a boss» - Flerex Blog</title>
+    
+     
+        <meta name="description" content="A veces hacer que dos elementos se muestren uno al lado de otro puede ser difícil, al menos hasta ahora. Gracias a esta guía el hacer columnas será cuestión de segundos." />
+        <script src="/js/prism.js"></script>
+    <script src="/js/prism-markup-templating.js"></script>
+    <script src="/js/prism-php.js"></script>
+    <script src="/js/clipboard.js"></script>
+    <script src="/js/prism-line-numbers.js"></script>
+    <script src="/js/prism-toolbar.js"></script>
+    <script src="/js/prism-copy-to-clipboard.js"></script>
+    <script src="/js/table-contents.js"></script>
+
+    
+    <link href="/css/app.css?id=15fbddac165dda994b3e" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/prism-tomorrow.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="/css/prism-line-numbers.css">
+    <link rel="stylesheet" href="/css/prism-toolbar.css">
+
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/images/apple-touch.png">
+    
+    <link rel="mask-icon" href="/svg/code.svg" color="#C16BC7">
+
+    <script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+</head>
+<body class="reading-mode">
+
+<header id="header">
+    <div class="container">
+        <div id="logo">
+            <a href="/" aria-label="Inicio"></a>
+        </div>
+        <nav class="navbar">
+            <div class="navbar__group">
+                <ul>
+                    <li><a class="navbar-link" href="/">Inicio</a></li>
+                </ul>
+            </div>
+            <div class="navbar__group">
+                <ul>
+                                    </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<div id="outer-wrapper">
+    <div id="wrap" class="container">
+        <main id="main">
+                <article class="post">
+        <header class="post__header">
+            <h1>Columnas «like a boss»</h1>
+                            <img class="post__featured-image" src="/storage/featured/8.jpg" alt="">
+                        <div class="post__meta">
+                <div class="post__meta-item post__author">
+                    <div class="avatar">
+    <img src="https://secure.gravatar.com/avatar/8a8ded00a6f158bd28da1ae3c6181198.jpg?s=100&amp;d=mm&amp;r=g" title="Flerex" alt="">
+</div>                    <span class="post__author-name">Flerex</span>
+                </div>
+                <div class="post__extra">
+                    <div class="post__extra-info">
+
+                    <div class="post__date">
+                        <ion-icon name="ios-calendar"></ion-icon>
+                        <span>26 de agosto de 2017</span>                    </div>
+                                            <div class="post__category">
+                            <a href="/categorias/articulos">
+                                <ion-icon name="ios-folder" title="Categoría"></ion-icon>
+                                <span>Artículos</span>
+                            </a>
+                        </div>
+                                        <div class="post-preview__info-elm post-preview__edited">
+        <ion-icon name="ios-medical" title="Actualizado el"></ion-icon>
+        <span>6 de marzo de 2019</span>    </div>
+                    </div>
+                    <div class="post__tags">
+                        <div class="post-preview__tags taglist">
+                    <div class="taglist__tag"><a href="/etiquetas/css">CSS</a></div>
+            </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="table-contents" hidden>
+            <div class="table-contents__title">Tabla de contenidos</div>
+            <div class="table-contents__content"></div>
+        </div>
+        <div class="post__content text-container">He visto que muchos diseñadores de <em>skins</em> que necesitan columnas abusan de métodos como los <em>float</em> o <em>display: inline-block</em> para obtener dicho resultado.
+
+El uso de estas propiedades no es más que un «truco» para evitar tener que utilizar el elemento <code>&lt;table&gt;</code> para maquetar. Debemos recordar que en el pasado (¿en serio acabo de llamarle a los años 2000 «pasado»?) este elemento era utilizado de forma abusiva para constituir las estructuras de las páginas, llevando a los desarrolladores a problemas de semántica y mantenibilidad, entre otros.
+
+Desafortunadamente mucha gente utiliza de forma incorrecta estas propiedades, por lo que dedicaré las siguientes líneas a explicar cómo se deben utilizar para obtener columnas como resultado.
+
+<!--more-->
+<h2>La base</h2>
+Antes de empezar con los distintos métodos para crear columnas voy a presentar la estructura HTML básica para poder hacerlas y con la que voy a trabajar en todos los ejemplos de esta guía:
+<pre class="line-numbers"><code class="language-markup">&lt;div id="contenedor"&gt;
+    &lt;div class="columna"&gt;Columna 1&lt;/div&gt;
+    &lt;div class="columna"&gt;Columna 2&lt;/div&gt;
+    &lt;div class="columna"&gt;Columna 2&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+Para hacer las cosas más claras, he añadido a los elementos colores y unos pocos márgenes para poder diferenciarlos:
+<pre class="line-numbers"><code class="language-css">#contenedor {
+    width: 500px;
+    background-color: #4DC6BB;
+}
+
+#contenedor .columna {
+    background-color: #FAC44D;
+    margin: 20px;
+    padding: 20px;
+}</code></pre>
+El resultado de ese HTML y el CSS que le he añadido es el siguiente:
+<figure><img class="aligncenter size-full wp-image-468" src="/storage/old/2017/08/1-1.png" alt="" width="650" height="303"></figure>
+<h2>Float, el método malo</h2>
+Cuando utilizamos la propiedad <code>float</code>, tenemos que recordar que en realidad estamos utilizando una propiedad diseñada para trabajar con texto y elementos <code>inline</code>, con bloques.
+
+En efecto, el uso intencionado para esta propiedad era el de hacer <em>«flotar»</em> las imágenes sobre el texto para obtener un efecto como esos que hacíamos en el <em>Word 2003</em>, con las imágenes a la izquierda rodeada de texto.
+
+Por eso lo llamé truco, porque <strong>en realidad estamos abusando de un comportamiento inintencionado</strong>, lejos del objetivo para el que se creó la propiedad.
+
+Uno de los problemas de los <code>floats</code> para hacer columnas es que, al estar flotando, no afecta al contenido de su padre y, por lo cual, no se tiene en cuenta la altura del elemento flotado para calcular la altura de su padre.
+
+Vamos a ver esto mejor con un ejemplo. Pongamos ahora a los elementos que serán las columnas la propiedad y valor <code>float: left</code> (para que floten con respecto a la izquierda, se podría utilizar perfectamente el valor <code>right</code>):
+<pre class="line-numbers"><code class="language-css">#contenedor .columna {
+   float: left;
+}</code></pre>
+<figure><img class="aligncenter size-full wp-image-464" src="/storage/old/2017/08/2-1.png" alt="" width="672" height="133"></figure>
+Como la altura de los hijos no está siendo tomada en cuenta para <code>div#contenedor</code>, su altura interna es 0 (recordad que he colocado <code>padding</code>, por eso su altura externa es mayor).
+
+Mucha gente soluciona este problema añadiendo una altura definida al padre y, aunque ciertamente es una solución, no se adapta al contenido, por lo que no serviría en caso de que éste fuese dinámico.
+
+En un principio se optaba por añadir un <code>div</code> con <code>clear: both</code> al final de todo de nuestros elementos flotados para restaurar el flujo. Recordemos que la propiedad <code>clear</code> evita que elemento al que se aplica se coloque detrás del anterior elemento flotado, si cupiese. Por ejemplo:
+<pre class="line-numbers"><code class="language-markup">&lt;div id="contenedor"&gt;
+    &lt;div class="columna"&gt;Columna 1&lt;/div&gt;
+    &lt;div class="columna"&gt;Columna 2&lt;/div&gt;
+    &lt;div class="columna"&gt;Columna 2&lt;/div&gt;
+    &lt;div style="clear: both"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<figure><img class="aligncenter size-full wp-image-467" src="/storage/old/2017/08/3-4-7.png" alt="" width="650" height="157"></figure>
+Sin embargo, esto volvía a traer un problema que se intentaba solucionar con los <code>floats</code>: que el HTML sea sintáctico. Es decir, que todos los elementos existan porque tienen un significado para el contenido (y no para el diseño).
+
+No se tardó en encontrar una solución con CSS3 y sus <em>pseudoelementos</em>:
+<pre class="line-numbers"><code class="language-css">#contenedor::after {
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+}</code></pre>
+Finalmente se descubrió otro truco (un truco dentro de otro truco, qué es esto, ¿inception?). Esta vez se trataba de la propiedad <code>overflow</code>, que si la ponías en el padre con cualquier valor otro que <code>visible</code>, éste volvía a tomar en cuenta la altura de los hijos flotados.
+
+Es decir, el siguiente método también corregiría el anterior problema:
+<pre class="line-numbers"><code class="language-css">#contenedor {
+    overflow: hidden;
+}</code></pre>
+Aún así, <code>float</code> trae consigo algo curioso: el ancho de los elementos flotados pasará a ser el mínimo posible con respecto a su contenidio. Tendríamos que sacar la calculadora y calcular nosotros el ancho que le corresponde a cada elemento teniendo en cuenta cosas como los márgenes. Pero eso es lo de menos, el resultado está ahí.
+<h2>Inline-block, el método bueno</h2>
+Si has llegado hasta aquí te habrás podido dar cuenta que hacer algo tan simple como organizar el contenido de tu página en columnas puede sentirse sucio con el anterior método. Tranquilo, es normal. <code>float</code> no es la forma ideal para hacer columnas (y a medida que vayas leyendo te darás de cuenta que esta tampoco lo es).
+
+El método <code>inline-block</code>, como otro truco que es, funciona haciendo comportar a los elementos de tipo bloque como elementos en línea, conservando algunas propiedades de los bloques. Es decir, básicamente los bloques seguirían el <code>baseline</code> del texto, se colocarían uno al lado del otro y su tamaño se adaptaría a su contenido.
+
+Vamos a probarlo:
+<pre class="line-numbers"><code class="language-css">#contenedor .columna {
+   display: inline-block;
+}</code></pre>
+<figure></figure>
+<img class="aligncenter size-full wp-image-467" src="/storage/old/2017/08/3-4-7.png" alt="" width="650" height="157">
+
+Simple y efectivo, ¿no? No te creas. Aunque sí es cierto que la eficacia del método es indudable, hay que tener en cuenta que sigue siendo un «truco» y los posibles errores secundarios pueden llegar a ocurrir.
+
+Un error muy común que con este método ocurre cuando empiezas a anidar elementos unos dentro de otros, sobre todo cuando el flujo de dichos elementos cambia.
+
+Aunque esto depende mucho de tu código, es posible que en algún momento te encuentres con el <strong>efecto escalera</strong>, como por ejemplo en este foro (lo encontré de forma totalmente aleatoria y lo pongo como ejemplo):
+
+<img class="aligncenter size-full wp-image-466" src="/storage/old/2017/08/5.png" alt="" width="970" height="214">
+<figure></figure>
+Este problema ocurre porque el flujo de los elementos <code>inline-block</code> sigue el <code>baseline</code> (la línea del texto) y el flujo de alguno de los elementos anidados provoca que se realinee contra el <code>baseline</code>.
+
+Mucha gente se queda en la anterior propiedad para crear las columnas, pero así como los <code>float</code> van acompañados de <code>clear</code> o <code>overflow</code>, <code>inline-block</code> va pegado de <code>vertical-alignment</code>.
+
+<code>vertical-alignment</code> cambia la forma en la que se alinea un elemento con respecto al <code>baseline</code>. Ponerle el valor <code>top</code> a la propiedad <code>vertical-alignment</code> en las columnas debería solucionar el problema en la mayoría de los casos:
+
+<img class="aligncenter size-full wp-image-463" src="/storage/old/2017/08/6.png" alt="" width="969" height="182">
+
+<hr>
+
+Hasta este punto hemos pasado por dos métodos y los dos tenían sus desventajas. Si te has fijado, los anteriores métodos no eran más que pequeños trucos utilizados para obviar la carencia de un método nativo en CSS para hacer columnas.
+
+Seguramente incluso ya sabías la existencia de ambos métodos y cómo corregir dichos errores. Sin embargo, te traigo malas noticias. Has estado haciéndolo mal todo este tiempo.
+<h2>Flexbox, el método «like a boss»</h2>
+Ha entrado un nuevo jugador a la partida. Éste nuevo jugador es <code>flexbox</code>, un conjunto de propiedades CSS diseñadas para crear elementos flexibles, teniendo en cuenta la necesidad de los desarrolladores para crear cosas como columnas.
+
+Aunque la cantidad de propiedades que vienen con <code>flexbox</code> son enormes y no las voy a explicar en esta guía (puedes buscar información en internet), sí que voy a explicar cómo hacer columnas e introduciros así a esta nueva tecnología.
+
+Agárrate bien fuerte porque quizás te sorprende:
+<pre class="line-numbers"><code class="language-css">#contenedor {
+    display: flex;
+}</code></pre>
+<figure><img class="aligncenter size-full wp-image-467" src="/storage/old/2017/08/3-4-7.png" alt="" width="650" height="157"></figure>
+Mola, ¿eh? Una simple propiedad con absolutamente ningún tipo de efectos secundarios porque ha sido creada pensando en esto.
+
+Si has prestado atención a los anteriores métodos, en ambos existía un problema común: el ancho de cada elemento había que calcularlo. Esto puede resultar un problema si tu foro se adapta dependiendo de la resolución, puesto que se descuadrarían los elementos.
+
+Flexbox tiene la posibilidad de hacer que los elementos ocupen todo el espacio disponible de forma automática. Prueba a poner el siguiente CSS:
+<pre class="line-numbers"><code class="language-css">#contenedor .columna {
+    flex: 1;
+}</code></pre>
+<figure>
+
+[caption id="attachment_465" align="aligncenter" width="665"]<img class="size-full wp-image-465" src="/storage/old/2017/08/8.png" alt="" width="665" height="163"> Look ma! No calculator![/caption]
+
+<span style="color: #1a1a1a; font-size: 16px;">Esta es una de las muchas posibilidades de </span><code style="font-size: 16px;">flexbox</code><span style="color: #1a1a1a; font-size: 16px;">, por lo que te invito que vayas a internet y le eches un vistazo.</span></figure></div>
+    </article>
+
+        </main>
+
+        <aside id="sidebar">
+
+        <div class="widget">
+            <div class="widget__heading">Categorias</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/actualizaciones">Actualizaciones</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/articulos">Artículos</a></span>
+                        <span class="bubble">7</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/codigos">Códigos</a></span>
+                        <span class="bubble">14</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/guias">Guías</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/meta">Meta</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/miscelanea">Miscelánea</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/recursos">Recursos</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/servicios">Servicios</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                            </ul>
+        </div>
+
+        <div class="widget">
+            <div class="widget__heading">Etiquetas</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/criticas">Críticas</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/css">CSS</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/desarrollo">Desarrollo</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/estandares">Estándares</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fainvision">FA/Invision</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/famodernbb">FA/ModernBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb2">FA/phpBB2</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb3">FA/phpBB3</a></span>
+                        <span class="bubble">19</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fapunbb">FA/PunBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fm-helper">FM-Helper</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/foroactivo">Foroactivo</a></span>
+                        <span class="bubble">22</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/jcink">Jcink</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/phpbb">phpBB</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                            </ul>
+        </div>
+
+
+    </aside>
+    </div>
+</div>
+<footer id="footer">
+    <div class="footer__content container">
+        <span>&copy; Flerex Blog 2025</span>
+    </div>
+</footer>
+</body>
+</html>

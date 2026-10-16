@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <title>Imagen personalizada en los títulos de los mensajes - Flerex Blog</title>
+    
+            <meta name="description" content="Flerex Blog es un blog de recursos, guías y códigos para la comunidad hispana de RPG por foro. Aunque principalmente encontrarás recursos pensados para la plataforma Foroactivo, no nos centramos en exclusiva en ella, sino que también damos soporte a otras plataformas crecientes en popularidad como JCink." />
+        <script src="/js/prism.js"></script>
+    <script src="/js/prism-markup-templating.js"></script>
+    <script src="/js/prism-php.js"></script>
+    <script src="/js/clipboard.js"></script>
+    <script src="/js/prism-line-numbers.js"></script>
+    <script src="/js/prism-toolbar.js"></script>
+    <script src="/js/prism-copy-to-clipboard.js"></script>
+    <script src="/js/table-contents.js"></script>
+
+    
+    <link href="/css/app.css?id=15fbddac165dda994b3e" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/prism-tomorrow.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="/css/prism-line-numbers.css">
+    <link rel="stylesheet" href="/css/prism-toolbar.css">
+
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/images/apple-touch.png">
+    
+    <link rel="mask-icon" href="/svg/code.svg" color="#C16BC7">
+
+    <script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+</head>
+<body class="reading-mode">
+
+<header id="header">
+    <div class="container">
+        <div id="logo">
+            <a href="/" aria-label="Inicio"></a>
+        </div>
+        <nav class="navbar">
+            <div class="navbar__group">
+                <ul>
+                    <li><a class="navbar-link" href="/">Inicio</a></li>
+                </ul>
+            </div>
+            <div class="navbar__group">
+                <ul>
+                                    </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<div id="outer-wrapper">
+    <div id="wrap" class="container">
+        <main id="main">
+                <article class="post">
+        <header class="post__header">
+            <h1>Imagen personalizada en los títulos de los mensajes</h1>
+                        <div class="post__meta">
+                <div class="post__meta-item post__author">
+                    <div class="avatar">
+    <img src="https://secure.gravatar.com/avatar/8a8ded00a6f158bd28da1ae3c6181198.jpg?s=100&amp;d=mm&amp;r=g" title="Flerex" alt="">
+</div>                    <span class="post__author-name">Flerex</span>
+                </div>
+                <div class="post__extra">
+                    <div class="post__extra-info">
+
+                    <div class="post__date">
+                        <ion-icon name="ios-calendar"></ion-icon>
+                        <span>14 de julio de 2017</span>                    </div>
+                                            <div class="post__category">
+                            <a href="/categorias/codigos">
+                                <ion-icon name="ios-folder" title="Categoría"></ion-icon>
+                                <span>Códigos</span>
+                            </a>
+                        </div>
+                                        <div class="post-preview__info-elm post-preview__edited">
+        <ion-icon name="ios-medical" title="Actualizado el"></ion-icon>
+        <span>3 de enero de 2019</span>    </div>
+                    </div>
+                    <div class="post__tags">
+                        <div class="post-preview__tags taglist">
+                    <div class="taglist__tag"><a href="/etiquetas/faphpbb3">FA/phpBB3</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/foroactivo">Foroactivo</a></div>
+            </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="table-contents" hidden>
+            <div class="table-contents__title">Tabla de contenidos</div>
+            <div class="table-contents__content"></div>
+        </div>
+        <div class="post__content text-container">Algunos foros están dando a sus usuarios nuevas formas de personalizar sus perfiles. Últimamente estoy viendo bastantes foros con imágenes elegidas por los usuarios al lado de los títulos de sus mensajes.
+
+Según tengo entendido, esto es algo muy sencillo de implementar en la plataforma Jcink, pero en Foroactivo puede ser un poco más lioso. He decidido hacer esta guía para enseñaros <strong>como hacerlo en Foroactivo en unos muy sencillos pasos</strong> utilizando mi plugin de modificaciones a los perfiles.
+<h2>Funcionamiento</h2>
+El usuario podrá acceder a su perfil, donde un nuevo campo aparecerá para que introduzcan la URL a una imagen que deseen que aparezca en sus mensajes, al lado de los títulos.
+
+<img class="aligncenter size-large wp-image-532" src="/storage/old/2017/07/screen10-1024x382.jpg" alt="" width="840" height="313">
+
+<!--more-->
+<h2>Instalación</h2>
+Antes de nada <em>asegúrate que has instalado el plugin de <a href="/entradas/personalizacion-de-perfiles-en-pestanas-y-campos-con-clases-independientes">modificaciones a los perfiles</a></em>, de lo contrario nada de lo que a continuación explique funcionará. Instalar el plugin no significa que tengas que activar todas sus características, la única que necesitaremos será <code>uniqueFieldClass: true,</code>.
+
+Para empezar, <strong>crea un nuevo campo de perfil</strong> a tus usuarios (PA → Usuarios y Grupos → Perfiles). A la hora de completar las opciones el perfil, <strong>la siguiente configuración es obligatoria</strong>:
+<ul>
+ 	<li><strong>Tipo</strong>: Campo de Texto</li>
+ 	<li><strong>Nombre</strong>: Cualquier nombre, para esta guía utilizaré «Imagen de los título»</li>
+ 	<li><strong>Obligatorio de completar</strong>: No</li>
+ 	<li><strong>Mostrar en</strong>: Solo los mensajes</li>
+ 	<li><strong>¿Quién puede modificarlo?</strong>: Al menos usuarios</li>
+ 	<li><strong>Mostrar para al menos</strong>: Los invitados (de lo contrario los invitados solo verán una imagen por defecto)</li>
+</ul>
+Una vez creado el nuevo campo, vete a tu perfil y rellénalo con una imagen de prueba. Ahora, vete a un mensaje tuyo cualquiera y haz clic derecho en el campo y elige la opción «Inspeccionar Elemento». Copia la clase generada por el plugin para dicho campo. Por ejemplo, en mi caso sería: <code>.postprofile-field-imagen-de-los-titulos</code>.
+
+Ahora edita la plantilla <code>viewtopic_body</code> y <strong>busca</strong>:
+<pre class="line-numbers"><code class="language-markup">&lt;h2 class="topic-title"&gt;{postrow.displayed.ICON} &lt;a href="{postrow.displayed.POST_URL}"&gt;{postrow.displayed.POST_SUBJECT}&lt;/a&gt;&lt;/h2&gt;
+&lt;p class="author"&gt;&lt;img src="{postrow.displayed.MINI_POST_IMG}" alt="{postrow.displayed.L_MINI_POST_ALT}" title="{postrow.displayed.L_MINI_POST_ALT}" /&gt;&nbsp;{L_TOPIC_BY}&nbsp;{postrow.displayed.POSTER_NAME} {postrow.displayed.POST_DATE_NEW}&lt;/p&gt;</code></pre>
+<strong>Sustitúyelo</strong> por:
+<pre class="line-numbers"><code class="language-markup">&lt;div class="topictitle-container"&gt;
+    &lt;div class="topictitle-info"&gt;
+        &lt;h2 class="topic-title"&gt;{postrow.displayed.ICON} &lt;a href="{postrow.displayed.POST_URL}"&gt;{postrow.displayed.POST_SUBJECT}&lt;/a&gt;&lt;/h2&gt;
+        &lt;p class="author"&gt;&lt;img src="{postrow.displayed.MINI_POST_IMG}" alt="{postrow.displayed.L_MINI_POST_ALT}" title="{postrow.displayed.L_MINI_POST_ALT}" /&gt;&nbsp;{L_TOPIC_BY}&nbsp;{postrow.displayed.POSTER_NAME} {postrow.displayed.POST_DATE_NEW}&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="topictitle-image"&gt;
+        &lt;img src="IMAGEN" alt="" /&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<strong>Nota</strong>: Fíjate que en la parte a sustituir aparece <code>IMAGEN</code>. Sustituye esa parte por una dirección a una imagen por defecto que aparecerá en caso de que:
+<ul>
+ 	<li>El usuario al que corresponde el mensaje aún no ha introducido una imagen.</li>
+ 	<li>El que vea el mensaje sea un invitado y no hayas dado permiso a los invitados para ver el campo de perfil.</li>
+</ul>
+A continuación tan solo tienes que añadir el siguiente código JS (PA → Módulos → Gestión de JS) y mostrarlo <strong>solo en los temas</strong>.
+<pre class="line-numbers"><code class="language-javascript">$(function() {
+    $('.postprofile-field-imagen-de-los-titulos').each(function() {
+        let image = $('.postprofile-field-content', this).text().trim();
+        image != '' &amp;&amp; $(this).closest('.post').find('.topictitle-container .topictitle-image img').attr('src', image);
+    });
+});</code></pre>
+<strong>Nota</strong>: El código tiene una parte <code>.postprofile-field-imagen-de-los-titulos</code> que se corresponde a la clase del campo de perfil que generó el plugin.
+
+La lógica ya está, ahora tan solo falta añadir un poco de diseño. El CSS que os dejo a continuación tan solo sería una estructura básica para dejarlo como en la imagen de arriba, pero sois libres de modificarlo como veáis:
+<pre class="line-numbers"><code class="language-css">.postprofile-field-imagen-de-los-titulos {
+    display: none;
+}
+
+.topictitle-container {
+    border: 1px solid white;
+    padding: 10px;
+
+    /* las siguientes propiedades son parcialmente necesarias para la estructura
+    deseada y están ligadas a las propiedades obligatorias de más adlenate */
+    box-sizing: border-box;
+    width: 100%;
+    align-items: center;
+    
+    /* las siguientes propiedades son obligatorias para la estructura deseada */
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.topictitle-container .topictitle-info {
+
+    /* las siguientes propiedades son parcialmente necesarias para la estructura
+    deseada y están ligadas a las propiedades obligatorias de más adlenate */
+
+    align-items: center;
+
+    /* las siguientes propiedades son obligatorias para la estructura deseada */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.topictitle-container .topictitle-info p.author {
+    margin: 0;
+    padding: 5px;
+    border: 1px solid white;
+}
+
+.topictitle-container .topictitle-info h2.topic-title {
+    border: 1px solid white;
+    padding: 10px;
+    margin-bottom: 20px !important;
+}
+
+.topictitle-container .topictitle-image img {
+
+    border: 1px solid white;
+    padding: 5px;
+
+    /* los siguientes atributos son importantes: fuerzan la altura y ancho 
+    por si algún usuario pone medidas extrañas y que así no se descuadre */
+
+    width: 100px;
+    height: 100px;
+}</code></pre>
+<strong>Nota</strong>: En este CSS también hay una referencia a la clase de nuestro campo de perfil, en la primera línea (<code>. postprofile-field-imagen-de-los-titulos&nbsp;</code>). Cambia esa parte, pues ocultará el campo de perfil para que no se vea la dirección.
+<h2>Sobre el código…</h2>
+Quiero aclarar que este código lo hice para una petición de soporte y está pensado desde el punto de vista de como trabajar con mi plugin, por eso no está preparado para ser automático sin tener que hacer muchas modificaciones, como los que suelo traer. Pido disculpas por esto, pero no debería dar ningún tipo de problema a parte del hecho de que se requiera un poco más de tiempo para instalarlo.</div>
+    </article>
+
+        </main>
+
+        <aside id="sidebar">
+
+        <div class="widget">
+            <div class="widget__heading">Categorias</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/actualizaciones">Actualizaciones</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/articulos">Artículos</a></span>
+                        <span class="bubble">7</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/codigos">Códigos</a></span>
+                        <span class="bubble">14</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/guias">Guías</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/meta">Meta</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/miscelanea">Miscelánea</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/recursos">Recursos</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/servicios">Servicios</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                            </ul>
+        </div>
+
+        <div class="widget">
+            <div class="widget__heading">Etiquetas</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/criticas">Críticas</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/css">CSS</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/desarrollo">Desarrollo</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/estandares">Estándares</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fainvision">FA/Invision</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/famodernbb">FA/ModernBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb2">FA/phpBB2</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb3">FA/phpBB3</a></span>
+                        <span class="bubble">19</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fapunbb">FA/PunBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fm-helper">FM-Helper</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/foroactivo">Foroactivo</a></span>
+                        <span class="bubble">22</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/jcink">Jcink</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/phpbb">phpBB</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                            </ul>
+        </div>
+
+
+    </aside>
+    </div>
+</div>
+<footer id="footer">
+    <div class="footer__content container">
+        <span>&copy; Flerex Blog 2026</span>
+    </div>
+</footer>
+</body>
+</html>

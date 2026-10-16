@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <title>Aprendiendo a utilizar Flexbox - Flerex Blog</title>
+    
+     
+        <meta name="description" content="¿Haces skins para foros? ¿Te ves constantemente utilizando propiedades como &lt;code&gt;display: inline-block&lt;/code&gt; o &lt;code&gt;float&lt;/code&gt;? Entonces deja lo que estés haciendo y aprende Flexbox. Tu cabeza te lo agradecerá. Además, si siempre has querido aprender a hacer skins pero se te hacía muy complicado, quizás Flexbox te ayude a resolver alguna de tus dudas o problemas." />
+        <script src="/js/prism.js"></script>
+    <script src="/js/prism-markup-templating.js"></script>
+    <script src="/js/prism-php.js"></script>
+    <script src="/js/clipboard.js"></script>
+    <script src="/js/prism-line-numbers.js"></script>
+    <script src="/js/prism-toolbar.js"></script>
+    <script src="/js/prism-copy-to-clipboard.js"></script>
+    <script src="/js/table-contents.js"></script>
+
+    
+    <link href="/css/app.css?id=15fbddac165dda994b3e" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/prism-tomorrow.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="/css/prism-line-numbers.css">
+    <link rel="stylesheet" href="/css/prism-toolbar.css">
+
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/images/apple-touch.png">
+    
+    <link rel="mask-icon" href="/svg/code.svg" color="#C16BC7">
+
+    <script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+</head>
+<body class="reading-mode">
+
+<header id="header">
+    <div class="container">
+        <div id="logo">
+            <a href="/" aria-label="Inicio"></a>
+        </div>
+        <nav class="navbar">
+            <div class="navbar__group">
+                <ul>
+                    <li><a class="navbar-link" href="/">Inicio</a></li>
+                </ul>
+            </div>
+            <div class="navbar__group">
+                <ul>
+                                    </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<div id="outer-wrapper">
+    <div id="wrap" class="container">
+        <main id="main">
+                <article class="post">
+        <header class="post__header">
+            <h1>Aprendiendo a utilizar Flexbox</h1>
+                            <img class="post__featured-image" src="/storage/featured/31.png" alt="">
+                        <div class="post__meta">
+                <div class="post__meta-item post__author">
+                    <div class="avatar">
+    <img src="https://secure.gravatar.com/avatar/8a8ded00a6f158bd28da1ae3c6181198.jpg?s=100&amp;d=mm&amp;r=g" title="Flerex" alt="">
+</div>                    <span class="post__author-name">Flerex</span>
+                </div>
+                <div class="post__extra">
+                    <div class="post__extra-info">
+
+                    <div class="post__date">
+                        <ion-icon name="ios-calendar"></ion-icon>
+                        <span>10 de julio de 2018</span>                    </div>
+                                            <div class="post__category">
+                            <a href="/categorias/recursos">
+                                <ion-icon name="ios-folder" title="Categoría"></ion-icon>
+                                <span>Recursos</span>
+                            </a>
+                        </div>
+                                        <div class="post-preview__info-elm post-preview__edited">
+        <ion-icon name="ios-medical" title="Actualizado el"></ion-icon>
+        <span>13 de diciembre de 2018</span>    </div>
+                    </div>
+                    <div class="post__tags">
+                        <div class="post-preview__tags taglist">
+                    <div class="taglist__tag"><a href="/etiquetas/css">CSS</a></div>
+            </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="table-contents" hidden>
+            <div class="table-contents__title">Tabla de contenidos</div>
+            <div class="table-contents__content"></div>
+        </div>
+        <div class="post__content text-container">Un par de personas me han mostrado su interés respecto a Flexbox tras leerse mis entradas «<a href="/?s=like+a+boss">Like a Boss</a>», donde explicaba cómo actuar correctamente ante situaciones comunes a la hora de trabajar con CSS.
+
+La intención de esa serie de entradas era no servir como guía, sino para entender qué hacer y cómo ante los distintos problemas. Mi intención nunca fue explicar Flexbox porque hay infinidad de recursos en internet que lo hacen mejor de lo que yo podría hacerlo. Y de eso se trata la entrada de hoy. Alguno de los mejores recursos (en mi opinión) que hay en internet para aprender Flexbox.
+<h2>¿Necesito aprender Flexbox?</h2>
+Seguramente ahora mismo te estarás cuestionando si Flexbox es para tí. Llevas haciendo skins para foros desde hace años y nunca has tenido ningún problema.
+
+Y es cierto, durante muchos años Flexbox no ha existido o no fue soportado y las páginas seguían teniendo columnas sin ningún problema. Sin embargo, las primeras páginas también utilizaban tablas para estructurar las páginas y todos sabemos que eso no es lo ideal, sobre todo por los dolores de cabeza que nos puede probocar.
+
+Para eso está Flexbox, para ayudarnos a resolver problemas comunes de manera sencilla. <strong>Si actualmente te ves utilizando muchos <code>float</code> o <code>display: inline-block</code> e incluso si usas <code>&lt;center&gt;</code>, entonces te recomiendo encarecidamente que aprendas Flexbox</strong>.
+
+Una vez que empieces a utilizar Flexbox cuando trabajas con CSS, no vas a saber como podías pasar tanto trabajo en el pasado para hacer cosas que ahora son exageradamente sencillas de hacer.
+<h2>Los mejores recursos</h2>
+A la hora de aprender Flexbox yo creo que lo más fácil y lo que a todo el mundo le va a gustar es aprenderlo jugando. Para eso está «<a href="https://flexboxfroggy.com/">Flexbox Froggy</a>», un juego muy sencillo que te enseña Flexbox y graba las distintas propiedades en tu memoria muscular.
+
+Una vez que ya estés más acostumbrado con Flexbox es hora de pasarse a la teoría. La web MDN es la Wikipedia del desarrollo web. Todo lo que necesitas saber sobre Flexbox está en <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox">esta completa guía</a>. La web CSS Tricks también tiene <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">una guía muy interesante</a> a la que sugiero hechar una vistazo.
+
+Finalmente, algunos enlaces útiles y visuales para fijar conceptos:
+<ul>
+ 	<li><a href="http://prettyminimal.com/flexbox/">A Visual Guide to Flexbox</a></li>
+ 	<li><a href="https://medium.freecodecamp.org/an-animated-guide-to-flexbox-d280cf6afc35">Animated guide to Flexbox</a></li>
+</ul>
+<h3>¿Necesitas enlaces en español?</h3>
+Si el inglés no es lo tuyo, existen versiones en español de algunos de los tutoriales anteriores (aunque quizás no tan completos). Además, el juego de la rana también está disponible en castellano. Aprovecho también para añadir otras guías en castellano.
+<ul>
+ 	<li><a href="https://flexboxfroggy.com/#es">Flexbox Froggy</a></li>
+ 	<li><a href="https://developer.mozilla.org/es/docs/Web/CSS/CSS_Flexible_Box_Layout/Conceptos_Basicos_de_Flexbox">Conceptos básicos de Flexbox</a></li>
+ 	<li><a href="https://lenguajecss.com/p/css/propiedades/flexbox">Flexbox CSS</a></li>
+ 	<li><a href="https://www.yunbitsoftware.com/blog/2017/03/30/flexbox-css3-tutorial-descripcion-ejemplos-html/">Flexbox CSS3: Tutorial</a></li>
+</ul>
+<strong>Nota:</strong> Alguno de los tutoriales sugieren el uso de prefijos (<code>-webkit-flex</code> por ejemplo). Actualmente Flexbox es ampliamente soportado y ya no es necesario. Por favor, evita utilizar prefijos a no ser que tengas una política peculiar de soporte a navegadores antigüos.</div>
+    </article>
+
+        </main>
+
+        <aside id="sidebar">
+
+        <div class="widget">
+            <div class="widget__heading">Categorias</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/actualizaciones">Actualizaciones</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/articulos">Artículos</a></span>
+                        <span class="bubble">7</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/codigos">Códigos</a></span>
+                        <span class="bubble">14</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/guias">Guías</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/meta">Meta</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/miscelanea">Miscelánea</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/recursos">Recursos</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/servicios">Servicios</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                            </ul>
+        </div>
+
+        <div class="widget">
+            <div class="widget__heading">Etiquetas</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/criticas">Críticas</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/css">CSS</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/desarrollo">Desarrollo</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/estandares">Estándares</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fainvision">FA/Invision</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/famodernbb">FA/ModernBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb2">FA/phpBB2</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb3">FA/phpBB3</a></span>
+                        <span class="bubble">19</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fapunbb">FA/PunBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fm-helper">FM-Helper</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/foroactivo">Foroactivo</a></span>
+                        <span class="bubble">22</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/jcink">Jcink</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/phpbb">phpBB</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                            </ul>
+        </div>
+
+
+    </aside>
+    </div>
+</div>
+<footer id="footer">
+    <div class="footer__content container">
+        <span>&copy; Flerex Blog 2026</span>
+    </div>
+</footer>
+</body>
+</html>

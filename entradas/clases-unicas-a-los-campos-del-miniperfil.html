@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <title>Clases únicas a los campos del miniperfil - Flerex Blog</title>
+    
+     
+        <meta name="description" content="Personaliza los miniperfiles de tu foro  haciendo que cada uno de los campos tenga una clase única que puedas utilizar para personalizar los campos independientemente mediante CSS. Además, con este código eliminarás los molestos dos puntos que aparecen después del título del campo." />
+        <script src="/js/prism.js"></script>
+    <script src="/js/prism-markup-templating.js"></script>
+    <script src="/js/prism-php.js"></script>
+    <script src="/js/clipboard.js"></script>
+    <script src="/js/prism-line-numbers.js"></script>
+    <script src="/js/prism-toolbar.js"></script>
+    <script src="/js/prism-copy-to-clipboard.js"></script>
+    <script src="/js/table-contents.js"></script>
+
+    
+    <link href="/css/app.css?id=15fbddac165dda994b3e" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/prism-tomorrow.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="/css/prism-line-numbers.css">
+    <link rel="stylesheet" href="/css/prism-toolbar.css">
+
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/images/apple-touch.png">
+    
+    <link rel="mask-icon" href="/svg/code.svg" color="#C16BC7">
+
+    <script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+</head>
+<body class="reading-mode">
+
+<header id="header">
+    <div class="container">
+        <div id="logo">
+            <a href="/" aria-label="Inicio"></a>
+        </div>
+        <nav class="navbar">
+            <div class="navbar__group">
+                <ul>
+                    <li><a class="navbar-link" href="/">Inicio</a></li>
+                </ul>
+            </div>
+            <div class="navbar__group">
+                <ul>
+                                    </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<div id="outer-wrapper">
+    <div id="wrap" class="container">
+        <main id="main">
+                <article class="post">
+        <header class="post__header">
+            <h1>Clases únicas a los campos del miniperfil</h1>
+                            <img class="post__featured-image" src="/storage/featured/38.jpg" alt="">
+                        <div class="post__meta">
+                <div class="post__meta-item post__author">
+                    <div class="avatar">
+    <img src="https://secure.gravatar.com/avatar/8a8ded00a6f158bd28da1ae3c6181198.jpg?s=100&amp;d=mm&amp;r=g" title="Flerex" alt="">
+</div>                    <span class="post__author-name">Flerex</span>
+                </div>
+                <div class="post__extra">
+                    <div class="post__extra-info">
+
+                    <div class="post__date">
+                        <ion-icon name="ios-calendar"></ion-icon>
+                        <span>21 de mayo de 2019</span>                    </div>
+                                            <div class="post__category">
+                            <a href="/categorias/codigos">
+                                <ion-icon name="ios-folder" title="Categoría"></ion-icon>
+                                <span>Códigos</span>
+                            </a>
+                        </div>
+                                        <div class="post-preview__info-elm post-preview__edited">
+        <ion-icon name="ios-medical" title="Actualizado el"></ion-icon>
+        <span>8 de diciembre de 2019</span>    </div>
+                    </div>
+                    <div class="post__tags">
+                        <div class="post-preview__tags taglist">
+                    <div class="taglist__tag"><a href="/etiquetas/faphpbb3">FA/phpBB3</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/foroactivo">Foroactivo</a></div>
+            </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="table-contents" hidden>
+            <div class="table-contents__title">Tabla de contenidos</div>
+            <div class="table-contents__content"></div>
+        </div>
+        <div class="post__content text-container"><!-- wp:paragraph -->
+<p>Por defecto, en Foroactivo los campos del miniperfil tienen todos una estructura HTML similar. Cuando queremos modificar uno en específico porque nuestro diseño así lo requiere podemos vernos en la necesidad de utilizar pequeños «trucos» que no funcionan del todo correcto.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Con esta guía enseñaré un método para que cada campo del miniperfil tenga una clase única para el campo en específico. Es decir, si tienes un campo de perfil «Edad» y otro «Nacionalidad», estos tendrán su propia clase en todos los miniperfiles de los usuarios, para que puedas darle el diseño que quieras.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<figure class="enlarged"><img src="/storage/old/2019/05/Screen-Shot-2019-05-21-at-22.11.14-1.png" alt="Captura del inspector de elementos" class="aligncenter size-full wp-image-703"><figcaption>HTML resultado de los miniperfiles tras instalar el código</figcaption></figure>
+<!-- /wp:html -->
+
+<!-- wp:heading -->
+<h2>Requisitos</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul><li>Un foro con la versión phpBB3 de Foroactivo</li><li>Soltura con el PA de Foroactivo.</li><li>Conocimientos básicos de edición de plantillas (saber dónde están y cómo editarlas).</li><li>Tener instalada la <a href="/entradas/estructura-estandar-de-los-miniperfiles" target="_blank" rel="noreferrer noopener" aria-label=" (opens in a new tab)">estructura estándar de los perfiles</a>. Ve a la sección «<a href="#ya-habia-personalizado-el-html-de-mis-miniperfiles">Ya había personalizado el HTML de mis miniperfiles</a>» en caso de que no puedas o quieras modificar el HTML de tu miniperfil.</li></ul>
+<!-- /wp:list -->
+
+<!-- wp:html -->
+<div class="notice exclamation danger">
+<div class="notice__title">Atención</div>
+<div class="notice__content">Si ya tienes instalado el <a href="/entradas/personalizacion-de-perfiles-en-pestanas-y-campos-con-clases-independientes">plugin de personalización de perfiles</a> ya puedes aplicar todas las funcionalidades de este código desde el mismo plugin. Este código sólo es para aquellas personas que no estén interesados en la funcionalidad de miniperfiles en pestañas del anterior plugin.</div>
+</div>
+<!-- /wp:html -->
+
+<!-- wp:heading -->
+<h2>Ya había personalizado el HTML de mis miniperfiles</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Es posible que a la hora de leer este artículo ya tuvieses el HTML de tu miniperfil personalizado a tu medida. Aunque recomiendo encarecidamente que utilicéis la estructura estándar, puesto que permite hacer la mayoría de modificaciones que se suelen hacer con una estructura HTML común a todos para poder compartir códigos entre nosotros y que funcionen al instante, es posible que ahora sea demasiado tarde para poder instalarlo.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Para que puedas instalar el código de esta guía y que sea compatible con la estructura HTML de tu foro puedes utilizar solo la parte estrictamente necesaria de la <em>estructura estándar</em>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Dirígete a la plantilla <code>viewtopic_body</code> de tu foro y <strong>busca</strong>:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre><code class="language-markup">&lt;!-- BEGIN profile_field --&gt;
+	{postrow.displayed.profile_field.LABEL} {postrow.displayed.profile_field.CONTENT}{postrow.displayed.profile_field.SEPARATOR}
+&lt;!-- END profile_field --&gt;</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p><strong>Reemplázalo</strong> por:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre><code class="language-markup">&lt;div class="postprofile-fields"&gt;
+	&lt;!-- BEGIN profile_field --&gt;
+	&lt;div class="postprofile-field"&gt;
+		&lt;span class="postprofile-field-label"&gt;{postrow.displayed.profile_field.LABEL}&lt;/span&gt;
+		&lt;span class="postprofile-field-content"&gt;{postrow.displayed.profile_field.CONTENT}&lt;/span&gt;
+		&lt;span class="postprofile-field-separator"&gt;{postrow.displayed.profile_field.SEPARATOR}&lt;/span&gt;
+	&lt;/div&gt;
+	&lt;!-- END profile_field --&gt;
+&lt;/div&gt;</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:heading -->
+<h2>Instalación</h2>
+<!-- /wp:heading -->
+
+<!-- wp:html -->
+<div class="notice note warning">
+<div class="notice__title">Nota</div>
+<div class="notice__content">Este código no tiene en cuenta que existan campos con nombres similares para no evitar hacer comprobaciones que en principio deberían ser innecesarias. Nombres como <code>¿¿¿Édàd!</code> y <code>edad</code> generan la misma clase. Si tienes casos como ese deberías contemplar cambiarle el nombre a los campos.</div>
+</div>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>Añade el siguiente código JS y márcalo para que solo se muestre en los temas:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre class="line-numbers"><code class="language-js">!function() {
+
+
+	/*
+	 * CONFIGURACIÓN
+	 */
+	const settings = {
+		semicolon: false, // Mostrar dos puntos (:) después del título del campo.
+		cleanUp: true, // Eliminar HTML del título del campo que añade colores.
+	},
+
+
+
+	slugify = str =&gt; {
+        const from = 'àáäâãåăæçèéëêǵḧìíïîḿńǹñòóöôœøṕŕßśșțùúüûǘẃẍÿź·/_,:;',
+        to = 'aaaaaaaaceeeeghiiiimnnnooooooprssstuuuuuwxyz------',
+        reg = new RegExp(from.split('').join('|'), 'g');
+
+        return str.trim().toLowerCase()
+        		.replace(/\s+/g, '-')
+        		.replace(reg, c =&gt; to.charAt(from.indexOf(c)))
+        		.replace(/&amp;/g, '-and-')
+        		.replace(/[^\w\-]+/g, '')
+                .replace(/\-\-+/g, '-')
+                .replace(/^-+/, '')
+                .replace(/-+$/, '');
+    },
+
+    hideSemicolon = (label, name) =&gt; {
+        if (label.firstElementChild)
+            label.lastChild.remove();
+        else
+            label.textContent = name;
+    },
+
+    main = _ =&gt; {
+
+    	document.querySelectorAll('.postprofile-field').forEach(p =&gt; {
+    		const labelcontainer = p.querySelector('.postprofile-field-label'),
+    		label = labelcontainer.querySelector('.label'),
+            name = label.textContent.replace(/ *: *$/, '');
+
+    		p.classList.add('postprofile-field-' + slugify(name));
+
+    		if (settings.cleanUp) {
+    			labelcontainer.textContent = settings.semicolon ? name + ': ' : name;
+    		} else if (!settings.semicolon) {
+                hideSemicolon(label, name)
+    		}
+    	});
+
+    };
+
+    document.addEventListener('DOMContentLoaded', main);
+}();</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:heading -->
+<h2>Personalización</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Asegurate de cambiar las líneas 8 y 9 del código a tu gusto, poniendo los valores <code>false</code> o <code>true</code> dependiendo de si quieres desactivar o activar una de las funcionalidades extra del código.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul><li><code>semicolon</code>: Permite ocultar los dos puntos (:) que Foroactivo añade después del nombre del campo con <code>false</code>.</li><li><code>cleanUp</code>: Elimina HTML innecesario en el título del campo. Este HTML es el que, por ejemplo, permite definir un color al campo desde el PA. Márcalo como <code>false</code> si por alguna razón necesitas conservar esta funcionalidad.<br></li></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading -->
+<h2>Lo que no se debe hacer</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Como siempre me gusta dar un poco de trasfondo en mis guías os explicaré qué suelen hacer muchos administradores para solucionar este problema utilizando solo CSS y por qué no se debería hacer.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Para paliar esta carencia de Foroactivo, he visto que se suele coger mano de los pseudo-selectores <code>:nth-child()</code>, <code>:nth-last-child()</code>, <code>:first-child</code> o  <code>:last-child</code>. Aunque son una alternativa ingeniosa, son propensos a tener errores. Estos métodos funcionan a partir de la posición de los campos. «Que el segundo perfil empezando por arriba…».</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>¿El problema? Los perfiles no siempre tienen que tener la misma posición. Aunque no hace falta decir que los administradores pueden en cualquier momento cambiar de posición desde el PA los perfiles, todos sabemos que esto no suele ser algo que se haga.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Sin embargo, lo que mucha gente no tiene en cuenta es que los perfiles pueden (y suelen) tener visibilidad. Algunas veces es necesario que un perfil sea ocultado a los invitados del foro. Si, por ejemplo, ocultásemos el segundo perfil a los invitados y tuviésemos un código CSS para modificarlo (<code>:nth-child(2)</code>), este mismo CSS ahora estaría afectando al que en realidad es el tercer campo de perfil (pero para los invitados, al no haber segundo, es ahora el «nuevo segundo»).</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Como veis, es un problema de no muy sencilla solución si queremos utilizar solo CSS. Para eso se ha ideado el código de esta guía.</p>
+<!-- /wp:paragraph --></div>
+    </article>
+
+        </main>
+
+        <aside id="sidebar">
+
+        <div class="widget">
+            <div class="widget__heading">Categorias</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/actualizaciones">Actualizaciones</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/articulos">Artículos</a></span>
+                        <span class="bubble">7</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/codigos">Códigos</a></span>
+                        <span class="bubble">14</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/guias">Guías</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/meta">Meta</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/miscelanea">Miscelánea</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/recursos">Recursos</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/servicios">Servicios</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                            </ul>
+        </div>
+
+        <div class="widget">
+            <div class="widget__heading">Etiquetas</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/criticas">Críticas</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/css">CSS</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/desarrollo">Desarrollo</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/estandares">Estándares</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fainvision">FA/Invision</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/famodernbb">FA/ModernBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb2">FA/phpBB2</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb3">FA/phpBB3</a></span>
+                        <span class="bubble">19</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fapunbb">FA/PunBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fm-helper">FM-Helper</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/foroactivo">Foroactivo</a></span>
+                        <span class="bubble">22</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/jcink">Jcink</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/phpbb">phpBB</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                            </ul>
+        </div>
+
+
+    </aside>
+    </div>
+</div>
+<footer id="footer">
+    <div class="footer__content container">
+        <span>&copy; Flerex Blog 2025</span>
+    </div>
+</footer>
+</body>
+</html>

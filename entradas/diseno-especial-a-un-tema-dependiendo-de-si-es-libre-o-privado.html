@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <title>Diseño especial a un tema dependiendo de si es Libre o Privado - Flerex Blog</title>
+    
+            <meta name="description" content="Flerex Blog es un blog de recursos, guías y códigos para la comunidad hispana de RPG por foro. Aunque principalmente encontrarás recursos pensados para la plataforma Foroactivo, no nos centramos en exclusiva en ella, sino que también damos soporte a otras plataformas crecientes en popularidad como JCink." />
+        <script src="/js/prism.js"></script>
+    <script src="/js/prism-markup-templating.js"></script>
+    <script src="/js/prism-php.js"></script>
+    <script src="/js/clipboard.js"></script>
+    <script src="/js/prism-line-numbers.js"></script>
+    <script src="/js/prism-toolbar.js"></script>
+    <script src="/js/prism-copy-to-clipboard.js"></script>
+    <script src="/js/table-contents.js"></script>
+
+    
+    <link href="/css/app.css?id=15fbddac165dda994b3e" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/prism-tomorrow.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="/css/prism-line-numbers.css">
+    <link rel="stylesheet" href="/css/prism-toolbar.css">
+
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/images/apple-touch.png">
+    
+    <link rel="mask-icon" href="/svg/code.svg" color="#C16BC7">
+
+    <script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+</head>
+<body class="reading-mode">
+
+<header id="header">
+    <div class="container">
+        <div id="logo">
+            <a href="/" aria-label="Inicio"></a>
+        </div>
+        <nav class="navbar">
+            <div class="navbar__group">
+                <ul>
+                    <li><a class="navbar-link" href="/">Inicio</a></li>
+                </ul>
+            </div>
+            <div class="navbar__group">
+                <ul>
+                                    </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<div id="outer-wrapper">
+    <div id="wrap" class="container">
+        <main id="main">
+                <article class="post">
+        <header class="post__header">
+            <h1>Diseño especial a un tema dependiendo de si es Libre o Privado</h1>
+                        <div class="post__meta">
+                <div class="post__meta-item post__author">
+                    <div class="avatar">
+    <img src="https://secure.gravatar.com/avatar/8a8ded00a6f158bd28da1ae3c6181198.jpg?s=100&amp;d=mm&amp;r=g" title="Flerex" alt="">
+</div>                    <span class="post__author-name">Flerex</span>
+                </div>
+                <div class="post__extra">
+                    <div class="post__extra-info">
+
+                    <div class="post__date">
+                        <ion-icon name="ios-calendar"></ion-icon>
+                        <span>31 de julio de 2017</span>                    </div>
+                                            <div class="post__category">
+                            <a href="/categorias/codigos">
+                                <ion-icon name="ios-folder" title="Categoría"></ion-icon>
+                                <span>Códigos</span>
+                            </a>
+                        </div>
+                                        <div class="post-preview__info-elm post-preview__edited">
+        <ion-icon name="ios-medical" title="Actualizado el"></ion-icon>
+        <span>13 de diciembre de 2018</span>    </div>
+                    </div>
+                    <div class="post__tags">
+                        <div class="post-preview__tags taglist">
+                    <div class="taglist__tag"><a href="/etiquetas/faphpbb3">FA/phpBB3</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/foroactivo">Foroactivo</a></div>
+            </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="table-contents" hidden>
+            <div class="table-contents__title">Tabla de contenidos</div>
+            <div class="table-contents__content"></div>
+        </div>
+        <div class="post__content text-container">Con esta guía tendrás clases específicas para cada tema en la lista de temas de un foro dependiendo del icono que tengan esos foros (por ejemplo, un icono para los temas Libros y otro para los Privados).
+
+Hay que tener en cuenta que el código se basa en la lógica de los iconos que proporciona Foroactivo pero no los utilizará de la forma visual en la que se conocen. Con esto quiero decir que el código ocultará la interfaz de los iconos a los usuarios y no funcionarán tal y como se les conoce hasta ahora.
+
+<!-- more -->
+
+<!--more-->
+<h2>Instalación</h2>
+<h3>1. Configuración de los iconos.</h3>
+Primero es necesario vayas a la Gestión de Imágenes de tu foro y en la pestaña de «Iconos de los Temas» crees tantos iconos como tipos de temas quieras (o clases específicas para los temas, según como lo quieras ver).
+
+Como la única forma que tenemos de identificar los iconos es mediante su imagen, es necesario que cada uno tenga una imagen distinta. Para ello copia la siguiente ruta y coloca un identificador del icono al final para que sea más fácil después ponerlo en el código.
+<pre><code><a href="http://illiweb.com/fa/empty.gif#">http://illiweb.com/fa/empty.gif#</a>
+</code></pre>
+Por ejemplo:
+<pre><code><a href="http://illiweb.com/fa/empty.gif#privado">http://illiweb.com/fa/empty.gif#privado</a></code></pre>
+Esta imagen la utilizaremos más adelante en el código. No es necesario que ponga <code>privado</code> ya que el código no lo utilizará para nada. Es simplemente una ayuda para poder organizarte mejor.
+
+Listo, cada vez que añades algo distinto al final de esa URL tienes una imagen que a vista de Foroactivo es única pero a vista del navegador de los usuarios es la misma (así evitamos tener más peticiones http de las necesarias).
+<h3>2. Crear selector para el tipo de tema</h3>
+Ahora tenemos que eliminar el viejo selector de icono de temas y crear el nuestro propio basándonos en el nombre que le demos al tipo de tema. El resultado sería algo así:
+<figure><img class="aligncenter size-full wp-image-529" src="/storage/old/2017/07/screen27.png" alt="" width="826" height="565" /></figure>
+Para ello, hay que hacer unos cambios a la plantilla <code>posting_body</code>, en la subsección de plantillas «Escribir un Mensaje y Mensajes Privados».
+<ol>
+    <li><strong>Busca</strong>:
+<pre class="line-numbers"><code class="language-markup">&lt;dt&gt;&lt;label&gt;{L_SUBJECT}&lt;/label&gt;&lt;/dt&gt;
+        &lt;dd&gt;</code></pre>
+<strong>Reemplázalo</strong> por:
+<pre class="line-numbers"><code class="language-markup">&lt;dt&gt;&lt;label&gt;{L_SUBJECT}&lt;/label&gt;&lt;/dt&gt;
+        &lt;dd id="posting-subject"&gt;</code></pre>
+</li>
+    <li><strong>Busca</strong> la <strong>primera</strong> ocurrencia de:
+<pre class="line-numbers"><code class="language-markup">&lt;!-- BEGIN switch_icon_checkbox --&gt;
+        &lt;dl&gt;</code></pre>
+<strong>Reemplázalo</strong> por:
+<pre class="line-numbers"><code class="language-markup">&lt;!-- BEGIN switch_icon_checkbox --&gt;
+        &lt;dl id="posting-icon"&gt;</code></pre>
+</li>
+    <li><strong>Busca</strong>:
+<pre class="line-numbers"><code class="language-markup">&lt;!-- END switch_subject_color --&gt;</code></pre>
+<strong>Añade después</strong>:
+<pre class="line-numbers"><code class="language-markup">&lt;script type="text/javascript"&gt;
+!function() {
+    const $iconcont = $('#posting-icon');
+
+    if(!$iconcont.length)
+        return;
+
+    const $labels = $iconcont.find('dd label'),
+    $select = $('&lt;select /&gt;', { name: 'post_icon', id: 'posting-icon-select' });
+
+    $labels.each(function() {
+        let $this = $(this),
+        $img = $this.find('img'),
+        $input = $this.find('input'), 
+        $option = $('&lt;option /&gt;', {
+            value: $input.val(),
+            text: $img.length ? $img.attr('title') : $this.find('span').text(),
+        });
+        if(typeof $input.attr('checked') != 'undefined')
+            $option.attr('selected', 'selected');
+        $select.append($option);
+    });
+
+    $('#posting-subject').prepend($select);
+    $iconcont.remove();
+}();
+&lt;/script&gt;</code></pre>
+</li>
+</ol>
+Ahora es necesario añadir este pequeño CSS para separar el selector del campo del título:
+<pre class="line-numbers"><code class="language-css">#posting-icon-select {
+    margin-right: 5px;
+}</code></pre>
+<h3>3. Añadir el JS principal</h3>
+Ahora tan solo falta añadir el siguiente JS desde la Gestión de JavaScripts y marcarlo para que se vea <strong>solo en los subforos</strong>.
+<pre class="line-numbers"><code class="language-javascript">!function() {
+
+    const topicicons = [
+        ['Público', 'https://illiweb.com/itest/smilies/default/default3.gif'],
+        ['Privado', 'https://illiweb.com/itest/smilies/default/default2.gif'],
+    ];
+
+    let slug = function(str) {
+        const from = 'àáäâèéëêìíïîòóöôùúüûñç·/_,:;',
+        to   = 'aaaaeeeeiiiioooouuuunc------';
+        str = str.trim().toLowerCase();
+        for (var i = 0, l = from.length; i&lt;l; i++)
+            str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+        return str.replace(/[^a-z0-9 -]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-');
+    };
+
+    $(function() {
+        $('dd.dterm').each(function() {
+            let classname,
+            $this = $(this),
+            bg = $this.css('background-image').slice(4, -1).replace(/"/g, '');
+            if(bg) {
+                let icon = topicicons.find(elm =&gt; elm[1] == bg);
+                classname = icon ? slug(icon[0]) : 'unrecognizedicon';
+            } else
+                classname = 'noicon';
+
+            $this.closest('.row').addClass(`topic-icon-${ slug(classname) }`);
+        });
+    });
+
+}();</code></pre>
+<strong>¡Ojo!</strong> En las primeras líneas hay una definición de <code>topicicons</code>. Ahí debéis de poner tantas líneas como tipos de temas hayáis creado (es decir, cuántos iconos hayáis creado) y reemplazarlo por el nombre que le has dado a dicho tipo de tema (icono) y la dirección a la imagen.
+<h3>5. Ocultar los iconos</h3>
+Aunque sean imágenes invisibles, a mi me molesta que ese pixel invisible siga siendo visible (<strong>if that makes any sense</strong>). Para eliminar las imágenes en los títulos de los temas añadiremos este CSS:
+<pre class="line-numbers"><code class="language-css">.topic-title img {
+    display: none;
+}</code></pre>
+<h3>4. Darle diseño</h3>
+<figure><img class="aligncenter size-full wp-image-530" src="/storage/old/2017/07/screen26.png" alt="" width="829" height="335" /></figure>
+El JS ya está haciendo su trabajo generando las clases dependiendo del tema. Ahora es tu turno de personalizar tu foro. Recuerda que el límite es la imaginación. Adjunto a continuación el CSS que he utilizado para hacer efecto de la anterior imagen:
+<pre class="line-numbers"><code class="language-css">/* Common properties for all tags */
+.topic-icon-publico .topic-title::before,
+.topic-icon-privado .topic-title::before {
+    background-color:  #0075B3;
+    color: #fff;
+    display: inline-block;
+    text-transform: uppercase;
+    padding: 2px 5px;
+    font-size: 9px;
+    font-weight: bold;
+    margin-right: 5px;
+    border-radius: 3px;
+}
+
+.topic-icon-publico .topic-title::before {
+    content: 'Público';
+    background-color: #76B300;  
+}
+
+.topic-icon-privado .topic-title::before {
+    content: 'Privado';
+    background-color: #B30000;
+}</code></pre>
+<h2>Clases disponibles</h2>
+<ul>
+    <li><code>li.row.topic-icon-[nombresimplificado]</code>: Temas con el icono de dicho nombre</li>
+    <li><code>li.row.topic-icon-noicon</code>: Temas sin icono</li>
+    <li><code>li.row.topic-icon-unrecognizedicon</code>: Temas con un icono que no has configurado al principio del script</li>
+    <li><code>#posting-icon-select</code>: El selector del icono</li>
+    <li><code>#posting-subject</code>: El contenedor del selector y el cuadro de texto del título</li>
+</ul></div>
+    </article>
+
+        </main>
+
+        <aside id="sidebar">
+
+        <div class="widget">
+            <div class="widget__heading">Categorias</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/actualizaciones">Actualizaciones</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/articulos">Artículos</a></span>
+                        <span class="bubble">7</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/codigos">Códigos</a></span>
+                        <span class="bubble">14</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/guias">Guías</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/meta">Meta</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/miscelanea">Miscelánea</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/recursos">Recursos</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/servicios">Servicios</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                            </ul>
+        </div>
+
+        <div class="widget">
+            <div class="widget__heading">Etiquetas</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/criticas">Críticas</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/css">CSS</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/desarrollo">Desarrollo</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/estandares">Estándares</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fainvision">FA/Invision</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/famodernbb">FA/ModernBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb2">FA/phpBB2</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb3">FA/phpBB3</a></span>
+                        <span class="bubble">19</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fapunbb">FA/PunBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fm-helper">FM-Helper</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/foroactivo">Foroactivo</a></span>
+                        <span class="bubble">22</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/jcink">Jcink</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/phpbb">phpBB</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                            </ul>
+        </div>
+
+
+    </aside>
+    </div>
+</div>
+<footer id="footer">
+    <div class="footer__content container">
+        <span>&copy; Flerex Blog 2025</span>
+    </div>
+</footer>
+</body>
+</html>

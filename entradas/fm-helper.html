@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <title>FM Helper - Flerex Blog</title>
+    
+     
+        <meta name="description" content="Presentamos una nueva librería pensada completamente en el desarrollo de scripts para Foroactivo que contiene un montón de funcionalidad «out of the box» para que hacer códigos para tu foro sea sencillo, rápido y lleve pocas líneas." />
+        <script src="/js/prism.js"></script>
+    <script src="/js/prism-markup-templating.js"></script>
+    <script src="/js/prism-php.js"></script>
+    <script src="/js/clipboard.js"></script>
+    <script src="/js/prism-line-numbers.js"></script>
+    <script src="/js/prism-toolbar.js"></script>
+    <script src="/js/prism-copy-to-clipboard.js"></script>
+    <script src="/js/table-contents.js"></script>
+
+    
+    <link href="/css/app.css?id=15fbddac165dda994b3e" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/prism-tomorrow.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="/css/prism-line-numbers.css">
+    <link rel="stylesheet" href="/css/prism-toolbar.css">
+
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/images/apple-touch.png">
+    
+    <link rel="mask-icon" href="/svg/code.svg" color="#C16BC7">
+
+    <script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+</head>
+<body class="reading-mode">
+
+<header id="header">
+    <div class="container">
+        <div id="logo">
+            <a href="/" aria-label="Inicio"></a>
+        </div>
+        <nav class="navbar">
+            <div class="navbar__group">
+                <ul>
+                    <li><a class="navbar-link" href="/">Inicio</a></li>
+                </ul>
+            </div>
+            <div class="navbar__group">
+                <ul>
+                                    </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<div id="outer-wrapper">
+    <div id="wrap" class="container">
+        <main id="main">
+                <article class="post">
+        <header class="post__header">
+            <h1>FM Helper</h1>
+                            <img class="post__featured-image" src="/storage/featured/24.jpg" alt="">
+                        <div class="post__meta">
+                <div class="post__meta-item post__author">
+                    <div class="avatar">
+    <img src="https://secure.gravatar.com/avatar/8a8ded00a6f158bd28da1ae3c6181198.jpg?s=100&amp;d=mm&amp;r=g" title="Flerex" alt="">
+</div>                    <span class="post__author-name">Flerex</span>
+                </div>
+                <div class="post__extra">
+                    <div class="post__extra-info">
+
+                    <div class="post__date">
+                        <ion-icon name="ios-calendar"></ion-icon>
+                        <span>1 de marzo de 2018</span>                    </div>
+                                            <div class="post__category">
+                            <a href="/categorias/plugins">
+                                <ion-icon name="ios-folder" title="Categoría"></ion-icon>
+                                <span>Plugins</span>
+                            </a>
+                        </div>
+                                        <div class="post-preview__info-elm post-preview__edited">
+        <ion-icon name="ios-medical" title="Actualizado el"></ion-icon>
+        <span>13 de diciembre de 2018</span>    </div>
+                    </div>
+                    <div class="post__tags">
+                        <div class="post-preview__tags taglist">
+                    <div class="taglist__tag"><a href="/etiquetas/fm-helper">FM-Helper</a></div>
+            </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="table-contents" hidden>
+            <div class="table-contents__title">Tabla de contenidos</div>
+            <div class="table-contents__content"></div>
+        </div>
+        <div class="post__content text-container">El desarrollo para Foroactivo se puede convertir en una tarea un tanto tediosa a la hora de querer realizar cosas un poco más complejas de a lo que se está acostumbrado. Foroactivo es una plataforma limitada por naturaleza. Aunque la edición de plantillas o <em>templates</em> es un gran avance, es cierto que lo limitadas e incompletas que son nos hacen depender mucho de JavaScript para personalizar los foros.
+
+La mayor parte de las veces que queremos utilizar códigos JavaScript con una mínima complicación es para obtener información de otras páginas mediante consultas AJAX. De todas estas peticiones, muchas de ellas son muy similares o actúan sobre la misma página, llevándonos a problemas de eficiencia.
+
+El día de hoy presentamos <strong>FM Helper</strong> una librería pensada para el desarrollo en Foroactivo que pretende solucionar muchos de los problemas a la hora de crear Scripts para Foroactivo.
+<h2><a id="%c2%bfque-es-fm-helper" class="anchor" href="/fm-helper/#%c2%bfque-es-fm-helper"></a>¿Qué es <strong>FM Helper</strong>?</h2>
+<strong>FM Helper</strong> es una librería JavaScript que permite realizar la mayor parte de obtención de información sobre los foros Foroactivo en muy pocas líneas de código.
+
+Esta librería se encarga de toda la lógica necesaria a la hora de querer, por ejemplo, obtener la lista de grupos de un foro o la información de un usuario para que tú no necesites tener que reinventar la rueda y poder crear tu script de forma <strong>rápida y eficiente</strong>.
+
+Definido de forma sencilla, FM Helper permite desarrollar de forma sencilla, abstrayendo mucha lógica y líneas de código de igual forma que jQuery abstrae JavaScript.
+<h2><a id="lo-que-se-puede-hacer-con-el" class="anchor" href="/fm-helper/#lo-que-se-puede-hacer-con-el"></a>Lo que se puede hacer con él</h2>
+La librería simplemente te proporciona las bases para que tú puedas hacer lo que quieras con ella. Desde obtener información de un usuario, pasando por la obtención de los grupos del foro.
+
+Algo que quizás pueda resultar interesante a muchos es la posibilidad de añadir scripts al <strong>Chatbox</strong>.
+<h2><a id="%c2%bfnecesito-utilizar-fm-helper-en-mi-foro" class="anchor" href="/fm-helper/#%c2%bfnecesito-utilizar-fm-helper-en-mi-foro"></a>¿Necesito utilizar FM Helper en mi foro?</h2>
+No necesariamente. FM Helper es una herramienta para facilitar el desarrollo. Si tu foro ya está creado no merece la pena reescribir tus scripts para implementarlos con FM Helper.
+
+También es posible que ninguna de las funciones que proporciona FM Helper te sean de utilidad en tu caso concreto. Deberías primero echarle un vistazo a la <a href="/entradas/documentacion-de-fm-helper">documentación</a> para saber si hay algún método de utilidad para ti.
+
+Es necesario aclarar que existe la posibilidad de que alguno de los códigos del blog necesiten FM Helper para funcionar. En tal caso esto estaría aclarado en la entrada de presentación del código.
+<h2><a id="como-funciona" class="anchor" href="/fm-helper/#como-funciona"></a>Cómo funciona</h2>
+FM Helper está compuesto de muchas funciones, cada una con su implementación correspondiente. Quizás lo que más puede llamar la atención es cómo promete eficiencia a la hora de hacer cosas como obtener la lista de grupos de un foro o obtener información de un usuario desde cualquier página del foro.
+
+Para hacer esto, FM Helper utiliza peticiones AJAX en segundo plano encapsuladas dentro de objetos <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>, que permiten a tu código llamarse una vez que el valor haya sido obtenido, sin interrumpir ninguna otra parte de tus scripts.
+
+Además, muchas de las veces que se implementan peticiones AJAX en Foroactivo es para obtener información que no suele cambiar hasta dentro de mucho. Por ejemplo, los grupos de un foro o, en menor medida, los avatares de los usuarios, no son cosas que se cambien constantemente. Realizar una petición a este tipo de recursos con cada actualización de la página no es para nada eficiente. FM Helper se encarga de solucionar este problema implementando un <strong>sistema de cache</strong>, que guarda la información y evita tener que hacer más peticiones AJAX. Mola, ¿eh?
+<h2><a id="como-se-usa" class="anchor" href="/fm-helper/#como-se-usa"></a>Cómo se usa</h2>
+El funcionamiento de FM Helper es tan simple que no necesitarías más que cinco minutos para ponerte a utilizarlo en tus scripts. Sin embargo, <strong>es posible que necesites conocimientos básicos en JavaScript para poder utilizarlo</strong>. Si no conoces el funcionamiento de la API Promise de JavaScript, no te preocupes, todos los métodos que la utilizan permiten también utilizar un <em>callback</em> en sus parámetros para usarlo como lo harías en jQuery.
+
+Pásate por la <a href="/entradas/documentacion-de-fm-helper">documentación</a> para ver todo lo que se puede hacer con él.
+<h2><a id="prerequisitos" class="anchor" href="/fm-helper/#prerequisitos"></a>Prerequisitos</h2>
+Desafortunadamente Foroactivo no ha puesto muy fácil el desarrollo de esta librería. Es por ello que para que ciertas partes del plugin funcionen es necesario cumplir los siguientes requisitos:
+<ul>
+ 	<li>Activar la Toolbar de Foroactivo en tu foro. En caso de que no quieras que se vea activada siempre puedes ocultarla con CSS de la siguiente manera:
+<pre class="line-numbers"><code class="language-css">#fa_toolbar {
+	display: none;
+}</code></pre>
+</li>
+ 	<li>Activa las menciones para todos los usuarios desde <strong>PA → General → Mensajes y Emails→ Configuración → Mensajes (justo al final, antes de Temas) → Autorizar las menciones (@) en los nombres de los miembros.</strong></li>
+</ul>
+<h2><a id="instalacion" class="anchor" href="/fm-helper/#instalacion"></a>Instalación</h2>
+Instalar FM Helper en tu foro es muy sencillo. Primero crea un nuevo JS desde la Gestión de JavaScripts de tu foro y márcalo para que <span style="text-decoration: underline;">no se muestre en ninguna página</span>:
+<pre><code class="language-javascript">/*! FM HELPER v0.1.8 | Flerex | flerex.dev */
+(function(a,b,c){'use strict';console.log('%cFM Helper by %cFlerex%c.blog','font-family: "Open Sans", Arial, sans-serif; font-size: 1.2em;','font-size: 1.5em; text-transform: uppercase; letter-spacing: -1px; font-weight: 800; color: #0d5ad5;','color: #e42e88; text-transform: none; font-size: 1.2em; font-style: italic;'),console.log('https://flerex.dev');const d='FMHELPER_';a.FLX=a.FLX||{},a.FLX.helper=function(){function h(Q){switch(Q.body.id){case'phpbb':return'phpBB3';case'modernbb':return'ModernBB';}return Q.getElementById('ipbwrapper')?'Invision':Q.querySelector('.pun')?'PunBB':Q.body.hasAttribute('bgcolor')?'phpBB2':c}function m(Q){const R='\xE0\xE1\xE4\xE2\xE8\xE9\xEB\xEA\xEC\xED\xEF\xEE\xF2\xF3\xF6\xF4\xF9\xFA\xFC\xFB\xF1\xE7\xB7/_,:;';Q=Q.trim().toLowerCase();for(var T=0,U=R.length;T&lt;U;T++)Q=Q.replace(new RegExp(R.charAt(T),'g'),'aaaaeeeeiiiioooouuuunc------'.charAt(T));return Q.replace(/[^a-z0-9 -]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-')}function n(){return-1!=O.id}function o(){switch(_userdata.user_level){case 2:return'mod';case 1:return'admin';case 0:return-1==_userdata.user_id?'guest':'user';}}function p(){return _userdata.avatar.split('"')[1]}function r(Q,R){return Q=Q.getTime(),R=R.getTime(),Math.floor(Math.abs(Q-R)/8.64e7)}function s(Q,R){if(!localStorage)return!1;const S=d+Q,T=localStorage.getItem(S);if(!T)return null;const U=JSON.parse(T),V=new Date(U.cached_at);return r(V,new Date)&gt;=R?(localStorage.removeItem(S),null):U.content}function t(Q,R){if(!localStorage)return!1;const S={cached_at:new Date().getTime(),content:R};localStorage.setItem(d+Q,JSON.stringify(S))}function u(Q,R){let S,T=null,U=R.querySelector('.tooltip-title'),V=R.querySelector('.tooltip-subtitle');if(!U)return null;let W=U.querySelector('span[style]');return W&amp;&amp;(W=W.style.color),U.firstElementChild&amp;&amp;(S=U.firstElementChild.style.color),V&amp;&amp;(T=V.innerHTML.match(/:\s(.*)/)[1]),new User(Q,U.textContent,c,R.getElementsByTagName('img')[0].src,T,+R.querySelector('.tooltip-counts').firstChild.firstElementChild.textContent,W)}function v(Q){return Array.from(Q).map(R=&gt;new Group(R.href.match(/\/g(\d+)-/)[1],R.textContent,R.style.color))}function w(Q){return Q+'?change_version='+'invision'}function x(Q){return /^\w+\s*:\s+(?:\[\s.+\s\]\s*)+/.test(Q.textContent)}function y(Q){const R=Array.from(Q.body.getElementsByTagName('*')).find(x);return R?R.querySelectorAll('a[href^="/g"]'):null}function z(Q){const R=Array.from(Q.querySelectorAll('#fo_stat div')).find(x);return R?R.querySelectorAll('a[href^="/g"]'):null}function A(...Q){const[R,S]=K(Q),T='groups',U=s(T,S);if(null!==U)return U.forEach(W=&gt;Object.setPrototypeOf(W,Group.prototype)),Promise.resolve(U);const V=D(w('/forum')).then(W=&gt;{let X=z(W)||y(W);if(!X)throw new Error('Could not get the forums legend. Please check if {LEGEND} is set on your index_body template.');if(!X.length)return c;const Y=v(X);return t(T,Y),Y});return R&amp;&amp;V.then(W=&gt;{R.call(this,W)}),V}function B(Q,...R){if(Q===c)throw new Error('User ID missing');const[S,T]=K(R),U='u'+Q,V=s(U,T);if(null!==V)return Object.setPrototypeOf(V,User.prototype),Promise.resolve(V);const W=D('/ajax/index.php',{data:{f:'m',user_id:Q}}).then(X=&gt;{let Y=u(Q,X);return t(U,Y),Y});return S&amp;&amp;W.then(X=&gt;{S.call(this,X)}),W}function C(Q){return'?'+Object.keys(Q).map(R=&gt;encodeURIComponent(R)+'='+encodeURIComponent(Q[R])).join('&amp;')}function D(Q,R={}){return R.hasOwnProperty('data')&amp;&amp;(Q+=C(R.data)),fetch(Q,Object.assign({method:'GET',credentials:'include'},R)).then(S=&gt;S.text()).then(S=&gt;{return new DOMParser().parseFromString(S,'text/html')})}function E(Q){'loading'==b.readyState?b.addEventListener('DOMContentLoaded',Q):Q()}function G(Q){const R=Q.querySelector('div.pagination');return!!R&amp;&amp;Array.from(R.children).filter(S=&gt;{return'A'==S.tagName&amp;&amp;+S.textContent})}function H(Q){const R=Q.querySelector('div.pagination');return!!R&amp;&amp;parseInt(R.firstElementChild.textContent.match(/start = \(start &gt; \d+\) \? \d+ : start;\n {4}start = \(start - \d+\) \* (\d+);/)[1])}function I(Q,R){const S=Q.querySelector('table.ipbtable tbody tr:nth-child(2)').childNodes[1].firstElementChild.firstElementChild;return!!S&amp;&amp;S.style.color==R}function J(Q,R){let S=0;return I(Q,R.color)&amp;&amp;S++,1!=Q.querySelector('table.ipbtable tbody tr:last-child').childElementCount&amp;&amp;(S+=Q.querySelectorAll('table.ipbtable tbody tr').length-3),S}function K(Q){let R=[!1,30];return 2==Q.length?R=Q:'integer'==typeof Q[0]?R[1]=Q[0]:R[0]=Q[0],R}class User{constructor(Q,R,S,T,U,V,W){this.id=Q,this.username=R,this.level=S,this.avatar=T,this.rank=U,this.posts=V,this.color=W}getRankAsText(){if(!this.rank)return'';let Q=new DOMParser().parseFromString(this.rank,'text/html');return Q.body.textContent.trim()}getURL(){return`/u${this.id}`}}class Group{constructor(Q,R,S){this.id=Q,this.name=R,this.color=S}getURL(){return`/g${this.id}-${m(this.name)}`}}const O=new User(_userdata.user_id,_userdata.username,o(),p(),_lang.hasOwnProperty('rank_title')?_lang.rank_title:c,_userdata.user_posts,c),P={isLoggedIn:n,userLevel:o,getGroups:A,getUser:B,slugify:m,attachScriptToChat:function(Q){function R(T,U){'complete'==T.contentDocument.readyState?U():T.addEventListener('load',U)}let S=b.createElement('script');S.type='text/javascript',S.textContent=`;(${Q.toString()})();`,E(function(){const T=b.querySelectorAll('object[data^="/chatbox/index.forum"], iframe[src^="/chatbox/index.forum"]');Array.from(T).foreach(U=&gt;{R(U,function(){U.contentDocument.getElementsByTagName('head')[0].appendChild(S.cloneNode(!0))})})})},getVersion:function(){return h(b)},enableDebugMode:function(){console.warn('%cATTENTION: Debug mode is enabled','color: red; font-weight: bold; font-size: 1.1em;'),console.warn('CSS files are not being cached by browsers');const Q='?debug='+ +new Date;b.querySelectorAll('link[rel="stylesheet"]').forEach(R=&gt;{R.setAttribute('href',R.getAttribute('href')+Q)})},setCache:t,getCache:s,get:D};return n()&amp;&amp;Object.assign(P,{currentUser:function(Q){switch(Q){case'id':return O.id;case'username':case'name':return O.username;case'avatar':return p();case'level':return O.level;case'rank':return O.rank;case'posts':return O.posts;}throw new Error('Argument is not supported')},u:O,user:O}),User.prototype.getGroup=function(){return new Promise(Q=&gt;{A().then(R=&gt;{this.color===c?B(this.id).then(S=&gt;{Q(R.find(T=&gt;T.color==S.color))}):Q(R.find(S=&gt;S.color==this.color))})})},Group.prototype.getMemberAmount=function(...Q){const[R,S]=K(Q),T='gc'+this.id,U=s(T,S);if(null!==U)return Promise.resolve(U);const V=D(w(`/g${this.id}-`)).then(W=&gt;{const X=G(W);if(!X.length){const Y=J(W,this);return t(T,Y),Y}return D(X.pop().href)}).then(W=&gt;{if('number'==typeof W)return W;const X=G(W),Y=X.length*H(W)+J(W,this);return t(T,Y),Y});return R&amp;&amp;V.then(W=&gt;{R.call(this,W)}),V},P}(),'undefined'==typeof a._&amp;&amp;(a._=FLX.helper),'undefined'==typeof a.H&amp;&amp;(a.H=FLX.helper)})(this,document);</code></pre>
+Ahora copia la ruta al script que se ha creado.
+
+Tan solo dirígete a la plantilla <code>overall_header</code> y busca:
+<pre><code class="language-markup">{HOSTING_JS}</code></pre>
+Añade después, en una nueva línea pon lo siguiente, sustituyendo <code>la ruta</code> por la URL del script que copiaste anteriormente.
+<pre><code class="language-markup">&lt;script type="text/javascript" src="la ruta"&gt;&lt;/script&gt;</code></pre>
+¡Listo! FM Helper ya está disponible para ser utilizado.
+
+<strong>Nota:</strong> Ten en cuenta que, debido a limitaciones de Foroactivo y muy a mi pesar, la librería no está disponible desde la gestión de JS del PA. Para poder utilizarla en tus scripts <strong>deberás añadirlos directamente desde la plantilla <code>overall_header</code>, debajo del anterior script o en cualquier otra plantilla del foro</strong>.
+<h2><a id="a-tener-en-cuenta%e2%80%a6" class="anchor" href="/fm-helper/#a-tener-en-cuenta%e2%80%a6"></a>A tener en cuenta…</h2>
+<ul>
+ 	<li>La versión de tu foro puede ser cualquiera de las disponibles (phpBB3, phpBB2, Invision, punBB o ModernBB). Sin embargo, en el caso de Invision no garantizamos su correcto funcionamiento si se han editado las plantillas.</li>
+ 	<li>FM Helper solo da soporte a las versiones actuales y anteriores a la actual de los navegadores más comunes. Esto no quiere decir que no pueda funcionar en otros navegadores más antiguos, simplemente que no se harán modificaciones para adaptarse a los mismos. Por lo general, las tecnologías que se utilizan deberían ser compatibles con las últimas versiones de los navegadores desde hace tres años.</li>
+</ul>
+<h2><a id="%c2%bfpodria-la-libreria-incluir-x-funcionalidad" class="anchor" href="/fm-helper/#%c2%bfpodria-la-libreria-incluir-x-funcionalidad"></a>¿Podría la librería incluir X funcionalidad?</h2>
+Posiblemente. Si tienes una idea sobre algo que la librería podría implementar por defecto no dudes en dejar en los comentarios tu sugerencia. Estamos abiertos a cualquier tipo de sugerencia sobre la librería siempre que se sugiera algo que puede ser de uso común y no muy específico.</div>
+    </article>
+
+        </main>
+
+        <aside id="sidebar">
+
+        <div class="widget">
+            <div class="widget__heading">Categorias</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/actualizaciones">Actualizaciones</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/articulos">Artículos</a></span>
+                        <span class="bubble">7</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/codigos">Códigos</a></span>
+                        <span class="bubble">14</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/guias">Guías</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/meta">Meta</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/miscelanea">Miscelánea</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/recursos">Recursos</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/servicios">Servicios</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                            </ul>
+        </div>
+
+        <div class="widget">
+            <div class="widget__heading">Etiquetas</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/criticas">Críticas</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/css">CSS</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/desarrollo">Desarrollo</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/estandares">Estándares</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fainvision">FA/Invision</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/famodernbb">FA/ModernBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb2">FA/phpBB2</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb3">FA/phpBB3</a></span>
+                        <span class="bubble">19</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fapunbb">FA/PunBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fm-helper">FM-Helper</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/foroactivo">Foroactivo</a></span>
+                        <span class="bubble">22</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/jcink">Jcink</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/phpbb">phpBB</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                            </ul>
+        </div>
+
+
+    </aside>
+    </div>
+</div>
+<footer id="footer">
+    <div class="footer__content container">
+        <span>&copy; Flerex Blog 2026</span>
+    </div>
+</footer>
+</body>
+</html>

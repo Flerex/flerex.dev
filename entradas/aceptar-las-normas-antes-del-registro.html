@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <title>Aceptar las normas antes del registro - Flerex Blog</title>
+    
+     
+        <meta name="description" content="Cómo añadir fácilmente una casilla al formulario de registro para que los usuarios acepten las normas del foro antes de unirse." />
+        <script src="/js/prism.js"></script>
+    <script src="/js/prism-markup-templating.js"></script>
+    <script src="/js/prism-php.js"></script>
+    <script src="/js/clipboard.js"></script>
+    <script src="/js/prism-line-numbers.js"></script>
+    <script src="/js/prism-toolbar.js"></script>
+    <script src="/js/prism-copy-to-clipboard.js"></script>
+    <script src="/js/table-contents.js"></script>
+
+    
+    <link href="/css/app.css?id=15fbddac165dda994b3e" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/prism-tomorrow.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="/css/prism-line-numbers.css">
+    <link rel="stylesheet" href="/css/prism-toolbar.css">
+
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/images/apple-touch.png">
+    
+    <link rel="mask-icon" href="/svg/code.svg" color="#C16BC7">
+
+    <script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+</head>
+<body class="reading-mode">
+
+<header id="header">
+    <div class="container">
+        <div id="logo">
+            <a href="/" aria-label="Inicio"></a>
+        </div>
+        <nav class="navbar">
+            <div class="navbar__group">
+                <ul>
+                    <li><a class="navbar-link" href="/">Inicio</a></li>
+                </ul>
+            </div>
+            <div class="navbar__group">
+                <ul>
+                                    </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<div id="outer-wrapper">
+    <div id="wrap" class="container">
+        <main id="main">
+                <article class="post">
+        <header class="post__header">
+            <h1>Aceptar las normas antes del registro</h1>
+                            <img class="post__featured-image" src="/storage/featured/33.png" alt="">
+                        <div class="post__meta">
+                <div class="post__meta-item post__author">
+                    <div class="avatar">
+    <img src="https://secure.gravatar.com/avatar/34ce93f4a2102e6de5209c717a83d6ef.jpg?s=100&amp;d=mm&amp;r=g" title="Sydonia" alt="">
+</div>                    <span class="post__author-name">Sydonia</span>
+                </div>
+                <div class="post__extra">
+                    <div class="post__extra-info">
+
+                    <div class="post__date">
+                        <ion-icon name="ios-calendar"></ion-icon>
+                        <span>19 de enero de 2019</span>                    </div>
+                                            <div class="post__category">
+                            <a href="/categorias/codigos">
+                                <ion-icon name="ios-folder" title="Categoría"></ion-icon>
+                                <span>Códigos</span>
+                            </a>
+                        </div>
+                                                            </div>
+                    <div class="post__tags">
+                        <div class="post-preview__tags taglist">
+                    <div class="taglist__tag"><a href="/etiquetas/faphpbb3">FA/phpBB3</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/foroactivo">Foroactivo</a></div>
+            </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="table-contents" hidden>
+            <div class="table-contents__title">Tabla de contenidos</div>
+            <div class="table-contents__content"></div>
+        </div>
+        <div class="post__content text-container"><!-- wp:paragraph -->
+<p>Para evitarnos el típico mensaje de: «Al registrarte en el foro has aceptado sus normas», que puede que no sea muy correcto a ojos de la nueva Ley de Protección de datos europea, vamos a añadir un tercer <code>checkbox</code> a nuestro formulario de registro, para obligar así al usuario a aceptar explícitamente el reglamento.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<div class="notice note warning">
+<div class="notice__title">Nota</div>
+<div class="notice__content">Este tutorial no garantiza que el usuario vaya a leerse las normas antes de marcar la casilla.</div>
+</div>
+<!-- /wp:html -->
+
+<!-- wp:heading {"align":"left"} -->
+<h2 style="text-align:left">Añadir el checkbox al template correspondiente</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>El procedimiento es muy sencillo. Debemos ir al Panel de Administración, y una vez ahí nos desplazamos a <code>Visualización &gt; Templates &gt; General &gt; Agreement</code></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Modificaremos el template <code>Agreement</code>, y buscaremos esta parte:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre><code class="language-markup">
+&lt;div align="center"&gt;
+	&lt;div style="text-align:justify; display:inline-block;" align="justify"&gt;
+		&lt;input type="hidden" name="step" value="2" /&gt;
+		&lt;p&gt;
+			&lt;input type="checkbox" name="agreement" id="frmAgreeChkAgree" value="1" data-validation="required"/&gt; &lt;label for="frmAgreeChkAgree"&gt;{AGREE_CONDITIONS}&lt;/label&gt; &lt;br /&gt;
+		&lt;/p&gt;
+		&lt;p&gt;
+			&lt;input type="checkbox" name="privacy" id="frmAgreeChkPrivacy" value="1" data-validation="required"/&gt; &lt;label for="frmAgreeChkPrivacy"&gt;{AGREE_PRIVACY}&lt;/label&gt;
+		&lt;/p&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>Identificamos en el código los dos <code>checkbox</code>, uno para los términos de servicio y otro para la política de privacidad. Nosotros le añadiremos un tercero para las normas de nuestro foro.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Para ello simplemente agregamos otro <code>checkbox</code> justo después del último <code>&lt;/p&gt;</code>, importante que tenga el atributo <code>required</code>, por ejemplo:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre><code class="language-markup">
+&lt;p&gt;
+	&lt;input type="checkbox" id="frmAgreeForumRules" required /&gt; &lt;label for="frmAgreeForumRules"&gt;He leído y aceptado las &lt;a href="/link-a-las-normas"&gt;normas del foro&lt;/a&gt;.&lt;/label&gt;
+&lt;/p&gt;
+</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>Con el atributo <code>required</code> estamos obligando a quienquiera que intente registrarse a nuestro foro a aceptar las normas del mismo, ya que si la casilla no está marcada no podrá hacerlo.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<p>Si van a utilizar el código anterior, recuerden cambiar el <code>href="/link-a-las-normas"</code> por el link a las normas de su foro.</p>
+<!-- /wp:html -->
+
+<!-- wp:image {"align":"center"} -->
+<div class="wp-block-image"><figure class="aligncenter"><img src="https://i.imgur.com/Hb1dfJU.png" alt=""/></figure></div>
+<!-- /wp:image --></div>
+    </article>
+
+        </main>
+
+        <aside id="sidebar">
+
+        <div class="widget">
+            <div class="widget__heading">Categorias</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/actualizaciones">Actualizaciones</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/articulos">Artículos</a></span>
+                        <span class="bubble">7</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/codigos">Códigos</a></span>
+                        <span class="bubble">14</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/guias">Guías</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/meta">Meta</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/miscelanea">Miscelánea</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/recursos">Recursos</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/servicios">Servicios</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                            </ul>
+        </div>
+
+        <div class="widget">
+            <div class="widget__heading">Etiquetas</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/criticas">Críticas</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/css">CSS</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/desarrollo">Desarrollo</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/estandares">Estándares</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fainvision">FA/Invision</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/famodernbb">FA/ModernBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb2">FA/phpBB2</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb3">FA/phpBB3</a></span>
+                        <span class="bubble">19</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fapunbb">FA/PunBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fm-helper">FM-Helper</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/foroactivo">Foroactivo</a></span>
+                        <span class="bubble">22</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/jcink">Jcink</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/phpbb">phpBB</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                            </ul>
+        </div>
+
+
+    </aside>
+    </div>
+</div>
+<footer id="footer">
+    <div class="footer__content container">
+        <span>&copy; Flerex Blog 2026</span>
+    </div>
+</footer>
+</body>
+</html>

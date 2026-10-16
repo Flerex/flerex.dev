@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <title>Sistema de Afiliación Automático - Flerex Blog</title>
+    
+     
+        <meta name="description" content="Como ya prometí hace un par de meses, hoy traigo algo que nunca se ha visto en la historia de los foros de rol: un servicio de afiliación automática. Di no al HTML, di no a las tablillas rotas, di no al tener que dar permisos de administración a desconocidos para poder afiliar." />
+        <script src="/js/prism.js"></script>
+    <script src="/js/prism-markup-templating.js"></script>
+    <script src="/js/prism-php.js"></script>
+    <script src="/js/clipboard.js"></script>
+    <script src="/js/prism-line-numbers.js"></script>
+    <script src="/js/prism-toolbar.js"></script>
+    <script src="/js/prism-copy-to-clipboard.js"></script>
+    <script src="/js/table-contents.js"></script>
+
+    
+    <link href="/css/app.css?id=15fbddac165dda994b3e" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/prism-tomorrow.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="/css/prism-line-numbers.css">
+    <link rel="stylesheet" href="/css/prism-toolbar.css">
+
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/images/apple-touch.png">
+    
+    <link rel="mask-icon" href="/svg/code.svg" color="#C16BC7">
+
+    <script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+</head>
+<body class="reading-mode">
+
+<header id="header">
+    <div class="container">
+        <div id="logo">
+            <a href="/" aria-label="Inicio"></a>
+        </div>
+        <nav class="navbar">
+            <div class="navbar__group">
+                <ul>
+                    <li><a class="navbar-link" href="/">Inicio</a></li>
+                </ul>
+            </div>
+            <div class="navbar__group">
+                <ul>
+                                    </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<div id="outer-wrapper">
+    <div id="wrap" class="container">
+        <main id="main">
+                <article class="post">
+        <header class="post__header">
+            <h1>Sistema de Afiliación Automático</h1>
+                            <img class="post__featured-image" src="/storage/featured/37.jpg" alt="">
+                        <div class="post__meta">
+                <div class="post__meta-item post__author">
+                    <div class="avatar">
+    <img src="https://secure.gravatar.com/avatar/8a8ded00a6f158bd28da1ae3c6181198.jpg?s=100&amp;d=mm&amp;r=g" title="Flerex" alt="">
+</div>                    <span class="post__author-name">Flerex</span>
+                </div>
+                <div class="post__extra">
+                    <div class="post__extra-info">
+
+                    <div class="post__date">
+                        <ion-icon name="ios-calendar"></ion-icon>
+                        <span>17 de abril de 2019</span>                    </div>
+                                            <div class="post__category">
+                            <a href="/categorias/servicios">
+                                <ion-icon name="ios-folder" title="Categoría"></ion-icon>
+                                <span>Servicios</span>
+                            </a>
+                        </div>
+                                                            </div>
+                    <div class="post__tags">
+                        <div class="post-preview__tags taglist">
+                    <div class="taglist__tag"><a href="/etiquetas/fainvision">FA/Invision</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/famodernbb">FA/ModernBB</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/faphpbb2">FA/phpBB2</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/faphpbb3">FA/phpBB3</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/fapunbb">FA/PunBB</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/foroactivo">Foroactivo</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/jcink">Jcink</a></div>
+            </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="table-contents" hidden>
+            <div class="table-contents__title">Tabla de contenidos</div>
+            <div class="table-contents__content"></div>
+        </div>
+        <div class="post__content text-container"><!-- wp:paragraph -->
+<p>Si tienes un foro de rol, a estas alturas ya serás consciente de lo molesto que puede resultar manejar las afiliaciones del foro. De hecho, es tan tedioso que se suele crear la posición de «moderador de afiliaciones» para que otra persona las maneje. Sin embargo, esto sigue siendo un problema: hay que dar acceso al Panel de Administración para que puedan modificar la lista de afiliados.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Hoy abro al público algo completamente nuevo, tanto en mi blog como en la historia de la comunidad de rol, <em>Flerex’s Affiliates</em>, con el fin de amenizar los problemas relacionados con las afiliaciones para que estos no sean un problema.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>¿Qué es <em>Affiliates</em>?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><em><a href="https://affiliates.flerex.dev">Flerex’s Affiliates</a></em> es un servicio de afiliación totalmente gratuito y disponible para la comunidad de rol. Este servicio permite <strong>gestionar la lista de afiliados de tu foro de manera completamente automática</strong> desde un sencillo panel de administración. Desde este panel podrás tanto añadir como eliminar tus afiliados.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>El servicio también proporciona un medio para que aquellos que estén interesados en afiliarse a tu foro puedan hacerlo completando un formulario, <strong>haciéndote llegar una notificación</strong> a tu correo electrónico de cuándo tienes una nueva afiliación. Se acabó el tener que editar plantillas o módulos (<em>widgets</em>) para añadir un nuevo afiliado y, sobre todo, tener que lidiar con HTML de por medio. ¡Nunca más!</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>¿Por qué <em>Affiliates</em>?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul><li><strong>Aislamiento</strong>: El servicio funciona totalmente por separado de tu foro, dejando tu foro limpio de publicidades que no tienen nada que ver con su contenido.</li><li><strong>Comodidad</strong>: Con solo pulsar un botón puedes añadir nuevos afiliados o eliminar los que ya tienes. Nada de plantillas, HTML y tablillas que se ven mal en tu foro.</li><li><strong>Promoción</strong>: El servicio de afiliación cuenta también con un directorio. Automáticamente todos los foros que utilicen <em>Affiliates</em> para gestionar sus afiliaciones aparecerán en el directorio, ayudando a promocionar tu foro a todos los visitantes del mismo.</li><li><strong>Seguridad</strong>: Al estar completamente aislado de tu foro, podrás hacer que tus moderadores gestionen las afiliaciones sin tener que darles acceso a zonas sensibles como puede ser el Panel de Administración.<br></li></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading -->
+<h2>¿Cómo registrar tu foro?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:html -->
+<figure class="enlarged"><img src="/storage/old/2019/04/Screen-Shot-2019-04-15-at-18.47.58.png" alt="La vista principal de los sitios disponibles" class="aligncenter size-full wp-image-703"><figcaption>La vista principal de los sitios disponibles</figcaption></figure>
+<!-- /wp:html -->
+
+<!-- wp:list {"ordered":true} -->
+<ol><li>Entra en la <a href="https://affiliates.flerex.dev">página del servicio</a>.</li><li>Regístrate en la aplicación haciendo clic en el botón verde «Registrarse» en la barra de navegación. Asegúrate de poner un correo electrónico que exista, puesto que ahí podrás recibir notificaciones de afiliaciones.</li><li>Una vez ya dentro, dale a «Añadir sitio» para añadir tu foro al servicio.</li><li>Completa la información que se te pide.</li><li>Una vez creado tu sitio, entra y podrás ver el panel del mismo. De momento tu sitio está pendiente de verificación. Por tu seguridad, es necesario que verifiques que el dominio del foro es tuyo. Para ello, copia el script que se te proporciona (si usas Foroactivo asegúrate de utilizar la versión para Foroactivo) y colócalo en <code>overall_header</code> antes de <code>{HOSTING_JS}</code>.</li><li>Haz clic en verificar.</li><li>Una vez verificado ya tendrás acceso a tu panel de administración.</li></ol>
+<!-- /wp:list -->
+
+<!-- wp:html -->
+<figure class="enlarged"><img src="/storage/old/2019/04/Screen-Shot-2019-04-15-at-18.55.23.png" alt="El apartado con el código a poner en tu foro. Si usas Foroactivo, deberás usar el segundo en vez del primero." class="aligncenter size-full wp-image-703" width="2552" height="1394"><figcaption>El apartado con el código a poner en tu foro. Si usas Foroactivo, deberás usar el segundo en vez del primero.</figcaption></figure>
+<!-- /wp:html -->
+
+<!-- wp:heading -->
+<h2>Empezando a usar el servicio</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list {"ordered":true} -->
+<ol><li>Para empezar, es necesario que añadas un nuevo código. Este código lo puedes poner en cualquier sitio (por ejemplo, en un módulo, o en el <code>overall_footer</code>). Este código hará que donde lo pongas aparezcan tus afiliados.</li><li>Si ya tenías afiliados anteriormente, es posible que no quieras añadir afiliado por afiliado a mano. Para evitarlo, existe la opción de importar afiliados a partir del HTML que usas para tu lista de afiliados. Puedes poner todos los afiliados al montón que el servicio se encargará de identificar los distintos afiliados.</li><li>Copia el enlace al formulario de afiliación y colócalo en algún lugar de tu foro para que los interesados en afiliarte puedan enviar una petición.</li><li>Presta atención a tu correo electrónico, pues te llegarán notificaciones de afiliación si alguien te envía una.</li></ol>
+<!-- /wp:list -->
+
+<!-- wp:heading -->
+<h2>Preguntas frecuentes</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><strong>Los cambios que he hecho a mi lista de afiliados no se ven en el foro.</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Por motivos de eficiencia para tu foro, los afiliados se guardan en la memoria del navegador del usuario. Si en el panel de administración has hecho un cambio, tranquilo, este ha tomado efecto instantáneo. Todos los usuarios que no tuviesen los afiliados en memoria verán el cambio al instante, los que no, lo verán en su próxima sesión (cerrar y volver a abrir el navegador crea una nueva sesión).</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>He añadido o aceptado un afiliado pero no me aparece en mi foro.</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Es posible que tu afiliado no esté aprobado. Que un afiliado aparezca en tu panel no quiere decir que sea instantáneamente visible. Asegúrate que el estado del afiliado sea «Aprobado». En caso de no serlo, haz clic en el botón «Aprobar».</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Importar a partir de HTML no funciona.</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Para que puedas importar HTML es necesario que el HTML que contengas tenga enlaces con imágenes dentro. Si no se cumple este requisito no se podrá identificar un afiliado.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Mis afiliados importados por HTML tienen de nombre «Nombre desconocido»</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Cuando el HTML está incompleto es posible que no haya forma de obtener el nombre del afiliado. Tendrás que editar los afiliados con nombre desconocido para poder aprobarlos y mostrarlos en tu lista.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>Soporte</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Este servicio es nuevo tanto para la comunidad como para mi. Si tienes cualquier tipo de problema no dudes en contactarme mediante la sección de Soporte.</p>
+<!-- /wp:paragraph --></div>
+    </article>
+
+        </main>
+
+        <aside id="sidebar">
+
+        <div class="widget">
+            <div class="widget__heading">Categorias</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/actualizaciones">Actualizaciones</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/articulos">Artículos</a></span>
+                        <span class="bubble">7</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/codigos">Códigos</a></span>
+                        <span class="bubble">14</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/guias">Guías</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/meta">Meta</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/miscelanea">Miscelánea</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/recursos">Recursos</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/servicios">Servicios</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                            </ul>
+        </div>
+
+        <div class="widget">
+            <div class="widget__heading">Etiquetas</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/criticas">Críticas</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/css">CSS</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/desarrollo">Desarrollo</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/estandares">Estándares</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fainvision">FA/Invision</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/famodernbb">FA/ModernBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb2">FA/phpBB2</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb3">FA/phpBB3</a></span>
+                        <span class="bubble">19</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fapunbb">FA/PunBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fm-helper">FM-Helper</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/foroactivo">Foroactivo</a></span>
+                        <span class="bubble">22</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/jcink">Jcink</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/phpbb">phpBB</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                            </ul>
+        </div>
+
+
+    </aside>
+    </div>
+</div>
+<footer id="footer">
+    <div class="footer__content container">
+        <span>&copy; Flerex Blog 2025</span>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <title>Utilizando iconos - Flerex Blog</title>
+    
+     
+        <meta name="description" content="En los días que corren, las páginas web han dejado de lado las imágenes para pasar a los iconos. En esta guía aprenderás a utilizar iconos en tu foro para darle un poco más de vida a tu diseño." />
+        <script src="/js/prism.js"></script>
+    <script src="/js/prism-markup-templating.js"></script>
+    <script src="/js/prism-php.js"></script>
+    <script src="/js/clipboard.js"></script>
+    <script src="/js/prism-line-numbers.js"></script>
+    <script src="/js/prism-toolbar.js"></script>
+    <script src="/js/prism-copy-to-clipboard.js"></script>
+    <script src="/js/table-contents.js"></script>
+
+    
+    <link href="/css/app.css?id=15fbddac165dda994b3e" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/prism-tomorrow.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="/css/prism-line-numbers.css">
+    <link rel="stylesheet" href="/css/prism-toolbar.css">
+
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/images/apple-touch.png">
+    
+    <link rel="mask-icon" href="/svg/code.svg" color="#C16BC7">
+
+    <script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+</head>
+<body class="reading-mode">
+
+<header id="header">
+    <div class="container">
+        <div id="logo">
+            <a href="/" aria-label="Inicio"></a>
+        </div>
+        <nav class="navbar">
+            <div class="navbar__group">
+                <ul>
+                    <li><a class="navbar-link" href="/">Inicio</a></li>
+                </ul>
+            </div>
+            <div class="navbar__group">
+                <ul>
+                                    </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<div id="outer-wrapper">
+    <div id="wrap" class="container">
+        <main id="main">
+                <article class="post">
+        <header class="post__header">
+            <h1>Utilizando iconos</h1>
+                            <img class="post__featured-image" src="/storage/featured/34.jpg" alt="">
+                        <div class="post__meta">
+                <div class="post__meta-item post__author">
+                    <div class="avatar">
+    <img src="https://secure.gravatar.com/avatar/8a8ded00a6f158bd28da1ae3c6181198.jpg?s=100&amp;d=mm&amp;r=g" title="Flerex" alt="">
+</div>                    <span class="post__author-name">Flerex</span>
+                </div>
+                <div class="post__extra">
+                    <div class="post__extra-info">
+
+                    <div class="post__date">
+                        <ion-icon name="ios-calendar"></ion-icon>
+                        <span>4 de abril de 2019</span>                    </div>
+                                            <div class="post__category">
+                            <a href="/categorias/guias">
+                                <ion-icon name="ios-folder" title="Categoría"></ion-icon>
+                                <span>Guías</span>
+                            </a>
+                        </div>
+                                                            </div>
+                    <div class="post__tags">
+                        <div class="post-preview__tags taglist">
+                    <div class="taglist__tag"><a href="/etiquetas/fainvision">FA/Invision</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/famodernbb">FA/ModernBB</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/faphpbb2">FA/phpBB2</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/faphpbb3">FA/phpBB3</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/fapunbb">FA/PunBB</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/foroactivo">Foroactivo</a></div>
+            </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="table-contents" hidden>
+            <div class="table-contents__title">Tabla de contenidos</div>
+            <div class="table-contents__content"></div>
+        </div>
+        <div class="post__content text-container"><!-- wp:paragraph -->
+<p>Quizás te habrás fijado que la Web está tendiendo a utilizar iconos en vez de imágenes. Estos iconos normalmente son vectoriales, lo cual les permite tener propiedades como el no pesar mucho y poder ser ampliados todo lo que se quiera sin perder calidad.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>En el mundo del rol ya he visto a unos cuantos foros que utilizan iconos para adornar sus diseños, haciendo uso de la famosa librería Font Awesome.  Font Awesome es una librería con cientos de iconos a tu disposición de manera gratuita. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>En esta guía aprenderás a utilizar los iconos de Font Awesome</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>Requisitos</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul><li>Conocimientos básicos de modificación de plantillas</li><li>Conocimientos <strong>intermedios</strong> de CSS si tienes pensado insertar iconos mediante CSS.<br></li></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading -->
+<h2>Instalación</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>La instalación es muy sencilla. Tan solo dirígete a la <a href="https://fontawesome.com/start">página oficial de Font Awesome</a> y copia el pequeño código que te dan ahí. Para esta guía utilizaremos las opciones por defecto, que son:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul><li>Free</li><li>All</li><li>Webfont<br></li></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>A día de hoy y con las anteriores opciones seleccionadas, el código que has copiado debería ser tal que así:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre class="line-numbers"><code class="language-markup">&lt;link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"&gt;</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>Este código lo debes colocar en la plantilla <code>overall_header</code>, antes de la siguiente línea:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre class="line-numbers"><code class="language-markup">	{CSS}</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>Listo, Font Awesome está instalado en tu foro.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>Uso</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>A partir de este momento ya puedes utilizar Font Awesome en tu foro. Para ello tienes que hacer lo siguiente:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list {"ordered":true} -->
+<ol><li>Dirígete a la galería de <a href="https://fontawesome.com/icons">iconos oficial de Font Awesome</a></li><li>Busca el icono que más te guste y haz clic en el para entrar en la <a href="https://fontawesome.com/icons/code?style=solid">página que contiene toda la información sobre el icono</a>.<br></li></ol>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>A partir de ahora tienes dos métodos para insertar el icono en tu foro:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul><li><strong>Mediante HTML:</strong> La manera más fácil y común.</li><li><strong>Mediante CSS:</strong> Un poco más difícil pero más cómoda en ciertas situaciones.<br></li></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Inserción mediante HTML</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Para insertar un icono en el HTML tan solo tienes que hacer clic en el HTML que aparece en la página del icono para copiarlo.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<figure class="enlarged"><img src="/storage/old/2019/04/Screen-Shot-2019-04-04-at-18.38.48.png" alt="El lugar donde el HTML del icono se encuentra" class="aligncenter size-full wp-image-703"><figcaption>El lugar donde el HTML del icono se encuentra</figcaption></figure>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>Una vez copiado ese HTML puedes colocarlo donde quieras.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Inserción mediante CSS</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Este método, aunque es un poco más complejo, te permite añadir iconos a lugares que no se pueden modificar con HTML. Además, ayuda a mantener el HTML limpio.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Para insertar el icono haremos uso de los pseudoselectores <code>::before</code> y <code>::after</code>. A continuación ponemos el código de ejemplo para añadir un icono antes de un elemento <code>.selector</code>. Recuerda que si lo quisieses añadir después tan solo tendrías que cambiar <code>::before</code> por <code>::after</code>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre class="line-numbers"><code class="language-css">
+.selector::before {
+	/* Parte modificable */
+	content: '\f526';
+	font-weight: 900;
+	font-family: 'Font Awesome 5 Free';
+	/* Fin parte modificable */
+
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	display: inline-block;
+	font-style: normal;
+	font-variant: normal;
+	text-rendering: auto;
+	line-height: 1;
+}
+</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>Ahora vamos por partes. Fíjate que he dejado marcada una opción que hay que modificar. Cada una de las propiedades modificables (<code>content</code>, <code>font-weight</code> y <code>font-family</code>) tienen que ser modificadas por un valor que encontrarás en la página del icono que has elegido.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>En la siguiente imagen marco con un circulo los datos a los que tienes que prestar atención:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<figure class="enlarged"><img src="/storage/old/2019/04/Screen-Shot-2019-04-04-at-18.49.31.png" alt="" class="aligncenter size-full wp-image-702"></figure>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>Ahora, debes cambiar cada una de las propiedades modificables de la siguiente manera:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul><li><code>font-family</code>: En caso de que el valor del círculo naranja sea “Brands Style (fab)” debes cambiarla por <code>Font Awesome 5 Brands</code> (respetando las comillas). <strong>En caso contrario no la modifiques</strong>.</li><li><code>font-weight</code>:  Dependiendo del valor del círculo naranja tendrás que poner los siguientes valores:<br><ul><li>“Solid style (fas)”: <code>900</code></li><li>“Regular style (far)”: <code>400</code></li><li>“Brands style (fab)”: <code>400</code></li><li>“Light Style (fal)”: <code>300</code></li></ul></li><li><code>content</code>: En esta propiedad solo tienes que modificar la parte de la f y los números, respetando la barra inclinada inversa (<code>\</code>). Tendrás que poner el valor que aparece en el círculo verde.<br></li></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>¡Y listo! Ya has insertado tu icono mediante CSS. Si necesitas más información sobre esto siempre puedes echarle un vistazo a la <a href="https://fontawesome.com/how-to-use/on-the-web/advanced/css-pseudo-elements#define">documentación oficial</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>Personalización</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>En cuanto a personalización, los iconos de Font Awesome son muy versátiles. Puedes utilizar la propiedad CSS <code>color</code> para modificar el color del icono, <code>font-size</code> para modificar el tamaño y <code>line-height</code> para modificar la altura que ocupa. Simple, ¿verdad?</p>
+<!-- /wp:paragraph --></div>
+    </article>
+
+        </main>
+
+        <aside id="sidebar">
+
+        <div class="widget">
+            <div class="widget__heading">Categorias</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/actualizaciones">Actualizaciones</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/articulos">Artículos</a></span>
+                        <span class="bubble">7</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/codigos">Códigos</a></span>
+                        <span class="bubble">14</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/guias">Guías</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/meta">Meta</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/miscelanea">Miscelánea</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/recursos">Recursos</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/servicios">Servicios</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                            </ul>
+        </div>
+
+        <div class="widget">
+            <div class="widget__heading">Etiquetas</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/criticas">Críticas</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/css">CSS</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/desarrollo">Desarrollo</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/estandares">Estándares</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fainvision">FA/Invision</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/famodernbb">FA/ModernBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb2">FA/phpBB2</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb3">FA/phpBB3</a></span>
+                        <span class="bubble">19</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fapunbb">FA/PunBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fm-helper">FM-Helper</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/foroactivo">Foroactivo</a></span>
+                        <span class="bubble">22</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/jcink">Jcink</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/phpbb">phpBB</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                            </ul>
+        </div>
+
+
+    </aside>
+    </div>
+</div>
+<footer id="footer">
+    <div class="footer__content container">
+        <span>&copy; Flerex Blog 2026</span>
+    </div>
+</footer>
+</body>
+</html>

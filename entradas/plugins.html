@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <title>Plugins - Flerex Blog</title>
+    
+            <meta name="description" content="Flerex Blog es un blog de recursos, guías y códigos para la comunidad hispana de RPG por foro. Aunque principalmente encontrarás recursos pensados para la plataforma Foroactivo, no nos centramos en exclusiva en ella, sino que también damos soporte a otras plataformas crecientes en popularidad como JCink." />
+        <script src="/js/prism.js"></script>
+    <script src="/js/prism-markup-templating.js"></script>
+    <script src="/js/prism-php.js"></script>
+    <script src="/js/clipboard.js"></script>
+    <script src="/js/prism-line-numbers.js"></script>
+    <script src="/js/prism-toolbar.js"></script>
+    <script src="/js/prism-copy-to-clipboard.js"></script>
+    <script src="/js/table-contents.js"></script>
+
+    
+    <link href="/css/app.css?id=15fbddac165dda994b3e" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/prism-tomorrow.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="/css/prism-line-numbers.css">
+    <link rel="stylesheet" href="/css/prism-toolbar.css">
+
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/images/apple-touch.png">
+    
+    <link rel="mask-icon" href="/svg/code.svg" color="#C16BC7">
+
+    <script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+</head>
+<body class="reading-mode">
+
+<header id="header">
+    <div class="container">
+        <div id="logo">
+            <a href="/" aria-label="Inicio"></a>
+        </div>
+        <nav class="navbar">
+            <div class="navbar__group">
+                <ul>
+                    <li><a class="navbar-link" href="/">Inicio</a></li>
+                </ul>
+            </div>
+            <div class="navbar__group">
+                <ul>
+                                    </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<div id="outer-wrapper">
+    <div id="wrap" class="container">
+        <main id="main">
+                <article class="post">
+        <header class="post__header">
+            <h1>Plugins</h1>
+                        <div class="post__meta">
+                <div class="post__meta-item post__author">
+                    <div class="avatar">
+    <img src="https://secure.gravatar.com/avatar/8a8ded00a6f158bd28da1ae3c6181198.jpg?s=100&amp;d=mm&amp;r=g" title="Flerex" alt="">
+</div>                    <span class="post__author-name">Flerex</span>
+                </div>
+                <div class="post__extra">
+                    <div class="post__extra-info">
+
+                    <div class="post__date">
+                        <ion-icon name="ios-calendar"></ion-icon>
+                        <span>3 de junio de 2017</span>                    </div>
+                                            <div class="post__category">
+                            <a href="/categorias/plugins">
+                                <ion-icon name="ios-folder" title="Categoría"></ion-icon>
+                                <span>Plugins</span>
+                            </a>
+                        </div>
+                                        <div class="post-preview__info-elm post-preview__edited">
+        <ion-icon name="ios-medical" title="Actualizado el"></ion-icon>
+        <span>28 de marzo de 2018</span>    </div>
+                    </div>
+                    <div class="post__tags">
+                        <div class="post-preview__tags taglist">
+                    <div class="taglist__tag"><a href="/etiquetas/plugins">Plugins</a></div>
+            </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="table-contents" hidden>
+            <div class="table-contents__title">Tabla de contenidos</div>
+            <div class="table-contents__content"></div>
+        </div>
+        <div class="post__content text-container">Quería comentar que a partir de ahora voy a trabajar de una forma distinta a la hora de dar códigos, para solucionar alguno de los problemas más comunes que me he encontrado:
+<ul>
+ 	<li><b>Eficiencia. </b>Aunque siempre me planteo hacer los códigos de la forma más eficiente posible, sí es cierto que existen formas desaprovechadas de hacer que los códigos que publico carguen prácticamente al instante en vuestros foros.</li>
+ 	<li><b>Corrección de errores o puestas a punto.</b> Todo el mundo tiene errores y, si en algún momento quiero corregir algo o cambiar alguna parte del código para hacerlo más eficiente, todas aquellas personas que ya lo hayan instalado en su foro no tendrán el código actualizado a no ser que lo vuelvan a hacer.</li>
+ 	<li><b>Abstracción</b>. Muchas veces los códigos pueden resultar complicados y muy largos. A la vista de una persona que no entienda qué está pasando ahí, editarlos para que sean únicos a vuestro foro puede ser algo un poco complejo. A pesar de que siempre intento que mis códigos sean lo menos modificables posibles y que se adapten a los foros de forma automática, no siempre esto es posible.</li>
+</ul>
+Para corregir estos problemas he encontrado una solución perfecta para todos. A partir de ahora los códigos que publique tendrán un formato plugin y serán hospedados en un CDN propio. ¿Qué significa esto para los anteriores problemas?
+<ul>
+ 	<li>En cuanto a la <b>eficiencia</b>, utilizar un CDN permite que cuanta más gente utilice mis códigos, menos probabilidades haya de que los códigos siquiera se tengan que cargar en tu foro. ¿Qué significa esto? Pues que si un visitante ya ha entrado a un foro que utilice cierto código mío, al entrar a tu foro no tendrá que volver a cargarlo porque ya va a estar en su ordenador. Es decir, el código cargará prácticamente al instante. Esto se lleva haciendo en el desarrollo web desde hace tiempo. Por ejemplo, Foroactivo carga jQuery de la misma forma, utiliando el CDN de Google.</li>
+ 	<li>En cuanto a la <b>corrección de errores</b>, tener el código hospedado en un servidor me permite corregir errores y mejorar los códigos de manera que el usuario (vosotros) no tengáis que hacer nada. Vuestros foros tendrán siempre la mejor versión de los códigos totalmente funcional sin tener que hacer nada.</li>
+ 	<li>Por último, la <b>abstracción</b> que permiten los plugins me permite pasar de lo que hacía hasta ahora, que era proporcionar los códigos con la parte editable y la no editable, a daros los códigos con tan sólo la parte editable. Lo he estado probando y es que es todo mucho más simple y fácil.</li>
+</ul>
+Por otro lado, aprovecho también para comentar algo que muchas personas me han preguntado y la verdad es que me gusta que se pregunte. Es sobre los créditos.
+
+Veréis, a mí en este momento me dá bastante igual si me ponéis en los créditos de vuestro foro. Siempre se agradece si me enlazáis a este Tumblr, pero quiero dejar constancia que no es obligatorio. Lo que sí que no me gusta es que cambiéis partes de los códigos que hacen referencia a “flerex” o comentarios que tienen el propósito de demostrar la autoría del código. Son cosas que ningún usuario va a ver a no ser que indigue en el código fuente de la página, asi que no debería haber ningún problema.
+
+Dicho esto, ya tengo un plugin preparado para estrenar este nuevo sistema. Esperemos que vaya todo perfecto lel.</div>
+    </article>
+
+        </main>
+
+        <aside id="sidebar">
+
+        <div class="widget">
+            <div class="widget__heading">Categorias</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/actualizaciones">Actualizaciones</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/articulos">Artículos</a></span>
+                        <span class="bubble">7</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/codigos">Códigos</a></span>
+                        <span class="bubble">14</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/guias">Guías</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/meta">Meta</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/miscelanea">Miscelánea</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/recursos">Recursos</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/servicios">Servicios</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                            </ul>
+        </div>
+
+        <div class="widget">
+            <div class="widget__heading">Etiquetas</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/criticas">Críticas</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/css">CSS</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/desarrollo">Desarrollo</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/estandares">Estándares</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fainvision">FA/Invision</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/famodernbb">FA/ModernBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb2">FA/phpBB2</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb3">FA/phpBB3</a></span>
+                        <span class="bubble">19</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fapunbb">FA/PunBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fm-helper">FM-Helper</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/foroactivo">Foroactivo</a></span>
+                        <span class="bubble">22</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/jcink">Jcink</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/phpbb">phpBB</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                            </ul>
+        </div>
+
+
+    </aside>
+    </div>
+</div>
+<footer id="footer">
+    <div class="footer__content container">
+        <span>&copy; Flerex Blog 2026</span>
+    </div>
+</footer>
+</body>
+</html>

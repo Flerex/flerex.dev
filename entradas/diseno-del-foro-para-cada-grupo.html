@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <title>Diseño del foro para cada grupo - Flerex Blog</title>
+    
+            <meta name="description" content="Flerex Blog es un blog de recursos, guías y códigos para la comunidad hispana de RPG por foro. Aunque principalmente encontrarás recursos pensados para la plataforma Foroactivo, no nos centramos en exclusiva en ella, sino que también damos soporte a otras plataformas crecientes en popularidad como JCink." />
+        <script src="/js/prism.js"></script>
+    <script src="/js/prism-markup-templating.js"></script>
+    <script src="/js/prism-php.js"></script>
+    <script src="/js/clipboard.js"></script>
+    <script src="/js/prism-line-numbers.js"></script>
+    <script src="/js/prism-toolbar.js"></script>
+    <script src="/js/prism-copy-to-clipboard.js"></script>
+    <script src="/js/table-contents.js"></script>
+
+    
+    <link href="/css/app.css?id=15fbddac165dda994b3e" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/prism-tomorrow.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="/css/prism-line-numbers.css">
+    <link rel="stylesheet" href="/css/prism-toolbar.css">
+
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/images/apple-touch.png">
+    
+    <link rel="mask-icon" href="/svg/code.svg" color="#C16BC7">
+
+    <script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+</head>
+<body class="reading-mode">
+
+<header id="header">
+    <div class="container">
+        <div id="logo">
+            <a href="/" aria-label="Inicio"></a>
+        </div>
+        <nav class="navbar">
+            <div class="navbar__group">
+                <ul>
+                    <li><a class="navbar-link" href="/">Inicio</a></li>
+                </ul>
+            </div>
+            <div class="navbar__group">
+                <ul>
+                                    </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<div id="outer-wrapper">
+    <div id="wrap" class="container">
+        <main id="main">
+                <article class="post">
+        <header class="post__header">
+            <h1>Diseño del foro para cada grupo</h1>
+                        <div class="post__meta">
+                <div class="post__meta-item post__author">
+                    <div class="avatar">
+    <img src="https://secure.gravatar.com/avatar/8a8ded00a6f158bd28da1ae3c6181198.jpg?s=100&amp;d=mm&amp;r=g" title="Flerex" alt="">
+</div>                    <span class="post__author-name">Flerex</span>
+                </div>
+                <div class="post__extra">
+                    <div class="post__extra-info">
+
+                    <div class="post__date">
+                        <ion-icon name="ios-calendar"></ion-icon>
+                        <span>29 de abril de 2017</span>                    </div>
+                                            <div class="post__category">
+                            <a href="/categorias/codigos">
+                                <ion-icon name="ios-folder" title="Categoría"></ion-icon>
+                                <span>Códigos</span>
+                            </a>
+                        </div>
+                                        <div class="post-preview__info-elm post-preview__edited">
+        <ion-icon name="ios-medical" title="Actualizado el"></ion-icon>
+        <span>12 de abril de 2019</span>    </div>
+                    </div>
+                    <div class="post__tags">
+                        <div class="post-preview__tags taglist">
+                    <div class="taglist__tag"><a href="/etiquetas/faphpbb3">FA/phpBB3</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/foroactivo">Foroactivo</a></div>
+            </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="table-contents" hidden>
+            <div class="table-contents__title">Tabla de contenidos</div>
+            <div class="table-contents__content"></div>
+        </div>
+        <div class="post__content text-container"><!-- wp:paragraph -->
+<p>Con este código aprenderás a hacer que el diseño de tu foro cambie por completo dependiendo del grupo en el que esté tu usuario. Básicamente podrás hacer cosas como desde mostrar partes del foro solo a ciertos grupos, como hacer que tu foro de Harry Potter se vea rojo para los Gryfffindor, azul para los Ravenclaw, etc.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:more -->
+<!--more-->
+<!-- /wp:more -->
+
+<!-- wp:heading -->
+<h2>Requisitos</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul><li>Manejo con soltura del PA de Foroactivo</li><li>Tener instalado <strong>previamente</strong> el código <a href="/entradas/lista-de-grupos">Lista de Grupos</a><br></li></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading -->
+<h2>Instalación</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Para instalar el código debes seguir los siguientes pasos.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Módulo «Conectarse»</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Activa los módulos (<em>widgets</em>) y pon en cualquier sitio el módulo «Conectarse».</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>En caso de que queráis ocultar los módulos porque no los queréis:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre class="line-numbers"><code class="language-css">/* Si lo pusiste a la izquierda */
+#left {
+    display: none;
+}
+
+/* Si lo pusiste a la derecha */
+#right {
+    display: none;
+}
+</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:html -->
+<div class="notice note warning">
+<div class="notice__title">Nota</div>
+<div class="notice__content">Si no quieres los módulos visibles, utiliza uno de los dos códigos CSS anteriores para ocultarlos. No hagas, por ejemplo, otras alternativas como poner ancho cero a los módulos desde el PA, puesto que no funcionará.</div>
+</div>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>Por otro lado, si lo que queríais es que no se viese en exclusiva el módulo de conexión, podéis hacer lo siguiente:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list {"ordered":true} -->
+<ol><li>Váis al template Portal → mod_login<br></li><li>En la primera línea debería aparecer lo siguiente:</li></ol>
+<!-- /wp:list -->
+
+<!-- wp:html -->
+<pre><code class="language-html">&lt;div class="module"&gt;</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:html -->
+<ol start="3">
+	<li>Lo cambiáis por:</li>
+</ol>
+<!-- /wp:html -->
+
+<!-- wp:html -->
+<pre><code class="language-html">&lt;div class="module" style="display:none"&gt;
+</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Modificar una plantilla<strong>
+</strong></h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Ve a la plantilla Portal&nbsp;→ mod_login y busca:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre><code class="language-html">&lt;!-- BEGIN switch_profile --&gt;
+&lt;div class="h3"&gt;{USERNAME}&lt;/div&gt;&lt;br&gt;
+</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>Sustituimos por:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre><code class="language-html">&lt;!-- BEGIN switch_profile --&gt;
+&lt;div class="h3"&gt;&lt;span id="usergroup-user"&gt;{USERNAME}&lt;/span&gt;&lt;/div&gt;&lt;br /&gt;
+</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Colocar el JavaScript</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Colocar el siguiente JS en el PA, para todas las páginas.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre class="line-numbers"><code class="language-js">!function() {
+
+	function setBodyClassByUser($body, usr) {
+		const colorel = $('[style]', usr);
+
+		if (!colorel.length) {
+			$body.addClass('usergroup-nogroup');
+			return;
+		}
+
+		const groupcolor = colorel.attr('style'),
+		color = groupcolor.substr(groupcolor.lastIndexOf('#'));
+		$body.addClass(`usergroup-${ FLX.forumGroups.getByColor(color).code || 'unknown' }`);
+	}
+
+	$(function() {
+		const $body = $('body');
+
+		if (_userdata['user_id'] == -1) {
+			$body.addClass('usergroup-guest');
+			return;
+		}
+
+		const usr = $('#usergroup-user');
+
+		if (usr.length) {
+			setBodyClassByUser($body, usr);
+			return;
+		}
+
+		$.get('/faq', function(data) {
+			setBodyClassByUser($body, $(data).find('#flerex-user'));
+		});
+
+	});
+}();</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:heading -->
+<h2>Uso</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>La forma en la que funciona el código es muy simple: básicamente <strong>añade una clase especial a body dependiendo de en qué grupo estés</strong>. Gracias a esto puedes aplicar un código CSS a un grupo en específico añadiendo antes del selector de dicho código el body con la clase especial.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Por ejemplo, si tenemos la clase <code>.forabg</code> y queremos que para los usuarios del grupo “Gryffindor” tenga un borde rojo, tendríamos que hacer, simplemente:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre class="line-numbers"><code class="language-css">body.usergroup-gryffindor .forabg {
+    border: 10px solid red;
+}</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:heading -->
+<h2>Selectores disponibles</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Las clases que añade este código al <code>body</code> de tu foro son las siguientes.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul><li><code>body.usergroup-guest</code>: Usuario invitado (aquellos que no se han conectado).</li><li><code>body.usegroup-nogroup</code>: Usuarios sin color, conectados.</li><li><code>body.usegroup-{codigo-grupo}</code>:  Sustituyendo las llaves (incluídas) por el código del grupo puesto en el JS del código «Lista de Grupos» que está como requisito para la instalación de este código. </li><li><code>body.usegroup-unknown</code>: Usuarios con color, pero cuyo grupo no está definido en el código «Lista de Grupos». No deberías ver esto nunca.</li></ul>
+<!-- /wp:list --></div>
+    </article>
+
+        </main>
+
+        <aside id="sidebar">
+
+        <div class="widget">
+            <div class="widget__heading">Categorias</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/actualizaciones">Actualizaciones</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/articulos">Artículos</a></span>
+                        <span class="bubble">7</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/codigos">Códigos</a></span>
+                        <span class="bubble">14</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/guias">Guías</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/meta">Meta</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/miscelanea">Miscelánea</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/recursos">Recursos</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/servicios">Servicios</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                            </ul>
+        </div>
+
+        <div class="widget">
+            <div class="widget__heading">Etiquetas</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/criticas">Críticas</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/css">CSS</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/desarrollo">Desarrollo</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/estandares">Estándares</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fainvision">FA/Invision</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/famodernbb">FA/ModernBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb2">FA/phpBB2</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb3">FA/phpBB3</a></span>
+                        <span class="bubble">19</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fapunbb">FA/PunBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fm-helper">FM-Helper</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/foroactivo">Foroactivo</a></span>
+                        <span class="bubble">22</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/jcink">Jcink</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/phpbb">phpBB</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                            </ul>
+        </div>
+
+
+    </aside>
+    </div>
+</div>
+<footer id="footer">
+    <div class="footer__content container">
+        <span>&copy; Flerex Blog 2026</span>
+    </div>
+</footer>
+</body>
+</html>

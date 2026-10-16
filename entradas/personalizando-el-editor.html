@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <title>Personalizando el editor - Flerex Blog</title>
+    
+     
+        <meta name="description" content="Seguramente te ha pasado. Estás diseñando tu foro con un precioso  tema oscuro. Te diriges a modificar la página de los temas o la de crear uno y ahí está, el editor. Empiezas a pelearte con el CSS, que si !important por aquí, !important por allá. Y, cuando por fin has puesto el editor blanco en un color que no moleste tanto te das cuenta de que los iconos, al ser imágenes, se ven horribles y no destacan con tu tema negro. Tranquilo, con esta guía tu dolor se acabará." />
+        <script src="/js/prism.js"></script>
+    <script src="/js/prism-markup-templating.js"></script>
+    <script src="/js/prism-php.js"></script>
+    <script src="/js/clipboard.js"></script>
+    <script src="/js/prism-line-numbers.js"></script>
+    <script src="/js/prism-toolbar.js"></script>
+    <script src="/js/prism-copy-to-clipboard.js"></script>
+    <script src="/js/table-contents.js"></script>
+
+    
+    <link href="/css/app.css?id=15fbddac165dda994b3e" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/prism-tomorrow.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="/css/prism-line-numbers.css">
+    <link rel="stylesheet" href="/css/prism-toolbar.css">
+
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/images/apple-touch.png">
+    
+    <link rel="mask-icon" href="/svg/code.svg" color="#C16BC7">
+
+    <script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+</head>
+<body class="reading-mode">
+
+<header id="header">
+    <div class="container">
+        <div id="logo">
+            <a href="/" aria-label="Inicio"></a>
+        </div>
+        <nav class="navbar">
+            <div class="navbar__group">
+                <ul>
+                    <li><a class="navbar-link" href="/">Inicio</a></li>
+                </ul>
+            </div>
+            <div class="navbar__group">
+                <ul>
+                                    </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<div id="outer-wrapper">
+    <div id="wrap" class="container">
+        <main id="main">
+                <article class="post">
+        <header class="post__header">
+            <h1>Personalizando el editor</h1>
+                            <img class="post__featured-image" src="/storage/featured/35.jpg" alt="">
+                        <div class="post__meta">
+                <div class="post__meta-item post__author">
+                    <div class="avatar">
+    <img src="https://secure.gravatar.com/avatar/8a8ded00a6f158bd28da1ae3c6181198.jpg?s=100&amp;d=mm&amp;r=g" title="Flerex" alt="">
+</div>                    <span class="post__author-name">Flerex</span>
+                </div>
+                <div class="post__extra">
+                    <div class="post__extra-info">
+
+                    <div class="post__date">
+                        <ion-icon name="ios-calendar"></ion-icon>
+                        <span>4 de abril de 2019</span>                    </div>
+                                            <div class="post__category">
+                            <a href="/categorias/guias">
+                                <ion-icon name="ios-folder" title="Categoría"></ion-icon>
+                                <span>Guías</span>
+                            </a>
+                        </div>
+                                                            </div>
+                    <div class="post__tags">
+                        <div class="post-preview__tags taglist">
+                    <div class="taglist__tag"><a href="/etiquetas/fainvision">FA/Invision</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/famodernbb">FA/ModernBB</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/faphpbb2">FA/phpBB2</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/faphpbb3">FA/phpBB3</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/fapunbb">FA/PunBB</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/foroactivo">Foroactivo</a></div>
+            </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="table-contents" hidden>
+            <div class="table-contents__title">Tabla de contenidos</div>
+            <div class="table-contents__content"></div>
+        </div>
+        <div class="post__content text-container"><!-- wp:paragraph -->
+<p>Actualmente el editor de Foroactivo, aunque potente, no deja mucho margen para la personalización. Mientras que algunos aspectos básicos del mismo como los botones o el editor de BBCode son sencillos de modificar, cambiar los iconos de los botones o personalizar el editor en modo WYSIWYG puede ser un auténtico rompecabezas.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>En las siguientes líneas te enseñaré a modificar cada aspecto del editor de Foroactivo mediante códigos HTML, CSS y JavaScript.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>Objetivos</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Aprender a modificar los siguientes aspectos del editor:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul><li>Los botones, grupos de botones y editor en general.</li><li>Los iconos de los botones, utilizando <em>Font Awesome</em>.</li><li>El área de escritura en modo BBCode.</li><li>El área de escritura en modo WYSIWYG.<br></li></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading -->
+<h2>Requisitos</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul><li>Soltura con el PA de Foroactivo.</li><li>Conocimientos <strong>intermedios</strong> de modificación de templates y CSS.</li><li>Tener Font Awesome <a href="/entradas/utilizando-iconos">instalado en tu foro</a>.<br></li></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading -->
+<h2>Instalación</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>El siguiente JS, que debes añadir a tu foro <strong>en todas las páginas</strong> desde la gestión de JavaScript, cambiará todos los iconos del editor por los iconos equivalentes de Font Awesome, además de que permite añadir CSS para personalizar el campo de escritura en modo WYSIWYG.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre class="line-numbers"><code class="language-js">!function() {
+
+	const settings = {
+		css: `
+			body {
+				background: white;
+			}
+
+			body,
+			code:before,
+			html,
+			p,
+			table {
+				font-size: 15px;
+				color: black;
+				font-family: Verdana, sans-serif;
+				line-height: 1.8;
+			}
+		`, // CSS en JS es mala práctica, pero es la única manera.
+		icons: {
+			bold: 'bold',
+			italic: 'italic',
+			underline: 'underline',
+			strike: 'strikethrough',
+			left: 'align-left',
+			center: 'align-center',
+			right: 'align-right',
+			justify: 'align-justify',
+			bulletlist: 'list-ul',
+			orderedlist: 'list-ol',
+			horizontalrule: 'grip-lines',
+			quote: 'quote-right',
+			code: 'terminal',
+			faspoiler: 'toggle-on',
+			fahide: 'eye-slash',
+			table: 'table',
+			servimg: 'upload',
+			image: 'images',
+			link: 'link',
+			youtube: ['fab', 'fa-youtube'],
+			dailymotion: 'video',
+			flash: 'file-video',
+			headers: 'heading',
+			size: 'text-height',
+			color: 'palette',
+			font: 'font',
+			removeformat: 'undo',
+			more: 'ellipsis-h',
+			subscript: 'subscript',
+			superscript: 'superscript',
+			fascroll: 'arrows-alt-h',
+			faupdown: 'arrows-alt-v',
+			farand: 'dice',
+			faroll: 'dice-six',
+			emoticon: 'smile',
+			date: 'calendar',
+			time: 'clock',
+			pastetext: 'paste',
+			source: 'code',
+		},
+
+	};
+
+	function replaceButtons(container) {
+		Object.keys(settings.icons).forEach(k =&gt; {
+			const button = container.querySelector('.sceditor-button-' + k),
+			icon = document.createElement('I');
+
+			if (!button) return;
+
+			icon.classList.add(...(Array.isArray(settings.icons[k])
+				? settings.icons[k]
+				: ['fas', 'fa-' + settings.icons[k]]
+			));
+
+
+			button.removeChild(button.firstElementChild);
+			button.appendChild(icon);
+
+		});
+	}
+
+	function appendStylesheet({contentDocument}) {
+		const style = contentDocument.createElement('STYLE');
+		style.innerHTML = settings.css;
+		contentDocument.head.appendChild(style);
+	}
+
+	function ready(e) {
+		const container = document.getElementById('textarea_content');
+		if (!container) return;
+
+		replaceButtons(container);
+
+		const iframe = container.querySelector('iframe');
+		if (!iframe) return;
+
+		appendStylesheet(iframe);
+
+	}
+	document.addEventListener('DOMContentLoaded', ready);
+
+}();</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>No te preocupes, a continuación se explicará como personalizar el código.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>Personalizar los iconos</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Como el código anterior ha cambiado todos los iconos por los de Font Awesome. Es posible que por defecto el editor se vea un poco más feo. Con el siguiente código CSS que debes añadir a tu foro, centrarás los iconos:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre class="line-numbers"><code class="language-css">.sceditor-container .sceditor-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-indent: 0;
+	color: #333;
+}
+
+.sceditor-container .sceditor-button.disabled {
+	color: #AAA;
+}</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:html -->
+<div class="notice exclamation danger">
+<div class="notice__title">Atención</div>
+<div class="notice__content">Si tienes un problema de que no se ven los iconos es porque no has colocado el anterior CSS.</div>
+</div>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>Además, con el código anterior también podrás cambiar el color de los iconos para ponerlo acorde a tu foro. Solo cambia la propiedad <code>color</code> del primer selector por el color que quieras.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>El segundo selector se utiliza para definir el color de los botones desactivados. Por ejemplo, el botón de eliminar formato permanece desactivado hasta que seleccionas texto.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>Cambiar los iconos</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Por defecto el código que has instalado contiene los iconos más cercanos de Font Awesome a los Foroactivo proporcionaba. Aunque el código permite cambiarlos, es mejor que los dejes como están, puesto será más sencillo de entender para gente que venga de otros foros con o sin este código.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Si sigues queriendo cambiar algún que otro icono, al principio del código hay una sección <code>icons</code> con un montón de líneas a continuación. En estas líneas se define cada icono y su icono equivalente de Font Awesome de la siguiente manera:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre><code class="language-js">nombreDelBoton: 'nombreDelIconoFontAwesome',</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>A la izquierda no tienes que modificar nada, puesto que el código ya incluye todos los botones disponibles en el editor. Lo único que debes cambiar es lo que está entre comillas por el nombre del icono de Font Awesome.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Ten en cuenta que por defecto se utiliza el estilo <em>solid</em> de Font Awesome. Si quisieses utilizar otro estilo o incluso usar otra librería de iconos, puedes poner en lugar de la cadena de texto (<em>string</em>) una <em>array</em> con una lista de clases. Por ejemplo:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre><code class="language-js">youtube: ['fab', 'fa-youtube'],</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>El anterior código generará el siguiente elemento:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre><code class="language-markup">&lt;i class="fab fa-youtube"&gt;&lt;/i&gt;</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>De igual forma, si usásemos el método normal:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre><code class="language-js">quote: 'quote-right',</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>Obtendríamos el siguiente código:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre><code class="language-markup">&lt;i class="fas fa-quote-right"&gt;&lt;/i&gt;</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>Como los iconos de tipo <em>solid</em> son los más comunes, es más fácil hacerlo de la anterior manera, aunque también podrías hacerlo del método de la <em>array</em>. El siguiente código sería equivalente al anterior:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre><code class="language-js">quote: ['fas', 'fa-quote-right'],</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:heading -->
+<h2>Editor WYSIWYG</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Para personalizar el editor WYSIWYG a estas alturas ya sabrás que, al ser un <code>iframe</code>, el CSS de tu foro no afecta dentro de él (por motivos de seguridad, por supuesto).</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Con el código anterior podrás colocar CSS directamente en el <code>iframe</code>, permitiéndote modificar cosas como el color de fondo, fuente, color de texto y todo lo que te puedas imaginar.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>El CSS que quieras incluir en el <code>iframe</code> lo tendrás que incluír en el código JS anterior. Por norma general, añadir CSS en JS es una muy mala práctica y, en este caso no es una excepción. ¿Por qué lo hacemos? Porque actualmente es la única forma para poder modificarlo debido a las limitaciones de Foroactivo.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>El CSS lo debes colocar en el apartado <code>css</code> del código JS de la instalación, al principio de todo. De hecho, ya podrás ver un código CSS de ejemplo que cubre las necesidades más comunes:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre class="line-numbers"><code class="language-css">body {
+	background: white;
+}
+
+body,
+code:before,
+html,
+p,
+table {
+	font-size: 15px;
+	color: black;
+	font-family: Verdana, sans-serif;
+	line-height: 1.8;
+}</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>El selector <code>body</code> lo puedes utilizar para cambiar el fondo del editor. El otro selector se utiliza para cambiar cosas como fuentes, tamaños, etc.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<div class="notice note warning">
+<div class="notice__title">Nota</div>
+<div class="notice__content">Si vas a utilizar una fuente de Google Fonts o similares, no va a funcionar puesto que la has instalado en tu foro y, al igual que el CSS de tu foro no afecta a los <code>iframe</code>s, lo mismo pasa con las fuentes. Tendrás que volver a poner el CSS necesario para las fuentes junto al anterior.</div>
+</div>
+<!-- /wp:html -->
+
+<!-- wp:heading -->
+<h2>Otras personalizaciones</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>El resto de modificaciones que puedes querer hacer al editor seguramente ya las conocerás, puesto que se pueden hacer con CSS simple. Por completar un poco esta guía, incluyo los selectores más comunes:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul><li><code>#textarea_content .sceditor-container </code>: El contenedor principal del editor.</li><li><code>.sceditor-container .sceditor-toolbar</code>: El contenedor de todos los botones.</li><li><code>.sceditor-container .sceditor-group</code>: Los grupos de botones</li><li><code>.sceditor-container .sceditor-button</code>: Los botones</li><li><code>#textarea_content .sceditor-container iframe</code>: El cuadro de escritura en modo WYSIWYG</li><li><code>#textarea_content .sceditor-container</code>: El cuadro de escritura en modo BBCode<br></li></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading -->
+<h2>Mis consejos</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>A continuación una serie de consejos que doy a la hora de modificar el editor:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul><li>Utiliza <strong>fuentes grandes, un espaciado de línea saludable y colores con buen contraste</strong>. Ten en cuenta que tus usuarios van a escribir aquí. Hazle un favor a sus ojos.</li><li>Haz que el estilo del modo WYSIWYG y BBCode concuerde. No hay nada más molesto que cambiar entre modos y que el texto se mueva porque en un modo el <code>textarea</code> tiene más padding que el <code>iframe</code>.</li><li>No cambies los iconos por defecto. De esta manera todo usuario que entre a un foro con este código no se perderá porque los iconos no sean a los que está acostumbrado.</li></ul>
+<!-- /wp:list --></div>
+    </article>
+
+        </main>
+
+        <aside id="sidebar">
+
+        <div class="widget">
+            <div class="widget__heading">Categorias</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/actualizaciones">Actualizaciones</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/articulos">Artículos</a></span>
+                        <span class="bubble">7</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/codigos">Códigos</a></span>
+                        <span class="bubble">14</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/guias">Guías</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/meta">Meta</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/miscelanea">Miscelánea</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/recursos">Recursos</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/servicios">Servicios</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                            </ul>
+        </div>
+
+        <div class="widget">
+            <div class="widget__heading">Etiquetas</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/criticas">Críticas</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/css">CSS</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/desarrollo">Desarrollo</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/estandares">Estándares</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fainvision">FA/Invision</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/famodernbb">FA/ModernBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb2">FA/phpBB2</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb3">FA/phpBB3</a></span>
+                        <span class="bubble">19</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fapunbb">FA/PunBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fm-helper">FM-Helper</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/foroactivo">Foroactivo</a></span>
+                        <span class="bubble">22</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/jcink">Jcink</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/phpbb">phpBB</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                            </ul>
+        </div>
+
+
+    </aside>
+    </div>
+</div>
+<footer id="footer">
+    <div class="footer__content container">
+        <span>&copy; Flerex Blog 2025</span>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <title>Sugerencia de temas al escribir - Flerex Blog</title>
+    
+     
+        <meta name="description" content="Sugiere a tus usuarios temas relacionados cuando estén abriendo nuevos temas para evitar hilos repetidos. Este es el mismo código utilizado por el foro oficial de soporte de Foroactivo." />
+        <script src="/js/prism.js"></script>
+    <script src="/js/prism-markup-templating.js"></script>
+    <script src="/js/prism-php.js"></script>
+    <script src="/js/clipboard.js"></script>
+    <script src="/js/prism-line-numbers.js"></script>
+    <script src="/js/prism-toolbar.js"></script>
+    <script src="/js/prism-copy-to-clipboard.js"></script>
+    <script src="/js/table-contents.js"></script>
+
+    
+    <link href="/css/app.css?id=15fbddac165dda994b3e" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/prism-tomorrow.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="/css/prism-line-numbers.css">
+    <link rel="stylesheet" href="/css/prism-toolbar.css">
+
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/images/apple-touch.png">
+    
+    <link rel="mask-icon" href="/svg/code.svg" color="#C16BC7">
+
+    <script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+</head>
+<body class="reading-mode">
+
+<header id="header">
+    <div class="container">
+        <div id="logo">
+            <a href="/" aria-label="Inicio"></a>
+        </div>
+        <nav class="navbar">
+            <div class="navbar__group">
+                <ul>
+                    <li><a class="navbar-link" href="/">Inicio</a></li>
+                </ul>
+            </div>
+            <div class="navbar__group">
+                <ul>
+                                    </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<div id="outer-wrapper">
+    <div id="wrap" class="container">
+        <main id="main">
+                <article class="post">
+        <header class="post__header">
+            <h1>Sugerencia de temas al escribir</h1>
+                            <img class="post__featured-image" src="/storage/featured/25.png" alt="">
+                        <div class="post__meta">
+                <div class="post__meta-item post__author">
+                    <div class="avatar">
+    <img src="https://secure.gravatar.com/avatar/8a8ded00a6f158bd28da1ae3c6181198.jpg?s=100&amp;d=mm&amp;r=g" title="Flerex" alt="">
+</div>                    <span class="post__author-name">Flerex</span>
+                </div>
+                <div class="post__extra">
+                    <div class="post__extra-info">
+
+                    <div class="post__date">
+                        <ion-icon name="ios-calendar"></ion-icon>
+                        <span>15 de marzo de 2018</span>                    </div>
+                                            <div class="post__category">
+                            <a href="/categorias/codigos">
+                                <ion-icon name="ios-folder" title="Categoría"></ion-icon>
+                                <span>Códigos</span>
+                            </a>
+                        </div>
+                                        <div class="post-preview__info-elm post-preview__edited">
+        <ion-icon name="ios-medical" title="Actualizado el"></ion-icon>
+        <span>13 de diciembre de 2018</span>    </div>
+                    </div>
+                    <div class="post__tags">
+                        <div class="post-preview__tags taglist">
+                    <div class="taglist__tag"><a href="/etiquetas/faphpbb3">FA/phpBB3</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/plugins">Plugins</a></div>
+            </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="table-contents" hidden>
+            <div class="table-contents__title">Tabla de contenidos</div>
+            <div class="table-contents__content"></div>
+        </div>
+        <div class="post__content text-container"><p style="margin-bottom: 2em; margin-left: auto; padding: 0px; border: 0px; font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 18px; font-stretch: inherit; line-height: inherit; vertical-align: baseline; width: 700px; box-sizing: border-box; caret-color: #484848; color: #484848;">Hace tiempo preparé un plugin para el Foro de Soporte oficial de Foroactivo y lo compartí con la comunidad inglesa en uno de los foros más conocidos de la misma. Como este foro ha cerrado me gustaría que este código no se perdiese, por lo que lo comparto en el blog, aunque se separe un poco de la temática original.</p>
+<p style="margin-bottom: 2em; margin-left: auto; padding: 0px; border: 0px; font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 18px; font-stretch: inherit; line-height: inherit; vertical-align: baseline; width: 700px; box-sizing: border-box; caret-color: #484848; color: #484848;">¿Qué hace este plugin? Con este plugin harás que a la hora de abrir un nuevo tema, tus usuarios reciban sugerencias de posibles temas ya crados relacionados con el título del que está escribiendo. Este plugin está pensado principalmente para foros de soporte, evitando que los usuarios repitan preguntas ya hechas.</p>
+<p style="margin-bottom: 2em; margin-left: auto; padding: 0px; border: 0px; font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 18px; font-stretch: inherit; line-height: inherit; vertical-align: baseline; width: 700px; box-sizing: border-box; caret-color: #484848; color: #484848;"><img style="margin: 0px; padding: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;" src="https://i.imgbox.com/COVdLjLJ.gif" alt="Una demo de como funciona el plugin" /></p>
+
+<h2 style="margin-top: 0px; margin-bottom: 0px; margin-left: auto; padding: 0.5em 0px; border: 0px; font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 1.8em; font-stretch: inherit; line-height: 1.2; vertical-align: baseline; color: #222222; position: relative; width: 700px; box-sizing: border-box;"><a id="instalacion" class="anchor" style="margin: -83px 0px 0px; padding: 83px 0px 0px; border: none; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; color: #0a46a5; position: absolute; right: 700px; outline: none;" href="/sugerencia-de-temas-al-escribir/#instalacion"></a>Instalación</h2>
+Primero crea un nuevo JavaScript desde la Gestión de JavaScripts del PA y muéstralo en todas las páginas. Añadele el siguiente:
+<pre class="line-numbers"><code class="language-javascript">/* Similar Topics v.1.1.2 | Flerex | flerex.dev */
+eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('2m 10=10||{};10.A=(b(){\'2n 2o\';j 8={11:[],1f:G,J:5,1G:4,1g:1h,1H:G,1i:G,1I:2p 2q(/[.,\\/#!$%\\^&\\*¿?!¡;:{}\\\\=\\-1j`~"«“‘’”»()\\[\\]]/,\'g\'),9:{1J:\'.12\',c:\'2r.2s\',1K:\'.13\',K:\'a[B^="/u"]\',C:\'a[B^="/f"]\',p:{1k:G,1l:\'1L.14\'},t:\'t\',1M:\'#2t 2u[L="2v"]\',1N:\'1L\',H:$(\'<q />\',{1m:\'A\'}),1O:$(\'<q />\',{k:\'c-2w\'}),1P:$(\'<q />\',{k:\'15\'}).v($(\'<q/>\',{k:\'1Q-2x\'})).v($(\'<q/>\',{k:\'1Q-2y\'})),1R:$(\'<q />\',{k:\'c\'}),1S:$(\'<q />\',{k:\'c-i\'}),1T:$(\'<q />\',{k:\'c-1n\'}),M:$(\'<q />\',{k:\'c-2z\'}),1U:$(\'<q />\',{k:\'c-14\'}),N:$(\'<q />\',{k:\'c-D\'}),1V:$(\'<q />\',{k:\'c-2A\'}),O:$(\'<1W />\',{k:\'c-2B\',x:\'2C \'}),P:$(\'<1W />\',{k:\'c-16\',x:\' 2D \'}),1X:$(\'<2E />\',{k:\'A-i\',x:\'2Fás 2G 2H...\'}),},},m={},2I,1Y=b(E,1Z){j Q;R b(...a){2J(Q);Q=2K(1j=>{Q=2L;E.17(r,...a)},1Z)}},1o=b(20){R 20.h(/%l%2M/g,\'%2N\').h(/%l%2O/g,\'%2P\').h(/%l%2Q/g,\'%2R\').h(/%l%2S/g,\'%2T\').h(/%l%2U/g,\'%2V\').h(/%l%2W/g,\'%2X\').h(/%l%2Y/g,\'%2Z\').h(/%l%30/g,\'%31\').h(/%l%32/g,\'%33\').h(/%l%34/g,\'%35\').h(/%l%36/g,\'%37\').h(/%l%38/g,\'%39\').h(/%l%3a/g,\'%3b\').h(/%l%3c/g,\'%3d\')},1p=b(n,E){$.3e({n:n,}).3f(b(1n){j w=[],$12=$(8.9.1J,1n);y($12.F){$12.I(8.9.c).18(0,8.J).21(b(){j $r=$(r),$13=$r.I(8.9.1K),$C=$r.I(8.9.C),$K=$r.I(8.9.K),$p=8.9.p.1k?$r.I(8.9.p.1l):$r.22(8.9.p.1l);j D;y(8.9.p.1k){D=$p.S(\'3g\')}1q{D=$p.T(\'U-V\').F?$p.T(\'U-V\').18(4,-1).h(/"/g,\'\'):G}w.3h({i:$13.x().23(),n:$13.S(\'B\'),14:$r.T(\'U-V\').18(4,-1).h(/"/g,\'\'),D,16:{L:$C.x(),n:$C.S(\'B\'),},1r:{L:$K.x(),n:$K.S(\'B\'),},})})}E.17(r,w)}).3i(1j=>{j 24;3j 24||G})},25=b(26){R 26.23().h(8.1I,\'\').3k(\' \').27(19=>19.F>=8.1G)},28=b(z){m.W.3l();y(z.F){j 1s=3m.3n();$.21(z,b(3o,c){j $1t=8.9.1S.o(),$1u=8.9.1R.o(),$1v=8.9.1V.o(),$O=8.9.O.o(),$N=8.9.N.o(),$P=8.9.P.o(),$M=8.9.M.o(),$1w=8.9.1T.o(),$p=8.9.1U.o(),$29=$(\'<a />\',{1x:\'1y\',B:c.n,x:c.i}),$C=$(\'<a />\',{1x:\'1y\',B:c.16.n,x:c.16.L}),$2a=$(\'<a />\',{1x:\'1y\',B:c.1r.n,x:c.1r.L});$p.T(\'U-V\',`n(\'${ c.14 }\')`);c.D&&$N.T(\'U-V\',`n(\'${ c.D }\')`);$O.v($2a);$P.v($C);$1t.v($29);$1v.v($O,$P);$1w.v($1t,$1v);$M.v($N,$p);$1u.v($M,$1w);1s.v($1u[0])});m.W[0].3p(1s)}1q m.H.X(8.9.t)},2b=b(){m.1z.1a(8.9.t);m.1A.X(8.9.t);m.W.X(8.9.t)},2c=b(){m.1z.X(8.9.t);m.1A.1a(8.9.t);m.W.1a(8.9.t)},2d=b(Y,E){j 1b={3q:8.1f||`f${/\\?f=(\\d+)/.3r(1c.Z)[1]}`,3s:\'3t\',3u:0,3v:\'3w\',2e:\'3x\',3y:Y.3z(\' \'),};1p(`/Z?${1o($.2f(1b))}`,b(z){j w=z;y(w.F<8.J){1b.2e=\'3A\';1p(`/Z?${1o($.2f(1b))}`,b(z){j 1d=z,2g=8.J-w.F;1d=1d.27(19=>w.I(e=>e.n==19.n)===3B);w=[...w,...1d.18(0,2g)];E.17(r,w)})}E.17(r,w)})},1B=b(){m.H.X(8.9.t)},2h=b(){m.H.1a(8.9.t)},1C=b($i){j Y=25($i.3C());y(Y.F==0){1B();R}2h();2b();2d(Y,b(z){28(z);2c()})},2i=b($i){j $A=8.9.H.o(),$15=8.9.1P.o(),$1D=8.9.1O.o(),$1E=8.9.1X.o();m={H:$A,1z:$15,W:$1D,1A:$1E,};$A.v($15,$1E,$1D);$i.22(8.9.1N).3D($A)},1e=b(2j){$.3E(1h,8,2j);j Q,$i=$(8.9.1M);y(!8.1i)$i.S(\'1i\',\'3F\');2i($i);y(8.1g)$i.1F(\'3G\',1Y(b(e){y(e.3H!==0)1C($i)},3I));1q $i.1F(\'2k\',b(){1C($i)});y(8.1g&&8.1H)$i.1F(\'2k\',b(){1B()})};R{1e:1e,}})();!b(){3J 8={11:[1,2,3,4,5,6,7],1f:\'-1\',J:5,};1c.3K==\'/3L\'&&1c.Z.2l(\'&3M=3N\')>-1&&(8.11===1h||8.11.3O(1m=>1c.Z.2l(`?f=${1m}`)>-1))&&$(b(){10.A.1e(8)})}();',62,237,'||||||||settings|dom||function|topic|||||replace|title|let|class|C3|structure|url|clone|topicicon|div|this||visible||append|relatedTopics|text|if|arr|similarTopics|href|forumlink|status|cb|length|false|maincontainer|find|maxTopics|userlink|name|topicflags|topicstatus|topicauthor|topicforum|timeout|return|attr|css|background|image|topiccontainer|removeClass|words|search|FLRX|forums|forabg|topictitle|icon|spinner|forum|call|slice|elm|addClass|params|location|searchAnyWord|init|searchIn|triggerWhenWriting|true|autocomplete|_|img|selector|id|data|sanitizeURI|searchTopics|else|user|docfrag|topicTitle|topicContainer|topicInfo|topicdata|target|_blank|loadingcontainer|recentstitle|hideSimilarTopics|searchSimilarTopics|topicsContainer|recentsTitle|on|wordMinLength|hideAtFocusout|excludedCharacters|topicscontainer|titlelink|dl|titleinput|inputcontainer|similartopiccont|loadingelm|double|topicelmcont|topicelmtitle|topicdatacont|topiciconcont|topicelminfo|span|similarstitle|debounce|delay|uri|each|closest|trim|up|getWords|str|filter|updateDOM|topicLink|authorlink|setLoadingStatus|topicsRetrieved|searchAlgorithm|search_terms|param|neededElms|showSimilarTopics|generateStructure|options|focusout|indexOf|var|use|strict|new|RegExp|dd|dterm|postingbox|input|subject|container|bounce1|bounce2|flags|info|author|por|en|h4|Quiz|te|interese|request|clearTimeout|setTimeout|null|91|D1|B1|F1|81|C1|89|C9|8D|CD|93|D3|9A|DA|9C|DC|A1|E1|A9|E9|AD|ED|B3|F3|BA|FA|BC|FC|ajax|done|src|push|fail|throw|split|empty|document|createDocumentFragment|index|appendChild|search_where|exec|show_results|topics|sort_by|sort_dir|DESC|all|search_keywords|join|any|undefined|val|after|extend|off|keypress|which|500|const|pathname|post|mode|newtopic|some'.split('|'),0,{}))</code></pre>
+<p style="margin-bottom: 2em; margin-left: auto; padding: 0px; border: 0px; font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 18px; font-stretch: inherit; line-height: inherit; vertical-align: baseline; width: 700px; box-sizing: border-box; caret-color: #484848; color: #484848;">Ahora añade el siguiente CSS a tu foro para obtener el diseño por defecto del plugin (igual que el del gif anterior):</p>
+
+<pre class="line-numbers" style="margin-bottom: 0px; margin-left: auto; padding: 0px; border: 0px; font-family: inherit; font-size: 18px; font-stretch: inherit; line-height: inherit; vertical-align: baseline; position: relative; counter-reset: linenumber 0; width: 700px; box-sizing: border-box; caret-color: #484848; color: #484848;"><code class="language-css" style="margin-bottom: 2em; padding: 10px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: 27.540000915527344px; vertical-align: baseline; color: #555555; background-image: none; background-color: rgba(0, 0, 0, 0.0470588); text-shadow: white 0px 1px; white-space: pre; word-spacing: normal; word-break: normal; word-wrap: normal; tab-size: 4; -webkit-hyphens: none; max-width: 100%; position: relative; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: block; overflow-x: auto;">#similarTopics {
+	width: 500px;
+	background: #E1EBF2;
+	padding: 5px 10px;
+	border-radius: 5px;
+	margin: 5px 0 0 10em;
+}
+ 
+#similarTopics,
+#similarTopics .spinner,
+#similarTopics .topic-container,
+#similarTopics .similarTopics-title {
+	display: none;
+}
+ 
+#similarTopics.visible,
+#similarTopics .spinner.visible,
+#similarTopics .similarTopics-title.visible,
+#similarTopics .topic-container.visible {
+	display: block;
+}
+ 
+#similarTopics .topic {
+	display: flex;
+	border-bottom: 1px solid white;
+	padding: 5px 0;
+	margin: 5px 0;
+}
+ 
+#similarTopics .topic:last-child {
+	border-bottom: none;
+}
+ 
+#similarTopics .topic-data {
+	flex: 1;
+}
+ 
+#similarTopics .topic-flags {
+	align-items: center;
+	margin-right: 10px;
+	position: relative;
+}
+ 
+#similarTopics .topic-icon {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: transparent 50% 50% no-repeat;
+}
+ 
+#similarTopics .similarTopics-title {
+	border-bottom: 1px solid #0076b1;
+	color: #0076b1;
+	font-size: .9em;
+	margin: .5em 0;
+	text-transform: uppercase;
+}
+ 
+#similarTopics .topic-status {
+	width: 27px;
+	height: 27px;
+	background: transparent 0 0 no-repeat;
+}</code></pre>
+<p style="margin-bottom: 2em; margin-left: auto; padding: 0px; border: 0px; font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 18px; font-stretch: inherit; line-height: inherit; vertical-align: baseline; width: 700px; box-sizing: border-box; caret-color: #484848; color: #484848;">Finalmente añade el siguiente JS desde la Gestión de JavaScript del PA y asegúrate de marcarlo para que se <strong style="margin: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; color: #222222;">muestre en todas las páginas</strong>:</p>
+
+<pre class="line-numbers" style="margin-bottom: 0px; margin-left: auto; padding: 0px; border: 0px; font-family: inherit; font-size: 18px; font-stretch: inherit; line-height: inherit; vertical-align: baseline; position: relative; counter-reset: linenumber 0; width: 700px; box-sizing: border-box; caret-color: #484848; color: #484848;"><code class="language-javascript" style="margin-bottom: 2em; padding: 10px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: 27.540000915527344px; vertical-align: baseline; color: #555555; background-image: none; background-color: rgba(0, 0, 0, 0.0470588); text-shadow: white 0px 1px; white-space: pre; word-spacing: normal; word-break: normal; word-wrap: normal; tab-size: 4; -webkit-hyphens: none; max-width: 100%; position: relative; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: block; overflow-x: auto;">!function() {
+ 
+	const settings = {
+		forums : [1,2,3,4,5,6,7],
+		searchIn : '-1',
+		maxTopics : 5,
+	};
+ 
+ 
+	location.pathname == '/post' &amp;&amp;
+	location.search.indexOf('&amp;mode=newtopic') &gt; -1 &amp;&amp;
+	(settings.forums === true || settings.forums.some(id =&gt; location.search.indexOf(`?f=${id}`) &gt; -1)) &amp;&amp;
+	$(function() {
+		FLRX.similarTopics.init(settings);
+	});
+ 
+}();</code></pre>
+<p style="margin-bottom: 2em; margin-left: auto; padding: 0px; border: 0px; font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 18px; font-stretch: inherit; line-height: inherit; vertical-align: baseline; width: 700px; box-sizing: border-box; caret-color: #484848; color: #484848;">Si te has dado cuenta hay una constante <code style="padding: 5px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgba(0, 0, 0, 0.0470588); color: #c51a6f;">settings</code> que permite pasar distintos parámetros de configuración al plugin. Esos parámetros no son los únicos disponibles. Todas las posibles configuraciones están en la documentación.</p>
+
+<h2 style="margin-top: 0px; margin-bottom: 0px; margin-left: auto; padding: 0.5em 0px; border: 0px; font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 1.8em; font-stretch: inherit; line-height: 1.2; vertical-align: baseline; color: #222222; position: relative; width: 700px; box-sizing: border-box;"><a id="documentacion" class="anchor" style="margin: -83px 0px 0px; padding: 83px 0px 0px; border: none; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; color: #0a46a5; position: absolute; right: 700px; outline: none;" href="/sugerencia-de-temas-al-escribir/#documentacion"></a>Documentación</h2>
+<p style="margin-bottom: 2em; margin-left: auto; padding: 0px; border: 0px; font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 18px; font-stretch: inherit; line-height: inherit; vertical-align: baseline; width: 700px; box-sizing: border-box; caret-color: #484848; color: #484848;">A continuación encontrarás todos los parámetros de configuración disponibles. Recuerda que los parámetros de configuración tienen la siguiente sintaxis:</p>
+
+<pre style="margin-bottom: 0px; margin-left: auto; padding: 0px; border: 0px; font-family: inherit; font-size: 18px; font-stretch: inherit; line-height: inherit; vertical-align: baseline; width: 700px; box-sizing: border-box; caret-color: #484848; color: #484848;"><code class="language-javascript" style="margin-bottom: 2em; padding: 10px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: 27.540000915527344px; vertical-align: baseline; color: #555555; background-image: none; background-color: rgba(0, 0, 0, 0.0470588); text-shadow: white 0px 1px; white-space: pre; word-spacing: normal; word-break: normal; word-wrap: normal; tab-size: 4; -webkit-hyphens: none; max-width: 100%; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: block; overflow-x: auto;">setting: value,</code></pre>
+<p style="margin-bottom: 2em; margin-left: auto; padding: 0px; border: 0px; font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 18px; font-stretch: inherit; line-height: inherit; vertical-align: baseline; width: 700px; box-sizing: border-box; caret-color: #484848; color: #484848;">Por lo que si tienes más de un parámetro de configuración, la constante del código debería verse tal que así:</p>
+
+<pre class="line-numbers" style="margin-bottom: 0px; margin-left: auto; padding: 0px; border: 0px; font-family: inherit; font-size: 18px; font-stretch: inherit; line-height: inherit; vertical-align: baseline; position: relative; counter-reset: linenumber 0; width: 700px; box-sizing: border-box; caret-color: #484848; color: #484848;" data-start="3"><code class="language-javascript" style="margin-bottom: 2em; padding: 10px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: 27.540000915527344px; vertical-align: baseline; color: #555555; background-image: none; background-color: rgba(0, 0, 0, 0.0470588); text-shadow: white 0px 1px; white-space: pre; word-spacing: normal; word-break: normal; word-wrap: normal; tab-size: 4; -webkit-hyphens: none; max-width: 100%; position: relative; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: block; overflow-x: auto;">const settings = {
+	setting1: value,
+	setting2: value,
+	setting3: value,
+};</code></pre>
+<p style="margin-bottom: 2em; margin-left: auto; padding: 0px; border: 0px; font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 18px; font-stretch: inherit; line-height: inherit; vertical-align: baseline; width: 700px; box-sizing: border-box; caret-color: #484848; color: #484848;">Antes de empezar, ten en cuenta que poner un parámetro de configuración con el valor por defecto es lo mismo que no poner nada.</p>
+
+<h3 style="margin-top: 0px; margin-bottom: 0px; margin-left: auto; padding: 0.5em 0px; border: 0px; font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 1.6em; font-weight: inherit; font-stretch: inherit; line-height: 1.2; vertical-align: baseline; color: #222222; position: relative; width: 700px; box-sizing: border-box;"><a id="opciones-basicas" class="anchor" style="margin: -83px 0px 0px; padding: 83px 0px 0px; border: none; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; color: #0a46a5; position: absolute; right: 700px; outline: none;" href="/sugerencia-de-temas-al-escribir/#opciones-basicas"></a>Opciones básicas</h3>
+<ul style="margin-bottom: 2em; margin-left: auto; padding-left: 2em; border: 0px; font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 18px; font-stretch: inherit; line-height: inherit; vertical-align: baseline; list-style-position: outside; width: 700px; box-sizing: border-box; caret-color: #484848; color: #484848;">
+ 	<li style="margin: 0px 0px 1em; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><code style="padding: 5px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgba(0, 0, 0, 0.0470588); color: #c51a6f;">forums</code>: Todos los foros donde se sugerirán temas relacionados al abrir uno nuevo. Un foro es representado por su ID (la que aparece en la URL al mismo). Las IDs serán puestas entre corchetes, separadas por comas. Por ejemplo:
+<pre style="margin-bottom: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><code class="language-javascript" style="margin-bottom: 2em; padding: 10px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: 27.540000915527344px; vertical-align: baseline; color: #555555; background-image: none; background-color: rgba(0, 0, 0, 0.0470588); text-shadow: white 0px 1px; white-space: pre; word-spacing: normal; word-break: normal; word-wrap: normal; tab-size: 4; -webkit-hyphens: none; max-width: 100%; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: block; overflow-x: auto;">forums: [1, 2, 3, 4, 5],</code></pre>
+<p style="margin-bottom: 2em; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><strong style="margin: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; color: #222222;">Casos especiales:</strong></p>
+
+<ul style="margin-bottom: 2em; margin-left: 0px; padding-left: 2em; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; list-style: circle outside;">
+ 	<li style="margin: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><code style="padding: 5px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgba(0, 0, 0, 0.0470588); color: #c51a6f;">[]</code>: Deshabilita el plugin en todos los foros (contraproducente).</li>
+</ul>
+<p style="margin-bottom: 2em; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><strong style="margin: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; color: #222222;">Valor por defecto:</strong></p>
+
+<pre style="margin-bottom: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><code class="language-javascript" style="margin-bottom: 2em; padding: 10px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: 27.540000915527344px; vertical-align: baseline; color: #555555; background-image: none; background-color: rgba(0, 0, 0, 0.0470588); text-shadow: white 0px 1px; white-space: pre; word-spacing: normal; word-break: normal; word-wrap: normal; tab-size: 4; -webkit-hyphens: none; max-width: 100%; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: block; overflow-x: auto;">forums: [],</code></pre>
+</li>
+ 	<li style="margin: 0px 0px 1em; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><code style="padding: 5px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgba(0, 0, 0, 0.0470588); color: #c51a6f;">searchIn</code>: El foro o categoría donde la búsqueda de temas se realizará. Para identificar el foro o categoría se utilizará su ID, precedido por la letra <code style="padding: 5px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgba(0, 0, 0, 0.0470588); color: #c51a6f;">f</code> en el caso de los foros o <code style="padding: 5px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgba(0, 0, 0, 0.0470588); color: #c51a6f;">c</code> en el caso de las categorías, todo entre comillas. Por ejemplo, para buscar en la categoría con ID 2 se usaría:
+<pre style="margin-bottom: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><code class="language-javascript" style="margin-bottom: 2em; padding: 10px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: 27.540000915527344px; vertical-align: baseline; color: #555555; background-image: none; background-color: rgba(0, 0, 0, 0.0470588); text-shadow: white 0px 1px; white-space: pre; word-spacing: normal; word-break: normal; word-wrap: normal; tab-size: 4; -webkit-hyphens: none; max-width: 100%; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: block; overflow-x: auto;">searchIn: 'c2',</code></pre>
+<p style="margin-bottom: 2em; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><strong style="margin: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; color: #222222;">Casos especiales:</strong></p>
+
+<ul style="margin-bottom: 2em; margin-left: 0px; padding-left: 2em; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; list-style: circle outside;">
+ 	<li style="margin: 0px 0px 1em; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><code style="padding: 5px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgba(0, 0, 0, 0.0470588); color: #c51a6f;">false</code>: Buscar en el mismo foro donde el tema se está creando.</li>
+ 	<li style="margin: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><code style="padding: 5px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgba(0, 0, 0, 0.0470588); color: #c51a6f;">-1</code>: Buscar en todo el foro.</li>
+</ul>
+<p style="margin-bottom: 2em; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><strong style="margin: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; color: #222222;">Valor por defecto:</strong></p>
+
+<pre style="margin-bottom: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><code class="language-javascript" style="margin-bottom: 2em; padding: 10px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: 27.540000915527344px; vertical-align: baseline; color: #555555; background-image: none; background-color: rgba(0, 0, 0, 0.0470588); text-shadow: white 0px 1px; white-space: pre; word-spacing: normal; word-break: normal; word-wrap: normal; tab-size: 4; -webkit-hyphens: none; max-width: 100%; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: block; overflow-x: auto;">searchIn: false,</code></pre>
+</li>
+ 	<li style="margin: 0px 0px 1em; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><code style="padding: 5px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgba(0, 0, 0, 0.0470588); color: #c51a6f;">maxTopics</code>: Cantidad máxima de temas a mostrar. Debido a problemas de implementación, el número máximo de temas a mostrar será el número máximo de temas por página que Foroactivo muestra.
+<p style="margin-bottom: 2em; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">Ejemplo:</p>
+
+<pre style="margin-bottom: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><code class="language-javascript" style="margin-bottom: 2em; padding: 10px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: 27.540000915527344px; vertical-align: baseline; color: #555555; background-image: none; background-color: rgba(0, 0, 0, 0.0470588); text-shadow: white 0px 1px; white-space: pre; word-spacing: normal; word-break: normal; word-wrap: normal; tab-size: 4; -webkit-hyphens: none; max-width: 100%; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: block; overflow-x: auto;">maxTopics : 10,</code></pre>
+<p style="margin-bottom: 2em; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><strong style="margin: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; color: #222222;">Valor por defecto:</strong></p>
+
+<pre style="margin-bottom: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><code class="language-javascript" style="margin-bottom: 2em; padding: 10px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: 27.540000915527344px; vertical-align: baseline; color: #555555; background-image: none; background-color: rgba(0, 0, 0, 0.0470588); text-shadow: white 0px 1px; white-space: pre; word-spacing: normal; word-break: normal; word-wrap: normal; tab-size: 4; -webkit-hyphens: none; max-width: 100%; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: block; overflow-x: auto;">maxTopics : 5,</code></pre>
+</li>
+ 	<li style="margin: 0px 0px 1em; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><code style="padding: 5px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgba(0, 0, 0, 0.0470588); color: #c51a6f;">triggerWhenWriting</code>: Activa o desactiva la funcionalidad mientras se escriba. Desactivar esta opción significará que la lista será mostrada solamente cuando el foco salga del cuadro de escritura del título. Ejemplo:
+<pre style="margin-bottom: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><code class="language-javascript" style="margin-bottom: 2em; padding: 10px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: 27.540000915527344px; vertical-align: baseline; color: #555555; background-image: none; background-color: rgba(0, 0, 0, 0.0470588); text-shadow: white 0px 1px; white-space: pre; word-spacing: normal; word-break: normal; word-wrap: normal; tab-size: 4; -webkit-hyphens: none; max-width: 100%; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: block; overflow-x: auto;">triggerWhenWriting : false,</code></pre>
+<p style="margin-bottom: 2em; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><strong style="margin: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; color: #222222;">Valor por defecto:</strong></p>
+
+<pre style="margin-bottom: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><code class="language-javascript" style="margin-bottom: 2em; padding: 10px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: 27.540000915527344px; vertical-align: baseline; color: #555555; background-image: none; background-color: rgba(0, 0, 0, 0.0470588); text-shadow: white 0px 1px; white-space: pre; word-spacing: normal; word-break: normal; word-wrap: normal; tab-size: 4; -webkit-hyphens: none; max-width: 100%; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: block; overflow-x: auto;">triggerWhenWriting : true,</code></pre>
+</li>
+ 	<li style="margin: 0px 0px 1em; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><code style="padding: 5px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgba(0, 0, 0, 0.0470588); color: #c51a6f;">hideAtFocusout</code>: Oculta la lista de temas cuando el cuadro de escritura pierde el foco.<strong style="margin: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; color: #222222;">Precondiciones:</strong>
+<ul style="margin-bottom: 2em; margin-left: 0px; padding-left: 2em; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; list-style: circle outside;">
+ 	<li style="margin: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">La opción <code style="padding: 5px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgba(0, 0, 0, 0.0470588); color: #c51a6f;">triggerWhenWriting</code> debe tener el valor <code style="padding: 5px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgba(0, 0, 0, 0.0470588); color: #c51a6f;">true</code>.</li>
+</ul>
+<p style="margin-bottom: 2em; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">Ejemplo:</p>
+
+<pre style="margin-bottom: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><code class="language-javascript" style="margin-bottom: 2em; padding: 10px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: 27.540000915527344px; vertical-align: baseline; color: #555555; background-image: none; background-color: rgba(0, 0, 0, 0.0470588); text-shadow: white 0px 1px; white-space: pre; word-spacing: normal; word-break: normal; word-wrap: normal; tab-size: 4; -webkit-hyphens: none; max-width: 100%; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: block; overflow-x: auto;">hideAtFocusout : true,</code></pre>
+<p style="margin-bottom: 2em; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><strong style="margin: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; color: #222222;">Valor por defecto:</strong></p>
+
+<pre style="margin-bottom: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><code class="language-javascript" style="margin-bottom: 2em; padding: 10px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: 27.540000915527344px; vertical-align: baseline; color: #555555; background-image: none; background-color: rgba(0, 0, 0, 0.0470588); text-shadow: white 0px 1px; white-space: pre; word-spacing: normal; word-break: normal; word-wrap: normal; tab-size: 4; -webkit-hyphens: none; max-width: 100%; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: block; overflow-x: auto;">hideAtFocusout : false,</code></pre>
+</li>
+ 	<li style="margin: 0px 0px 1em; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><code style="padding: 5px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgba(0, 0, 0, 0.0470588); color: #c51a6f;">autocomplete</code>: Desactiva o activa <span style="margin: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: italic; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">autofill</span> (sugerencias del navegador) en el campo de texto del título, es decir, pone el atributo <code style="padding: 5px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgba(0, 0, 0, 0.0470588); color: #c51a6f;">autocomplete</code> a <code style="padding: 5px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgba(0, 0, 0, 0.0470588); color: #c51a6f;">on</code> u <code style="padding: 5px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgba(0, 0, 0, 0.0470588); color: #c51a6f;">off</code>.
+<p style="margin-bottom: 2em; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">Ejemplo:</p>
+
+<pre style="margin-bottom: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><code class="language-javascript" style="margin-bottom: 2em; padding: 10px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: 27.540000915527344px; vertical-align: baseline; color: #555555; background-image: none; background-color: rgba(0, 0, 0, 0.0470588); text-shadow: white 0px 1px; white-space: pre; word-spacing: normal; word-break: normal; word-wrap: normal; tab-size: 4; -webkit-hyphens: none; max-width: 100%; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: block; overflow-x: auto;">autocomplete : true,</code></pre>
+<p style="margin-bottom: 2em; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><strong style="margin: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; color: #222222;">Valor por defecto:</strong></p>
+
+<pre style="margin-bottom: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><code class="language-javascript" style="margin-bottom: 2em; padding: 10px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: 27.540000915527344px; vertical-align: baseline; color: #555555; background-image: none; background-color: rgba(0, 0, 0, 0.0470588); text-shadow: white 0px 1px; white-space: pre; word-spacing: normal; word-break: normal; word-wrap: normal; tab-size: 4; -webkit-hyphens: none; max-width: 100%; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: block; overflow-x: auto;">autocomplete : false,</code></pre>
+</li>
+ 	<li style="margin: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><code style="padding: 5px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgba(0, 0, 0, 0.0470588); color: #c51a6f;">wordMinLength</code>: El número mínimo de caracteres de una palabra para que sea tomada en cuenta en la búsqueda. Ten en cuenta que debido a limitaciones de Foroactivo, usar un valor menor que 4 no tendrá efecto.
+<p style="margin-bottom: 2em; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">El valor deberá ser un entero entre el número 4 (incluído) e infinito (es decir, el número máximo de caracteres permitidos por Foroactivo en las búsquedas).</p>
+<p style="margin-bottom: 2em; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">Ejemplo:</p>
+
+<pre style="margin-bottom: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><code class="language-javascript" style="margin-bottom: 2em; padding: 10px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: 27.540000915527344px; vertical-align: baseline; color: #555555; background-image: none; background-color: rgba(0, 0, 0, 0.0470588); text-shadow: white 0px 1px; white-space: pre; word-spacing: normal; word-break: normal; word-wrap: normal; tab-size: 4; -webkit-hyphens: none; max-width: 100%; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: block; overflow-x: auto;">wordMinLength : 5,</code></pre>
+<p style="margin-bottom: 2em; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><strong style="margin: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; color: #222222;">Valor por defecto:</strong></p>
+
+<pre style="margin-bottom: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><code class="language-javascript" style="margin-bottom: 2em; padding: 10px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: 27.540000915527344px; vertical-align: baseline; color: #555555; background-image: none; background-color: rgba(0, 0, 0, 0.0470588); text-shadow: white 0px 1px; white-space: pre; word-spacing: normal; word-break: normal; word-wrap: normal; tab-size: 4; -webkit-hyphens: none; max-width: 100%; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: block; overflow-x: auto;">wordMinLength : 4,</code></pre>
+</li>
+</ul>
+<h3 style="margin-top: 0px; margin-bottom: 0px; margin-left: auto; padding: 0.5em 0px; border: 0px; font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 1.6em; font-weight: inherit; font-stretch: inherit; line-height: 1.2; vertical-align: baseline; color: #222222; position: relative; width: 700px; box-sizing: border-box;"><a id="opciones-avanzadas" class="anchor" style="margin: -83px 0px 0px; padding: 83px 0px 0px; border: none; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; color: #0a46a5; position: absolute; right: 700px; outline: none;" href="/sugerencia-de-temas-al-escribir/#opciones-avanzadas"></a>Opciones avanzadas</h3>
+<p style="margin-bottom: 2em; margin-left: auto; padding: 0px; border: 0px; font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 18px; font-stretch: inherit; line-height: inherit; vertical-align: baseline; width: 700px; box-sizing: border-box; caret-color: #484848; color: #484848;">Estas opciones están pensadas tan solo para usuarios avanzados.</p>
+
+<ul style="margin-bottom: 2em; margin-left: auto; padding-left: 2em; border: 0px; font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 18px; font-stretch: inherit; line-height: inherit; vertical-align: baseline; list-style-position: outside; width: 700px; box-sizing: border-box; caret-color: #484848; color: #484848;">
+ 	<li style="margin: 0px 0px 1em; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><code style="padding: 5px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgba(0, 0, 0, 0.0470588); color: #c51a6f;">excludedCharacters</code>: Objeto <code style="padding: 5px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgba(0, 0, 0, 0.0470588); color: #c51a6f;">RexExp</code> que hace <span style="margin: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: italic; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">match</span> con los caracteres ignorados del campo de texto:
+<strong style="margin: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; color: #222222;">Valor por defecto:</strong>
+<pre style="margin-bottom: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><code class="language-javascript" style="margin-bottom: 2em; padding: 10px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: 27.540000915527344px; vertical-align: baseline; color: #555555; background-image: none; background-color: rgba(0, 0, 0, 0.0470588); text-shadow: white 0px 1px; white-space: pre; word-spacing: normal; word-break: normal; word-wrap: normal; tab-size: 4; -webkit-hyphens: none; max-width: 100%; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: block; overflow-x: auto;">excludedCharacters : new RegExp(/[.,\/#!$%\^&amp;\*¿?!¡;:{}\\=\-_`~"«“‘’”»()\[\]]/, 'g'),</code></pre>
+</li>
+ 	<li style="margin: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><code style="padding: 5px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgba(0, 0, 0, 0.0470588); color: #c51a6f;">dom</code>: Objeto personalizable utilizado para modificar la forma en la que el DOM se lee. Muy útil encaso de que hayas modificado tus plantillas y estas teniendo problemas de incompatibilidad.
+<p style="margin-bottom: 2em; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">Puedes ver todas las modificaciones posibles en la sección «Valor por defecto», que corresponde a la estructura por defecto de un foro con versión phpBB3. Adaptando estas opciones a cualquier otra versión debería ser sencillo. Para poder hacer la adaptación simple, todas las relaciones entre elemetnos son estrictamente parentales (es decir, no hay posibilidad de que ninguno de los identificadores del DOM de este objeto representen al mismo objeto, solo un padre, abuelo cercano o lejano, hijo o nieto cercano o lejano). Si hay cualquier problema entiendiendo esto no tendré problema en ayudar.</p>
+<p style="margin-bottom: 2em; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><strong style="margin: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; color: #222222;">Valor por defecto:</strong></p>
+
+<pre class="line-numbers" style="margin-bottom: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; position: relative; counter-reset: linenumber 0;"><code class="language-javascript" style="margin-bottom: 2em; padding: 10px; border: 0px; font-family: Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', monospace; font-size: 0.85em; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: 27.540000915527344px; vertical-align: baseline; color: #555555; background-image: none; background-color: rgba(0, 0, 0, 0.0470588); text-shadow: white 0px 1px; white-space: pre; word-spacing: normal; word-break: normal; word-wrap: normal; tab-size: 4; -webkit-hyphens: none; max-width: 100%; position: relative; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: block; overflow-x: auto;">dom : {
+
+	/* Search page */
+	topicscontainer		: '.forabg',
+	topic				: 'dd.dterm',
+	titlelink			: '.topictitle',
+	userlink			: 'a[href^="/u"]',
+	forumlink			: 'a[href^="/f"]',
+	topicicon			: { img: false, selector: 'dl.icon' },
+
+	/* structure */
+	visible				: 'visible',
+
+	/* posting page */
+	titleinput			: '#postingbox input[name="subject"]',
+	inputcontainer		: 'dl',
+
+	/* created elements */
+	maincontainer 		: $('&lt;div /&gt;', { id : 'similarTopics' }),
+	similartopiccont	: $('&lt;div /&gt;', { class : 'topic-container' }),
+	loadingelm			: $('&lt;div /&gt;', { class : 'spinner' })
+							.append($('&lt;div/&gt;', { class:'double-bounce1' }))
+							.append($('&lt;div/&gt;', { class:'double-bounce2' })),
+	topicelmcont		: $('&lt;div /&gt;', { class: 'topic' }),
+	topicelmtitle		: $('&lt;div /&gt;', { class: 'topic-title' }),
+	topicdatacont		: $('&lt;div /&gt;', { class: 'topic-data' }),
+	topicflags			: $('&lt;div /&gt;', { class: 'topic-flags' }),
+	topiciconcont		: $('&lt;div /&gt;', { class: 'topic-icon' }),
+	topicstatus			: $('&lt;div /&gt;', { class: 'topic-status' }),
+	topicelminfo		: $('&lt;div /&gt;', { class: 'topic-info' }),
+	topicauthor			: $('&lt;span /&gt;', { class: 'topic-author', text: 'por ' }),
+	topicforum			: $('&lt;span /&gt;', { class: 'topic-forum', text: ' en ' }),
+	similarstitle		: $('&lt;h4 /&gt;', { class: 'similarTopics-title', text: 'Quizás te interese...' }),
+
+},</code></pre>
+</li>
+</ul>
+<h2 style="margin-top: 0px; margin-bottom: 0px; margin-left: auto; padding: 0.5em 0px; border: 0px; font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 1.8em; font-stretch: inherit; line-height: 1.2; vertical-align: baseline; color: #222222; position: relative; width: 700px; box-sizing: border-box;"><a id="a-tener-en-cuenta%e2%80%a6" class="anchor" style="margin: -83px 0px 0px; padding: 83px 0px 0px; border: none; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline; color: #0a46a5; position: absolute; right: 700px; outline: none;" href="/sugerencia-de-temas-al-escribir/#a-tener-en-cuenta%e2%80%a6"></a>A tener en cuenta…</h2>
+<ul style="margin-bottom: 2em; margin-left: auto; padding-left: 2em; border: 0px; font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 18px; font-stretch: inherit; line-height: inherit; vertical-align: baseline; list-style-position: outside; width: 700px; box-sizing: border-box; caret-color: #484848; color: #484848;">
+ 	<li style="margin: 0px 0px 1em; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">El soporte de navegadores de este plugin sigue mis reglas de soporte general: solo los principales navegadores (Chrome, Firefox, Safari, Edge y derivados) en su versión actual y versión actual – 1. No soportaré ninguna versión de Internet Explorer puesto que el navegador ya ha llegado al fin de su ciclo de vida. Esto no significa que el plugin no funcionará en los navegadores no soportados, podría funcionar. Esto tan solo significa que en caso de que no funcione, no corrigiré esta falla. También significa que si usas uno de estos navegadores deberías cambiarte.</li>
+ 	<li style="margin: 0px 0px 1em; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">Si encuentras algún error en los navegadores soportados anteriormente mencionados, agradecería que se me lo hiciese saber.</li>
+ 	<li style="margin: 0px; padding: 0px; border: 0px; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">Además, si tienes algún tipo de sugerencia sobre características a añadir, tan solo dilo, no muerdo… mucho.</li>
+</ul></div>
+    </article>
+
+        </main>
+
+        <aside id="sidebar">
+
+        <div class="widget">
+            <div class="widget__heading">Categorias</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/actualizaciones">Actualizaciones</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/articulos">Artículos</a></span>
+                        <span class="bubble">7</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/codigos">Códigos</a></span>
+                        <span class="bubble">14</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/guias">Guías</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/meta">Meta</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/miscelanea">Miscelánea</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/recursos">Recursos</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/servicios">Servicios</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                            </ul>
+        </div>
+
+        <div class="widget">
+            <div class="widget__heading">Etiquetas</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/criticas">Críticas</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/css">CSS</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/desarrollo">Desarrollo</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/estandares">Estándares</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fainvision">FA/Invision</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/famodernbb">FA/ModernBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb2">FA/phpBB2</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb3">FA/phpBB3</a></span>
+                        <span class="bubble">19</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fapunbb">FA/PunBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fm-helper">FM-Helper</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/foroactivo">Foroactivo</a></span>
+                        <span class="bubble">22</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/jcink">Jcink</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/phpbb">phpBB</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                            </ul>
+        </div>
+
+
+    </aside>
+    </div>
+</div>
+<footer id="footer">
+    <div class="footer__content container">
+        <span>&copy; Flerex Blog 2025</span>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <title>Personalización de Perfiles: En pestañas y campos con clases independientes - Flerex Blog</title>
+    
+            <meta name="description" content="Flerex Blog es un blog de recursos, guías y códigos para la comunidad hispana de RPG por foro. Aunque principalmente encontrarás recursos pensados para la plataforma Foroactivo, no nos centramos en exclusiva en ella, sino que también damos soporte a otras plataformas crecientes en popularidad como JCink." />
+        <script src="/js/prism.js"></script>
+    <script src="/js/prism-markup-templating.js"></script>
+    <script src="/js/prism-php.js"></script>
+    <script src="/js/clipboard.js"></script>
+    <script src="/js/prism-line-numbers.js"></script>
+    <script src="/js/prism-toolbar.js"></script>
+    <script src="/js/prism-copy-to-clipboard.js"></script>
+    <script src="/js/table-contents.js"></script>
+
+    
+    <link href="/css/app.css?id=15fbddac165dda994b3e" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/prism-tomorrow.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="/css/prism-line-numbers.css">
+    <link rel="stylesheet" href="/css/prism-toolbar.css">
+
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/images/apple-touch.png">
+    
+    <link rel="mask-icon" href="/svg/code.svg" color="#C16BC7">
+
+    <script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+</head>
+<body class="reading-mode">
+
+<header id="header">
+    <div class="container">
+        <div id="logo">
+            <a href="/" aria-label="Inicio"></a>
+        </div>
+        <nav class="navbar">
+            <div class="navbar__group">
+                <ul>
+                    <li><a class="navbar-link" href="/">Inicio</a></li>
+                </ul>
+            </div>
+            <div class="navbar__group">
+                <ul>
+                                    </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<div id="outer-wrapper">
+    <div id="wrap" class="container">
+        <main id="main">
+                <article class="post">
+        <header class="post__header">
+            <h1>Personalización de Perfiles: En pestañas y campos con clases independientes</h1>
+                        <div class="post__meta">
+                <div class="post__meta-item post__author">
+                    <div class="avatar">
+    <img src="https://secure.gravatar.com/avatar/8a8ded00a6f158bd28da1ae3c6181198.jpg?s=100&amp;d=mm&amp;r=g" title="Flerex" alt="">
+</div>                    <span class="post__author-name">Flerex</span>
+                </div>
+                <div class="post__extra">
+                    <div class="post__extra-info">
+
+                    <div class="post__date">
+                        <ion-icon name="ios-calendar"></ion-icon>
+                        <span>3 de junio de 2017</span>                    </div>
+                                            <div class="post__category">
+                            <a href="/categorias/plugins">
+                                <ion-icon name="ios-folder" title="Categoría"></ion-icon>
+                                <span>Plugins</span>
+                            </a>
+                        </div>
+                                        <div class="post-preview__info-elm post-preview__edited">
+        <ion-icon name="ios-medical" title="Actualizado el"></ion-icon>
+        <span>21 de junio de 2018</span>    </div>
+                    </div>
+                    <div class="post__tags">
+                        <div class="post-preview__tags taglist">
+                    <div class="taglist__tag"><a href="/etiquetas/faphpbb3">FA/phpBB3</a></div>
+                    <div class="taglist__tag"><a href="/etiquetas/foroactivo">Foroactivo</a></div>
+            </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="table-contents" hidden>
+            <div class="table-contents__title">Tabla de contenidos</div>
+            <div class="table-contents__content"></div>
+        </div>
+        <div class="post__content text-container">El primer plugin que os traigo es un dos en uno. El siguiente <a href="/entradas/plugins">plugin</a> permitirá poner en tu foro:
+<ul>
+ 	<li><strong>Perfiles en pestañas.</strong> Podrás elegir cuántas perstañas tendrá cada perfil, qué cosa se ve en cada una de ellas y en qué orden y cuál (o cuáles) son las que se verán por defecto.</li>
+ 	<li><strong>Campos de perfil con clases independientes</strong>. Podrás personalizar cada campo del perfil con CSS, puesto que cada uno tendrá su clase independiente. También divide cada campo en dos elementos, el título y el contenido, para una mayor personalización. Además, incluyo la posibilidad de quitar los dos puntos después de cada título.</li>
+</ul>
+De momento este plugin solo puede hacer esas dos cosas. Al estar hospedado en un servidor, podré añadir nuevas características en un futuro sin que tengáis que hacer nada más que activar qué nuevas características queréis para vuestro foro.
+
+Aunque pueda parecer que instalar este plugin es muy complicado puesto que esta entrada es bastante larga, no os echéis atrás. Simplemente me he tomado la molestia de explicar hasta el más mínimo detalle para que nadie se pierda, pero tanto texto tan solo explica unos pasos que se hacen en <strong>menos de cinco minutos</strong>.
+
+Quiero aclarar que esas dos características disponibles en el plugin no se activan al mismo tiempo. Podréis elegir cuál de las dos (o las dos) queréis aplicar en vuestro foro. El plugin está pensado pensando en la eficiencia, por lo que si una de las características no la queréis activar, no supondrá que el código se tenga que ejecutar en vuestro foro.
+<h2>Instalación</h2>
+Vete a la gestión de JavaScripts del PA y añade el siguiente JS solo en los temas:
+<pre class="line-numbers"><code class="language-js">/*! Custom Post Profiles v1.0.1 | Flerex | flerex.dev */
+eval(function(p,a,c,k,e,d){while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+c+'\\b','g'),k[c])}}return p}('(8($){5 18=8(11){11=11.60().70();5 29="àáäâèéëêìíïîòóöôùúüûñç·/69,:;";5 47="64------";68(5 17=0,37=29.51;17&lt;37;17++){11=11.20(66 67(29.44(17),\'21\'),47.44(17))}11=11.20(/[^58-62-9 -]/21,\'\').20(/\\59+/21,\'-\').20(/-+/21,\'-\');49 11};$.65.80=8(40){5 32=[\'84ó83 82 85 86 88\',\'87://81.71.74\'];41.48(32[0]);41.48(32[1]);5 15=$.73({26:[],39:72,53:38,50:38,},40);49 4.46(8() {5 $4=$(4);31(15.39){5 56=18;$4.16(\'.2-14\').46(8(){5 10=$(4).23(\'.2-14-10\').23(\'.10\').23(\'19\').75(),7=$(4).23(\'.2-14-7\').27(),18=56(10);$(4).27(\'&lt;19 13="2-14-10"&gt;\'+10+(15.53?\': \':\'\')+\'&lt;/19&gt;&lt;19 13="2-14-7"&gt;&lt;/19&gt;\').33(\'2-14-\'+18).16(\'.2-14-7\').27(7)})}31(15.26.51){5 35=$(\'&lt;6 13="2-79"&gt;&lt;/6&gt;\'),34=$(\'&lt;6 13="2-3-7-28"&gt;&lt;/6&gt;\'),24=$(\'&lt;6 13="2-43-28"&gt;&lt;/6&gt;\');$4.78(24).55(34).55(35);15.26.45(8(3){5 30=18(3.10),22=$(\'&lt;6 13="2-3 2-3-\'+30+(3.52?\' 12\':\'\')+\'"&gt;\'+3.10+\'&lt;/6&gt;\'),25=$(\'&lt;6 13="2-3-7 2-3-7-\'+30+(3.52?\' 12\':\'\')+\'"&gt;&lt;/6&gt;\');35.42(22);34.42(25);22.61(\'63\',8(){$4.16(\'.2-3.12\').36(\'12\');22.33(\'12\');$4.16(\'.2-3-7.12\').36(\'12\');25.33(\'12\')});3.7.45(8(54) {$4.16(54).77(25)})});31(15.50){24=$4.16(\'.2-43-28\');24.57()}}})}}(76));',10,89,'||postprofile|tab|this|var|div|content|function||label|str|active|class|field|settings|find|i|slug|span|replace|g|tabTrigger|children|remainsContainer|tabContent|tabStructure|html|container|from|tabSlug|if|copyright|addClass|contentContainer|tabContainer|removeClass|l|true|uniqueFieldClass|options|console|append|remains|charAt|forEach|each|to|log|return|deleteRemains|length|default|withColon|element|prepend|slugf|remove|a|s|trim|on|z0|click|aaaaeeeeiiiioooouuuunc|fn|new|RegExp|for|_|toLowerCase|tumblr|false|extend|com|text|jQuery|appendTo|wrapInner|tabs|customProfile|flerex|de|n|Personalizaci|perfiles|por|http|Flerex'.split('|')));</code></pre>
+¡Ya está! El plugin está instalado.
+<h2>Modificaciones</h2>
+El plugin depende de mi <a href="/estructura-estandar-de-los-perfiles/">propuesta de estructura estándar de los perfiles</a> para poder funcionar, así que si no la tienes en tu foro, ¿a qué esperas? Lleva un minuto colocarla y te hará la vida más fácil.
+
+<hr />
+
+Lo siguiente <strong>solo se debería instalar si tienes la intención de activar la parte del plugin «perfiles en pestañas»</strong>. Vete a tu CSS y <strong>añade</strong> lo siguiente:
+<pre class="line-numbers"><code class="language-css">/**
+*
+* PERFILES EN PESTAÑAS
+* Este código oculta todas las pestañas que no sean las activas
+*
+*/
+.postprofile-tab-content {
+   display: none;
+}
+
+.postprofile-tab-content.active {
+   display: block;
+}</code></pre>
+<h2>Activación</h2>
+Una vez que ya hemos instalado el plugin solo tenemos que decirle que se active. Esta es la parte que normalmente os liaría pero ya “no more”.
+
+<strong>Añade</strong> el siguiente JS (y muéstralo solo en los temas (para decirle al plugin que se active solo en los temas, que es donde están los perfiles). Ten en cuenta de que puedes añadirlo si deseas después del anterior código del apartado de instalación, pero por claridad recomiendo hacerlo en uno nuevo.
+<pre class="line-numbers"><code class="language-javascript">$(function() {
+	$('.postprofile').customProfile({
+		// Aquí la configuración del plugin
+	});
+});</code></pre>
+La traducción del código anterior sería más o menos lo siguiente:
+<blockquote>Activa para los perfiles, que en mi foro se llaman “.postprofile” (por defecto en FA y en la modificación que os he dado arriba) el plugin “customProfile”, que tiene las siguientes configuración.</blockquote>
+Si os fijáis, he dejado un comentario que dice “Aquí la configuración del plugin”. En esta parte es donde le diréis al plugin qué queréis que haga.
+<h3>Campos con clases independientes</h3>
+Empecemos por la parte de los campos del perfil con clases independientes. Si queréis activar esta parte tan solo tenéis que añadir a la configuración la siguiente línea:
+<pre class="line-numbers"><code class="language-javascript">uniqueFieldClass: true,</code></pre>
+<blockquote>¿Activar las clases únicas en los campos del perfil? Sí.</blockquote>
+Simple, ¿qué? En caso de que queráis quitar los dos puntos (es necesario tener la anterior opción activada) solo tenéis que añadir esta otra configuración:
+<pre class="line-numbers"><code class="language-javascript">withColon: false,</code></pre>
+<blockquote>¿Los campos tienen dos puntos? No.</blockquote>
+<h3>Perfiles en pestañas</h3>
+Esta es la parte más compleja. No porque sea difícil, que no lo es, si no porque es la configuración más larga. Para activar esta parte del plugin voy a explicarme mejor con un ejemplo:
+<pre class="line-numbers"><code class="language-javascript">tabStructure:  [
+
+    {
+        label: 'Información',
+        default: true,
+        content: [
+            '.postprofile-avatar',
+            '.postprofile-username',
+            '.postprofile-rank',
+        ]
+    },
+
+    {
+        label: 'Campos',
+        content: [
+            '.postprofile-fields',
+            '.postprofile-rpg',
+            '.postprofile-contact',
+        ]
+    }
+
+],</code></pre>
+La anterior configuración es la configuración para lo que yo considero una estructura «estándar» de las pestañas en los foros. Es lo que más suelo ver y básicamente tiene las siguientes características:
+<ul>
+ 	<li><strong>Dos</strong> pestañas.</li>
+ 	<li>Una pestaña «Información» que contiene el avatar, el rango y el nombre</li>
+ 	<li>Una pestaña «Campos» que contiene los perfiles, los botones de contacto y la hoja de personaje en caso de que el foro la tuviese.</li>
+ 	<li>La pestaña «Información» activa por defecto.</li>
+</ul>
+Si estás de acuerdo con esta configuración ya no deberías siquiera seguir leyendo. Copia y pega lo anterior y ya estarías listo.
+
+En caso de que no seas tan conformista y quieras una configuración única, el funcionamiento es el siguiente:
+
+Dentro del apartado <code>tabStructure</code> se van a poner distintas pestañas, las cuales están representadas por varios campos entre llaves ({, }). Todo el contenido entre estas llaves representa una pestaña y solo una. Cada pestaña tiene el campo «label», el cual se mostrará en el propio botón de la pestaña y el campo content, que a su vez contiene varios selectores que se corresponden a cada elemento que contendrá dicha pestaña.
+
+A parte de estos dos campos, existe un tercer campo opcional llamado «default» el cual, si se le da valor <code>true</code>, cada vez que entres a un tema, dicha (o dichas) pestaña se mostrará activa por defecto. Sí, he dicho dichas porque no vi razón alguna para no permitir esto. Seguro que a alguien se le ocurre algo muy original con esto.
+
+Ahora bien, en cuanto al orden en el que aparecen las pestañas… También lo he hecho muy simple. El orden en el que aparezcan en la configuración es el que se seguirá (el orden en el que aparecen las llaves correspondientes a cada pestaña).
+
+Para el orden del contenido de cada pestaña (si el avatar va antes o después del nombre, etc.) se seguirá la lógica anterior. El orden de los selectores del campo «content» es el que se seguirá.
+
+Si has seguido todos los pasos bien, tu código debería parecerse a este:
+<pre class="line-numbers"><code class="language-javascript">$(function() {
+   $('.postprofile').customProfile({
+        uniqueFieldClass: true,
+        tabStructure:  [
+
+            {
+                label: 'Información',
+                default: true,
+                content: [
+                    '.postprofile-avatar',
+                    '.postprofile-username',
+                    '.postprofile-rank',
+                ]
+            },
+
+            {
+                label: 'Campos',
+                content: [
+                    '.postprofile-fields',
+                    '.postprofile-rpg',
+                    '.postprofile-contact',
+                ]
+            }
+
+        ],
+   });
+});</code></pre>
+El resultado es el siguiente:
+
+<img class="aligncenter size-full wp-image-527" src="/storage/old/2017/06/qYb2tuK.png" alt="" width="589" height="235" />
+
+Quiero dejar constancia de que no he añadido ningún tipo de CSS que sea de personalización. Es por ello que las pestañas aparecerán unas encimas de otras sin ningún diseño. Si hacéis clic en ellas podréis comprobar que la lógica funciona, que es lo que yo proporciono, pero la parte de diseño os corresponde totalmente a vosotros.
+<h2>Selectores</h2>
+He dejado algún que otro selector muy interesante para la personalización del código:
+<ul>
+ 	<li><code>.postprofile-tabs</code>: Contenedor de las pestañas (los botones)</li>
+ 	<li><code>.postprofile-tab</code>: Cada pestaña (los botones).</li>
+ 	<li><code>.postprofile-tab-content</code>: Contenedor del contenido de una pestaña cualquiera</li>
+ 	<li><code>.postprofile-tab-content-{NOMBRE}</code>: El contenedor del contenido específico de la etiqueta NOMBRE.</li>
+ 	<li><code>.postprofile-tab-content.active</code>: Contenedor del contenido de una pestaña cualquiera que está actualmente activa</li>
+ 	<li><code>.postprofile-tab.active</code>: Una pestaña que está actualmente activa</li>
+</ul>
+Eso es todo para el primer plugin que publico. Si tenéis <strong>cualquier tipo de duda</strong> no dudéis en enviarme un mensaje privado.</div>
+    </article>
+
+        </main>
+
+        <aside id="sidebar">
+
+        <div class="widget">
+            <div class="widget__heading">Categorias</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/actualizaciones">Actualizaciones</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/articulos">Artículos</a></span>
+                        <span class="bubble">7</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/codigos">Códigos</a></span>
+                        <span class="bubble">14</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/guias">Guías</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/meta">Meta</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/miscelanea">Miscelánea</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/recursos">Recursos</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/servicios">Servicios</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                            </ul>
+        </div>
+
+        <div class="widget">
+            <div class="widget__heading">Etiquetas</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/criticas">Críticas</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/css">CSS</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/desarrollo">Desarrollo</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/estandares">Estándares</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fainvision">FA/Invision</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/famodernbb">FA/ModernBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb2">FA/phpBB2</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb3">FA/phpBB3</a></span>
+                        <span class="bubble">19</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fapunbb">FA/PunBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fm-helper">FM-Helper</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/foroactivo">Foroactivo</a></span>
+                        <span class="bubble">22</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/jcink">Jcink</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/phpbb">phpBB</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                            </ul>
+        </div>
+
+
+    </aside>
+    </div>
+</div>
+<footer id="footer">
+    <div class="footer__content container">
+        <span>&copy; Flerex Blog 2026</span>
+    </div>
+</footer>
+</body>
+</html>

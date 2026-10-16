@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <title>Justificando texto correctamente - Flerex Blog</title>
+    
+     
+        <meta name="description" content="A veces, algo tan simple y básico como nos puede parecer la justificación de texto tiene un transfondo mucho más complicado de lo que podemos ver a simple vista. En este artículo se contempla un aspecto de la justificación muy importante que supondrá el hacer que un texto parezca (o no) profesional." />
+        <script src="/js/prism.js"></script>
+    <script src="/js/prism-markup-templating.js"></script>
+    <script src="/js/prism-php.js"></script>
+    <script src="/js/clipboard.js"></script>
+    <script src="/js/prism-line-numbers.js"></script>
+    <script src="/js/prism-toolbar.js"></script>
+    <script src="/js/prism-copy-to-clipboard.js"></script>
+    <script src="/js/table-contents.js"></script>
+
+    
+    <link href="/css/app.css?id=15fbddac165dda994b3e" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/prism-tomorrow.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="/css/prism-line-numbers.css">
+    <link rel="stylesheet" href="/css/prism-toolbar.css">
+
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/images/apple-touch.png">
+    
+    <link rel="mask-icon" href="/svg/code.svg" color="#C16BC7">
+
+    <script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+</head>
+<body class="reading-mode">
+
+<header id="header">
+    <div class="container">
+        <div id="logo">
+            <a href="/" aria-label="Inicio"></a>
+        </div>
+        <nav class="navbar">
+            <div class="navbar__group">
+                <ul>
+                    <li><a class="navbar-link" href="/">Inicio</a></li>
+                </ul>
+            </div>
+            <div class="navbar__group">
+                <ul>
+                                    </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<div id="outer-wrapper">
+    <div id="wrap" class="container">
+        <main id="main">
+                <article class="post">
+        <header class="post__header">
+            <h1>Justificando texto correctamente</h1>
+                            <img class="post__featured-image" src="/storage/featured/41.png" alt="">
+                        <div class="post__meta">
+                <div class="post__meta-item post__author">
+                    <div class="avatar">
+    <img src="https://secure.gravatar.com/avatar/8a8ded00a6f158bd28da1ae3c6181198.jpg?s=100&amp;d=mm&amp;r=g" title="Flerex" alt="">
+</div>                    <span class="post__author-name">Flerex</span>
+                </div>
+                <div class="post__extra">
+                    <div class="post__extra-info">
+
+                    <div class="post__date">
+                        <ion-icon name="ios-calendar"></ion-icon>
+                        <span>30 de julio de 2019</span>                    </div>
+                                            <div class="post__category">
+                            <a href="/categorias/guias">
+                                <ion-icon name="ios-folder" title="Categoría"></ion-icon>
+                                <span>Guías</span>
+                            </a>
+                        </div>
+                                                            </div>
+                    <div class="post__tags">
+                        <div class="post-preview__tags taglist">
+                    <div class="taglist__tag"><a href="/etiquetas/css">CSS</a></div>
+            </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="table-contents" hidden>
+            <div class="table-contents__title">Tabla de contenidos</div>
+            <div class="table-contents__content"></div>
+        </div>
+        <div class="post__content text-container"><!-- wp:paragraph -->
+<p>Cuando estamos haciendo un nuevo diseño una de las cosas que más pasamos por alto es la justificación de texto. Como CSS por defecto trae la propiedad <code>text-align: justify;</code>, no nos pensamos dos veces el justificar y directamente lo hacemos utilizandola. Sin embargo, ¿me creerías si te digo que lo hemos estado haciendo mal todo este tiempo?</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>El problema</h2>
+<!-- /wp:heading -->
+
+<!-- wp:image {"className":"enlarged"} -->
+<figure class="wp-block-image enlarged"><img src="/storage/images/posts/41/1.png" alt=""/><figcaption>A la izquierda, un texto sin justificar. A la derecha, ese mismo texto justificado con el algoritmo por defecto.</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p> Cualquier diseñador profesional te podrá decir el dolor de cabeza que puede suponer justificar correctamente los textos. Por defecto, <code>text-align: justify;</code> utiliza un algoritmo de justificación que lo único que hace es hacer que todas las líneas de un texto acaben y empiecen en los bordes de su contenedor. Esto hace que las palabras, sobre todo en líneas donde solo existen palabras largas, tengan un mayor espacio entre ellas.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Esto no solo dificulta la lectura al no tener un espaciado entre palabras grande e inconsistente, sino que supone un problema para personas con ciertos tipos de discapacidades visuales. Además, los textos mal justificados dan una apariencia poco profesional y de «mal diseñado».</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"className":"enlarged"} -->
+<figure class="wp-block-image enlarged"><img src="/storage/images/posts/41/2.png" alt=""/><figcaption>En verde se muestra la inconsistencia que pueden tener los espacios.</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading -->
+<h2>Solución</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Vamos a tomar como referencia el mundo de la imprenta. Un libro está, lógicamente, <strong>pensado para ser leído</strong> por lo que las editoriales deben <strong>preocuparse de que la lectura sea agradable</strong>. Y es que en realidad este problema ha sido solucionado desde hace siglos. En los libros, las palabras son separadas entre ellas con espacios iguales debido a que las palabras se rompen con guiones. Sí, esos «-» que aparecen a los finales de las líneas para indicar que la palabra sigue en la siguiente.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"className":"enlarged"} -->
+<figure class="wp-block-image enlarged"><img src="/storage/images/posts/41/3.png" alt=""/><figcaption>Un libro con texto justificado. Se puede ver como las palabras se rompen y son separadas con guiones.</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>En la web, hasta hace poco, la única manera de poder romper las palabras eran, resumidamente, añadiendo un pequeño carácter invisible entre los posibles puntos donde una se podría romper. Este método aunque funcional, no merecía la pena puesto que requería de mucho trabajo.<br></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>A día de hoy se ha añadido al estándar CSS una nueva propiedad  llamada <code>hyphens</code>. De entre los valores posibles se encuentra <code>auto</code>, que permite al navegador utilizar algoritmos propios para saber cómo romper las palabras. En general, los navegadores utilizan sus diccionarios para llevarlo a cabo.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2>¿Cómo se hace?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Para que los navegadores puedan saber qué diccionario utilizar es muy importante que hayas definido el idioma del texto mediante el atributo global <code>lang</code>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>En Foroactivo, por ejemplo, este atributo ya se define en la etiqueta <code>html</code> con el idioma del foro, por lo que no es necesario hacer nada ya que esto indica que toda la página va a tener dicho idioma.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre class="language-markup"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+	&lt;!-- Gracias a la definición del atributo lang anterior el navegador sabe que todo el contenido de la página estará en inglés (en, English). --&gt;
+&lt;/html&gt;</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>Sin embargo, en caso de que en algún otro momento necesitasemos cambiar de idioma (por ejemplo si estamos haciendo un artículo en un blog en castellano pero hacemos una cita de un fragmento de Shakespeare en inglés) es posible definir el atributo de nuevo en la cita para especificar que en esa parte el idioma ha cambiado.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre class="language-markup"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+	&lt;!-- ... --&gt; 
+	&lt;article&gt;
+		&lt;p&gt;Este texto está en castellano y el navegador lo sabe.&lt;/p&gt;
+		&lt;cite lang="en"&gt;This is written in English and the browser also knows that.&lt;/cite&gt;
+	&lt;/article&gt;
+&lt;/html&gt;</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>Entonces, asumiendo que tenemos identificado correctamente el idioma del texto de nuestra página, vamos a asumir que tenemos el siguiente código:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre class="language-markup"><code>&lt;article id="text"&gt;
+	&lt;h1&gt;Testing post&lt;/h1&gt;
+	&lt;p&gt;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.&lt;/p&gt;
+
+	&lt;p&gt;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar. The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.&lt;/p&gt;
+
+	&lt;p&gt;When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way. On her way she met a copy.&lt;/p&gt;
+
+	&lt;p&gt;The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country.&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>Si quisiésemos justificarlo de manera correcta tan solo tendríamos que añadir el siguiente CSS:<br></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:html -->
+<pre class="language-css"><code>@supports ((-webkit-hyphens:auto) or (hyphens:auto)) {
+	#text {
+		text-align: justify;
+		-webkit-hyphens: auto; /* A día de hoy aún es necesario el prefijo para soportar a Safari */
+		hyphens: auto;
+	}
+}</code></pre>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p>Automáticamente el navegador nos mostraría un texto correctamente justificado.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"className":"enlarged"} -->
+<figure class="wp-block-image enlarged"><img src="/storage/images/posts/41/4.png" alt=""/></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading -->
+<h2>Reflexiones finales</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Mucha gente, sobre todo en la comunidad de rol identifica justificar un texto con hacerlo más bonito. Aunque el texto justificado (correctamente) sí es más bonito, esto quiere decir que no hacerlo no lo sea. Hay que apreciar su encanto también.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Como habrás podido intuir, justificar correctamente rompiendo palabras puede no ser siempre muy efectivo. Actualmente la propiedad no está muy soportada y en algunos navegadores dependiendo del idioma es posible que no existan diccionarios para cómo romper las palabras. Aunque por lo menos el castellano y el inglés están soportados ya en la mayoría de navegadores actuales.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Es por ello que antes que mostrar a tus usuarios una mala justificación es mejor no justificar directamente</strong>. Para hacer fe a esto, el código anteriormente proporcionado incluye la directiva <code>@supports</code> para que en caso de que no se soporte <code>hyphens</code>, el texto tenga un <em>fallback</em> a no justificarse.</p>
+<!-- /wp:paragraph --></div>
+    </article>
+
+        </main>
+
+        <aside id="sidebar">
+
+        <div class="widget">
+            <div class="widget__heading">Categorias</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/actualizaciones">Actualizaciones</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/articulos">Artículos</a></span>
+                        <span class="bubble">7</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/codigos">Códigos</a></span>
+                        <span class="bubble">14</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/guias">Guías</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/meta">Meta</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/miscelanea">Miscelánea</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/recursos">Recursos</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/servicios">Servicios</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                            </ul>
+        </div>
+
+        <div class="widget">
+            <div class="widget__heading">Etiquetas</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/criticas">Críticas</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/css">CSS</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/desarrollo">Desarrollo</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/estandares">Estándares</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fainvision">FA/Invision</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/famodernbb">FA/ModernBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb2">FA/phpBB2</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb3">FA/phpBB3</a></span>
+                        <span class="bubble">19</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fapunbb">FA/PunBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fm-helper">FM-Helper</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/foroactivo">Foroactivo</a></span>
+                        <span class="bubble">22</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/jcink">Jcink</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/phpbb">phpBB</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                            </ul>
+        </div>
+
+
+    </aside>
+    </div>
+</div>
+<footer id="footer">
+    <div class="footer__content container">
+        <span>&copy; Flerex Blog 2026</span>
+    </div>
+</footer>
+</body>
+</html>

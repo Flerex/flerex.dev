@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <title>Variables CSS - Flerex Blog</title>
+    
+            <meta name="description" content="Flerex Blog es un blog de recursos, guías y códigos para la comunidad hispana de RPG por foro. Aunque principalmente encontrarás recursos pensados para la plataforma Foroactivo, no nos centramos en exclusiva en ella, sino que también damos soporte a otras plataformas crecientes en popularidad como JCink." />
+        <script src="/js/prism.js"></script>
+    <script src="/js/prism-markup-templating.js"></script>
+    <script src="/js/prism-php.js"></script>
+    <script src="/js/clipboard.js"></script>
+    <script src="/js/prism-line-numbers.js"></script>
+    <script src="/js/prism-toolbar.js"></script>
+    <script src="/js/prism-copy-to-clipboard.js"></script>
+    <script src="/js/table-contents.js"></script>
+
+    
+    <link href="/css/app.css?id=15fbddac165dda994b3e" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/prism-tomorrow.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="/css/prism-line-numbers.css">
+    <link rel="stylesheet" href="/css/prism-toolbar.css">
+
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/images/apple-touch.png">
+    
+    <link rel="mask-icon" href="/svg/code.svg" color="#C16BC7">
+
+    <script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+</head>
+<body class="reading-mode">
+
+<header id="header">
+    <div class="container">
+        <div id="logo">
+            <a href="/" aria-label="Inicio"></a>
+        </div>
+        <nav class="navbar">
+            <div class="navbar__group">
+                <ul>
+                    <li><a class="navbar-link" href="/">Inicio</a></li>
+                </ul>
+            </div>
+            <div class="navbar__group">
+                <ul>
+                                    </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<div id="outer-wrapper">
+    <div id="wrap" class="container">
+        <main id="main">
+                <article class="post">
+        <header class="post__header">
+            <h1>Variables CSS</h1>
+                        <div class="post__meta">
+                <div class="post__meta-item post__author">
+                    <div class="avatar">
+    <img src="https://secure.gravatar.com/avatar/8a8ded00a6f158bd28da1ae3c6181198.jpg?s=100&amp;d=mm&amp;r=g" title="Flerex" alt="">
+</div>                    <span class="post__author-name">Flerex</span>
+                </div>
+                <div class="post__extra">
+                    <div class="post__extra-info">
+
+                    <div class="post__date">
+                        <ion-icon name="ios-calendar"></ion-icon>
+                        <span>29 de junio de 2017</span>                    </div>
+                                            <div class="post__category">
+                            <a href="/categorias/articulos">
+                                <ion-icon name="ios-folder" title="Categoría"></ion-icon>
+                                <span>Artículos</span>
+                            </a>
+                        </div>
+                                        <div class="post-preview__info-elm post-preview__edited">
+        <ion-icon name="ios-medical" title="Actualizado el"></ion-icon>
+        <span>28 de marzo de 2018</span>    </div>
+                    </div>
+                    <div class="post__tags">
+                        <div class="post-preview__tags taglist">
+                    <div class="taglist__tag"><a href="/etiquetas/css">CSS</a></div>
+            </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="table-contents" hidden>
+            <div class="table-contents__title">Tabla de contenidos</div>
+            <div class="table-contents__content"></div>
+        </div>
+        <div class="post__content text-container">El lenguaje CSS ha sufrido unas cuantas mejoras desde que la especificación de su versión número tres salió a la luz. De entre las mejoras, siempre he estado siguiendo de reojo a la evolución de las variables CSS, puesto que <strong>suponen un gran avance en la editabilidad y escalabilidad</strong> de los códigos CSS.
+
+Considero que <strong>esta característica ha madurado lo suficiente y tiene el soporte necesario por parte de los navegadores más corrientes para poder ser utilizado</strong> a día de hoy. Es por ello que os vengo a informar sobre ella y a enseñaros, de forma general, cómo utilizarla.
+
+<!--more-->
+<h2>¿Qué son y para qué sirven?</h2>
+Las variables en CSS se comportan de forma semejante a las variables de muchos lenguajes de programación (¡ojo! no estoy diciendo que CSS sea un lenguaje de programación). Si nunca has programado, quizás lo mejor sea que las relaciones con las variables de matemáticas (vienen a ser prácticamente lo mismo).
+
+<strong>Su función es la de guardar un valor detrás de un nombre</strong>, para poder utilizar ese mismo valor en otros sitios sin tener que utilizar directamente el valor (esto último se conoce como «<em>hardcoding</em>» y se considera una mala práctica en los lenguajes de programación), sino el nombre del valor.
+
+Las ventajas que esto supone es, por ejemplo, si el diseño de la página tiene varios colores que repetimos constantemente, poder enlazarlos en una variable. En caso de que en el futuro quisiésemos cambiar ese color, tan solo tendríamos que cambiar el valor de la variable en su definición, en vez de tener que cambiar todas las veces que hayamos usado el color en nuestro seguramente quilométrico archivo CSS.
+
+Sin embargo, las variables tienen un montón más de posibilidades. Desde cambiar el color de toda una página con solo una línea de JS hasta hacer la vida más fácil a la hora de desarrollar páginas «<em>responsive</em>».
+
+<!-- more -->
+<h2>¿Cómo funciona?</h2>
+Las variables se deben definir (darles valor) en un elemento, como si lo fuésemos a modificar con CSS como siempre, pero esta vez solo le vamos a dar un valor a una variable. Como las variables en CSS tienen ámbito dinámico («dynamic scope»), este valor se conservará para todos los hijos del elemento en donde lo hayamos definido.
+
+Es decir, que si por ejemplo tenemos la siguiente estructura HTML:
+<pre class="line-numbers"><code class="language-markup">&lt;div class="contenedor"&gt;
+    &lt;div class="hijo"&gt;&lt;/div&gt;
+    &lt;div class="hijo"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="otrocontenedor"&gt;&lt;/div&gt;</code></pre>
+Si aplicamos la definición de variables en <code>.contenedor</code> y usásemos el valor de la variable en cualquiera de los hijos, el valor sería el mismo. Sin embargo, si quisiésemos utilizar la variable en <code>.otrocontenedor</code>, no tendríamos ningún valor.
+
+Dicho esto, cabe decir que si quisieses que las variables tuviesen un <strong>ámbito global</strong>, <strong>tendrías que definirla en el elemento padre de todo tu documento</strong> (sí, la etiqueta <em>html</em>). Sin embargo, como CSS es un lenguaje genérico, la forma correcta de acceder a ella sería con el siguiente selector:
+<pre class="line-numbers"><code class="language-css">:root {</code></pre>
+<h2>Sintaxis</h2>
+La sintaxis de la definición de variables es muy similar a la de la modificación de un atributo. ¡Incluso se colocan en el mismo sitio que la modificación de atributos! Véase:
+<pre class="line-numbers"><code class="language-css">--mi-variable: valor;</code></pre>
+Entonces, si por ejemplo quisiésemos crear la variable «color-principal», que contendría el color principal de la página y que fuese accesible globalmente (en cualquier parte de nuestro documento CSS), tendríamos que colocar lo siguiente:
+<pre class="line-numbers"><code class="language-css">:root {
+    --color-principal: #ff0000;
+    /* Aquí podrías seguir añadiendo definiciones globales */
+}</code></pre>
+Ahora podríamos acceder a dicho valor en cualquier parte de nuestro código con la función <code>var()</code>:
+<pre class="line-numbers"><code class="language-css">body {
+    background-color: var(--color-principal);
+}
+
+.panel1, .panel2 {
+    color: var(--color-principal);
+}</code></pre>
+Sin embargo, tened en cuenta que se puede cambiar el valor de una variable en el documento. Si después de una definición somos más específicos, por ejemplo, si tenemos la siguiente estructura HTML y el siguiente CSS, veremos en los comentarios de este último que la misma variable toma distintos valores:
+
+<strong>HTML:</strong>
+<pre class="line-numbers"><code class="language-markup">&lt;div class="contenedor"&gt;
+    &lt;div class="hijo"&gt;&lt;/div&gt;
+    &lt;div class="hijo"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="otrocontenedor"&gt;&lt;/div&gt;</code></pre>
+<strong>CSS:</strong>
+<pre class="line-numbers"><code class="language-css">:root {
+    --borde-principal: 1px solid #ff00ff;
+}
+
+.contenedor {
+   --borde-principal: 3px dotted #00ff00; /* lo mejor sería separar las definiciones de variables de los atributos normales de CSS por claridad */
+    border: var(--borde-principal); /* aquí el valor es 3px dotted #00ff00 */
+}
+
+.contenedor .hijo {
+    border: var(--borde-principal); /* aquí el valor también es 3px dotted #00ff00 */
+}
+
+.otrocontenedor {
+    border: var(--borde-principal); /* guess what, aquí el valor es 1px solid #ff00ff */
+}</code></pre>
+<h2>A tener en cuenta</h2>
+<ul>
+ 	<li>Las variables no deben ser utilizadas para sustituir todos los valores. Intenta utilizarlas solo en aquellos sitios donde un valor tenga posibilidad de repetirse o donde sea lógico utilizarla. Para el resto, sigue utilizando la definición directa de valores, como siempre.</li>
+ 	<li>La función <code>var()</code> tiene posibilidad de «<em>callback</em>». Es decir, podemos separar con comas tantos valores como queramos para, en caso de que el de la izquierda no esté definido, se utilice el (o los) siguientes. Por ejemplo:
+<pre class="line-numbers"><code class="language-css">.elm {
+    color: var(--variable1, --variable2, red); /* en este caso el color sería rojo si ninguna de las anteriores estuviesen definidas en el ámbito de .elm */
+}</code></pre>
+</li>
+ 	<li>Las variables se pueden modificar con JS, por lo que hacer cosas como cambiar el color principal de todo un diseño dependiendo de cualquier condición se puede hacer con tan solo una línea de JS.</li>
+</ul>
+<ul>
+ 	<li>El soporte de las variables tiene un estado bastante saludable si se siguen valores de soporte normal (versión actual y versión actual -1 de los navegadores más comunes). Navegadores como IE o Opera Mini no lo soportan aún, aunque en el caso del primero el navegador ya no se sigue desarrollando (su sucesor, Edge, sí que lo soporta). Por lo cual, no debería haber razones para no usar las variables CSS.</li>
+</ul>
+
+<hr />
+
+Si tenéis cualquier tipo de duda podéis preguntarme sin problema.</div>
+    </article>
+
+        </main>
+
+        <aside id="sidebar">
+
+        <div class="widget">
+            <div class="widget__heading">Categorias</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/actualizaciones">Actualizaciones</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/articulos">Artículos</a></span>
+                        <span class="bubble">7</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/codigos">Códigos</a></span>
+                        <span class="bubble">14</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/guias">Guías</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/meta">Meta</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/miscelanea">Miscelánea</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/recursos">Recursos</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/servicios">Servicios</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                            </ul>
+        </div>
+
+        <div class="widget">
+            <div class="widget__heading">Etiquetas</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/criticas">Críticas</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/css">CSS</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/desarrollo">Desarrollo</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/estandares">Estándares</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fainvision">FA/Invision</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/famodernbb">FA/ModernBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb2">FA/phpBB2</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb3">FA/phpBB3</a></span>
+                        <span class="bubble">19</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fapunbb">FA/PunBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fm-helper">FM-Helper</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/foroactivo">Foroactivo</a></span>
+                        <span class="bubble">22</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/jcink">Jcink</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/phpbb">phpBB</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                            </ul>
+        </div>
+
+
+    </aside>
+    </div>
+</div>
+<footer id="footer">
+    <div class="footer__content container">
+        <span>&copy; Flerex Blog 2025</span>
+    </div>
+</footer>
+</body>
+</html>

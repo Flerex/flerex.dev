@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <title>Cómo construir correctamente una tablilla - Flerex Blog</title>
+    
+     
+        <meta name="description" content="En estas líneas explico los errores más comunes que comete la gente a la  hora de crear fichas. Muchos de estos errores se pueden aplicar a codificación genérica en HTML y CSS." />
+        <script src="/js/prism.js"></script>
+    <script src="/js/prism-markup-templating.js"></script>
+    <script src="/js/prism-php.js"></script>
+    <script src="/js/clipboard.js"></script>
+    <script src="/js/prism-line-numbers.js"></script>
+    <script src="/js/prism-toolbar.js"></script>
+    <script src="/js/prism-copy-to-clipboard.js"></script>
+    <script src="/js/table-contents.js"></script>
+
+    
+    <link href="/css/app.css?id=15fbddac165dda994b3e" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/prism-tomorrow.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="/css/prism-line-numbers.css">
+    <link rel="stylesheet" href="/css/prism-toolbar.css">
+
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/images/apple-touch.png">
+    
+    <link rel="mask-icon" href="/svg/code.svg" color="#C16BC7">
+
+    <script src="https://unpkg.com/ionicons@4.2.2/dist/ionicons.js"></script>
+</head>
+<body class="reading-mode">
+
+<header id="header">
+    <div class="container">
+        <div id="logo">
+            <a href="/" aria-label="Inicio"></a>
+        </div>
+        <nav class="navbar">
+            <div class="navbar__group">
+                <ul>
+                    <li><a class="navbar-link" href="/">Inicio</a></li>
+                </ul>
+            </div>
+            <div class="navbar__group">
+                <ul>
+                                    </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+<div id="outer-wrapper">
+    <div id="wrap" class="container">
+        <main id="main">
+                <article class="post">
+        <header class="post__header">
+            <h1>Cómo construir correctamente una tablilla</h1>
+                            <img class="post__featured-image" src="/storage/featured/32.png" alt="">
+                        <div class="post__meta">
+                <div class="post__meta-item post__author">
+                    <div class="avatar">
+    <img src="https://secure.gravatar.com/avatar/8a8ded00a6f158bd28da1ae3c6181198.jpg?s=100&amp;d=mm&amp;r=g" title="Flerex" alt="">
+</div>                    <span class="post__author-name">Flerex</span>
+                </div>
+                <div class="post__extra">
+                    <div class="post__extra-info">
+
+                    <div class="post__date">
+                        <ion-icon name="ios-calendar"></ion-icon>
+                        <span>12 de enero de 2019</span>                    </div>
+                                            <div class="post__category">
+                            <a href="/categorias/guias">
+                                <ion-icon name="ios-folder" title="Categoría"></ion-icon>
+                                <span>Guías</span>
+                            </a>
+                        </div>
+                                        <div class="post-preview__info-elm post-preview__edited">
+        <ion-icon name="ios-medical" title="Actualizado el"></ion-icon>
+        <span>19 de enero de 2019</span>    </div>
+                    </div>
+                    <div class="post__tags">
+                        <div class="post-preview__tags taglist">
+                    <div class="taglist__tag"><a href="/etiquetas/foroactivo">Foroactivo</a></div>
+            </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="table-contents" hidden>
+            <div class="table-contents__title">Tabla de contenidos</div>
+            <div class="table-contents__content"></div>
+        </div>
+        <div class="post__content text-container">Aquellos que han hablado un mínimo de veces conmigo conocen mi postura ante las tablillas de los foros de rol. Son <strong>elementos decorativos totalmente innecesarios</strong>, puesto que ya existen por defecto contenedores en los mensajes que se pueden, en caso de que sea necesario, decorar de manera individual. Si a esto le sumamos el mal uso que se le suelen dar en cuestiones de diseño, considero mi oido hacia ellas totalmente justificado.
+
+Sin embargo, si algo odio más que las tablillas son las tablillas mal construidas. Si hay personas que hacen burradas en cuestiones de diseño no os podéis ni imaginar la de cosas horribles que uno se puede encontrar en el código. Y de esto trata esta entrada, en hablar sobre <strong>los errores más comunes que veo a la hora de construir tablillas</strong>.
+
+Si creas tablillas asiduamente o alguna vez has creado una te recomiendo que prestes atención a las siguiente lineas, puesto que no solo van a ayudarte en tus próximas creaciones, sino que también son consejos genéricos de HTML y CSS aplicados a Foroactivo que te puedan ser de ayuda.
+<div class="notice note warning">
+<div class="notice__title">Nota</div>
+<div class="notice__content">Acompañado de esta guía hay una serie de ejemplos que, por motivos de claridad, están correctamente indentados. En Foroactivo, cada salto de línea es sustituido por una etiqueta <code>br</code> por lo que tanto el HTML como el CSS que esté dentro de una etiqueta <code>style</code> deberá ser comprimido para que aparezca en una línea. Existen múltiples <a href="https://www.willpeavy.com/minifier/" target="_blank" rel="nofollow noreferrer">herramientas</a> en línea que hacen esto por ti automáticamente.</div>
+</div>
+<h2>El lugar del CSS</h2>
+Una tablilla es, comúnmente, una estructura HTML a la que se le da diseño mediante un CSS que la acompaña. El error más común que he encontrado a la hora de diseñar tablillas es encontrarte el CSS directamente en el HTML. Tal que así:
+<pre><code class="language-markup">&lt;div style="border: 1px solid red; padding: 10px; margin: 2em auto; font-family: 'Arial', sans-serif"&gt;
+	&lt;!-- Contenido --&gt;
+&lt;/div&gt;
+</code></pre>
+En general, <strong>nunca vas a querer utilizar un atributo <code>style</code></strong>. Nunca. Hay contadas excepciones a esto, pero no creo que merezca la pena comentarlas. De manera resumida, utilizar <code>style</code>&nbsp;para aplicar CSS no solo añade complejidad innecesaria al código, sino que no permite cachear el CSS, va en contra del principio de separación de intereses y hace que tengas que repetir CSS.
+
+¿Qué ocurre entonces con el CSS? Con lo que respecta a las tablillas, hay dos casos de uso de las mismas a tener en cuenta. Dependiendo del caso de uso, se deberá utilizar un método u otro para aplicar CSS.
+<h3>Tablillas creadas por administradores para su foro</h3>
+Las tablillas que crees tú como administrador (fichas de personaje, adornos decorativos para textos administrativos, tablillas de uso libro para los usuarios…) deben tener el CSS junto al CSS del foro. Obviamente, para hacer esto nos ayudaremos en el uso de clases.
+<pre><code class="language-markup">&lt;div class="ficha"&gt;
+	&lt;div class="ficha__nombre"&gt;&lt;/div&gt;
+	&lt;!-- Resto de cosas --&gt;
+&lt;/div&gt;
+</code></pre>
+Y luego en el CSS:
+<pre><code class="language-css">/* El CSS de nuestro foro iría por aquí. */
+
+.ficha {
+	border: 1px solid red;
+	padding: 10px;
+	margin: 2em auto;
+	font-family: 'Arial', sans-serif;
+}
+
+.ficha__nombre {
+	color: #FF00FF;
+}
+</code></pre>
+<strong>¿Por qué utilizar este método?</strong>
+<ul>
+ 	<li>El CSS no está en el HTML, lo que hace que el HTML sea más simple y la gente no se lie tanto con su uso.</li>
+ 	<li>Permite al CSS ser cacheado por los navegadores, lo cual es mas eficiente.</li>
+ 	<li>En caso de que en un futuro quieras cambiar el diseño de la tablilla (o corregirlo) podrás cambiarlo en un mismo sitio. Imagínate que cambias el diseño del foro y el nuevo utiliza tonos claros y el viejo oscuro. Tendrás que adaptar el diseño de las tablillas también. De esta manera evitas tener que ir mensaje por mensaje a mano haciendo cambios.</li>
+</ul>
+<h3>Tablillas creadas para uso en cualquier foro</h3>
+Obviamente si vamos a crear una tablilla para que otras personas las utilicen en cualquier foro no podemos acceder al CSS. Por ejemplo, la tablilla de afiliaciones.
+
+Antes de comentar cómo se debería actuar en estas situaciones, quiero recordar por qué el uso de tablillas de afiliación se debería evitar: Cada foro tiene su propio CSS. Algunas veces unos foros son claros y otras veces oscuros. Hacer una tablilla que se vaya a ver en cualquier foro, sea claro o oscuro o para las infinitas posibilidades de combinaciones de CSS que esos foros tengan y que puedan romper tu tablilla es muy difícil. ¿Qué prefieres, quedar mal porque tu tablilla se ve como el culo o simplemente hacer una pequeña lista con BBCodes para dejar tus datos?
+
+Si estas razones no son suficientes, vamos a ver cómo actuaríamos. Claramente queremos conservar las ventajas que teníamos con el método anterior pero no podemos acceder al CSS de foros que no son nuestros. ¿Qué hacemos?
+
+En realidad no se puede hacer mucho. Una alternativa es utilizar la etiqueta <code>style</code>, tal que así:
+<pre><code class="language-markup">&lt;div class="miTablilla"&gt;
+	&lt;!-- Contenido --&gt;
+&lt;/div&gt;
+
+&lt;style type="text/css"&gt;
+	.miTablilla {
+		border: 1px solid #FF00FF;
+	}
+&lt;/style&gt;
+</code></pre>
+De esta forma mantenemos la ventaja de mantener el HTML limpio, pero seguimos sin poder cachear el CSS en los navegadores o hacer cambios en todos los uso de la tablilla. Para tener estas ventajas tendremos que utilizar un pequeño truco que se considera <strong>mal HTML</strong>. Me lo pensaría dos veces si voy a querer utilizar este método:
+
+El método consiste en guardar todo el CSS de la tablilla en un archivo <code>.css</code> y subirlo a algún tipo de servidor. A partir de ahí podremos enlazarlo con una etiqueta <code>link</code>. Claramente aquí es donde está el error HTML: no podemos utilizar etiquetas <code>link</code> fuera de la etiqueta <code>head</code>. Deberás utilizar este método bajo tu propia responsabilidad.
+<pre><code class="language-markup">&lt;div class="miTablilla"&gt;
+	&lt;!-- Contenido --&gt;
+&lt;/div&gt;
+&lt;link href="https://example.com/miTablilla.css" rel="stylesheet"&gt;
+</code></pre>
+<h2>Las fuentes</h2>
+Oh, sí. Sé lo que estás pensando. Hasta ahora habías estado utilizando el método de <code>link</code> para importar tus fuentes de Google Fonts y poder utilizarlas en tu tablilla.
+<pre><code class="language-markup">&lt;div class="miTablilla"&gt;
+	&lt;!-- Contenido --&gt;
+&lt;/div&gt;
+&lt;link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"&gt;
+</code></pre>
+En efecto, este método está <strong>muy</strong> mal. No solo por lo que comenté anteriormente de que no es HTML válido. Al fin y al cabo, los navegadores son conscientes de tu error e intentan entender lo que querías decir e importan de igual manera el CSS. Sin embargo, en el caso de las fuentes hay que tener en cuenta de que son elementos pesados, que afectan a la carga de la página. Si empiezas a añadir fuentes por doquier es posible que estés cargando <strong>fuentes que incluso ya han podido ser cargadas por el foro</strong> en cuestión para su diseño.
+
+Obviamente esto no es un problema si el foro es tuyo, puesto que la forma de corregir el problema sería igual que con el CSS, poniéndolo directamente en código del foro, en este caso en <code>overall_header</code>, dentro de la etiqueta <code>head</code> e, idealmente, después del CSS principal del foro.
+
+¿Qué ocurre si el foro no es tuyo? Bueno, en este caso pues no nos queda otra que dejarlo así, aunque sepamos que está mal. Si te preocupa la corrección de tu código y no te importa perder las ventajas de cachear el CSS y poder editarlo una vez para cambiar todas las tablillas, puedes utilizar la <em>at rule</em> de CSS <code>@import</code>.
+<pre><code class="language-markup">&lt;div class="miTablilla"&gt;
+	&lt;!-- Contenido --&gt;
+&lt;/div&gt;
+&lt;style type="text/css"&gt;
+	@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+&lt;/style&gt;
+</code></pre>
+<h2>Uso de IDs</h2>
+No es para nada raro encontrarse con alguna tablilla definida de una forma similar a esta:
+<pre><code class="language-markup">&lt;div id="miTablilla"&gt;
+	&lt;!-- Contenido --&gt;
+&lt;/div&gt;
+</code></pre>
+No hace falta decir que esto está muy mal. En HTML <strong>no</strong> se puede tener más de un elemento con la misma ID en la misma página. Por ejemplo, las tablillas de uso libre por los usuarios pueden aparecer más de una vez en la misma página (e.g. un usuario responde a otro en un tema con la misma tablilla).
+
+Esto no quiere decir que tablillas cómo por ejemplo las de las fichas de personaje se libran de este problema. ¿Por qué? Pues aunque estas tablillas solo aparezcan una vez por tema, solo hace falta que un administrador (o cualquier otro usuario) cite el mensaje que contiene la tablilla para que aparezca repetida en el <code>[quote]</code>.
+
+Para curar en salud y porque no hay necesidad alguna que nos obligue a utilizar IDs, como norma general, vamos a utilizar siempre clases en las tablillas, aunque sepamos con total certeza que no van a repetirse nunca dentro de la misma página (e.g. tablillas que adornan los temas de ambientación, los cuales están cerrados).
+<pre><code class="language-markup">&lt;div class="miTablilla"&gt;
+	&lt;!-- Contenido --&gt;
+&lt;/div&gt;
+</code></pre>
+<h2>Centrar la tablilla</h2>
+Oh, sí, lo sé. Nunca me cansaré de decirlo. No es la primera tablilla que veo así:
+<pre><code class="language-markup">&lt;center&gt;
+	&lt;div class="miTablilla"&gt;
+		&lt;!-- Contenido --&gt;
+	&lt;/div&gt;
+&lt;/center&gt;
+</code></pre>
+Recordemos de mi anterior entrada «<a href="/entradas/centrado-horizontal-y-vertical-like-a-boss"> Centrado Horizontal y Vertical “Like a Boss”</a>» que la etiqueta <code>center</code> está obsoleta. Hay métodos más sencillos con tan solo CSS de centrar algo. Pásate por la anterior entrada para aprender a centrar.
+<h2>Etiquetas mal cerradas</h2>
+Otro error muy común. Encontrarte con tablillas con etiquetas mal cerradas. Muy seguramente debido a que, como en Foroactivo el HTML tiene que estar en una línea, el creador se haya echo un lio la cabeza y la liase parda.
+<pre><code class="language-markup">&lt;div class="miTablilla"&gt;
+	&lt;div class="miTablilla__titulo"&gt;
+		&lt;!-- Título --&gt;
+	&lt;!-- aquí debería cerrarse el div del título --&gt;
+	&lt;div class="miTablilla__contenido"&gt;
+	&lt;!-- Contenido --&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+Aunque normalmente esto normalmente implica que todo el foro se descuadre, a lo mejor no se percibe tan bien y el error continua. ¿Cómo evitar este tipo de errores? Muy sencillo, codifica las tablillas en un editor de código como <a href="https://code.visualstudio.com" target="_blank" rel="nofollow noreferrer">Visual Studio Code</a> y luego pasa el código por el minificador que he enlazado más arriba.
+<h2>Separar utilizando saltos de línea</h2>
+Como también he comentado en la nota inicial, Foroactivo automáticamente utiliza los salto de línea en el editor de mensaje para reemplazarlos por <code>br</code> en el resultado final del mensaje.
+
+Esto hace que mucha gente utilice esto para separar las cosas con saltos de línea. No lo hagas, es un caos y los tamaños son siempre fijos dependiendo de la altura de una línea.
+
+Véase, si los mensajes de un foro tienen un <code>line-height: 20px;</code>, esos saltos de línea medirán cada uno <code>20px</code> de altura. Si luego utilizas la plantilla en otro foro, este tamaño es muy probable que no se garantice, por lo que la tablilla se verá de distinta manera en ambos foros.
+
+Para corregir este problema es tan sencillo como separar los elementos con la propiedad <code>margin</code> de CSS y sus variantes <code>margin-top</code> y <code>margin-bottom</code>.
+
+De manera similar, lo mismo se aplica a utilizar directamente <code>&lt;br&gt;</code> en la tablilla. <strong>No lo hagas</strong>, utiliza los métodos anteriores.
+<h2>Negritas y cursivas</h2>
+El uso de las etiquetas <code>strong</code> y <code>b</code> o <code>em</code> y <code>i</code> no es con el propósito del uso de negritas o cursivas. La etiqueta <code>em</code> (énfasis, del inglés <em>emphasis</em>) se utiliza para que la lectura de una palabra o parte de una frase se lea con énfasis, lo mismo <code>strong</code>, solo que con un efecto mayor a <code>em</code>. Casualmente, los navegadores presentan el contenido de estas etiquetas con tanto negrita como cursiva, pero eso no quiere decir que se deban utilizar para esto.
+
+En el caso de que queramos poner alguna palabra en un texto en negrita o cursiva se deberían utilizar las etiquetas <code>b</code> (negrita, del inglés <em>bold</em>) e <code>i</code> (itálica, del inglés <code>italic</code> —para el objetivo de esta guía podemos considerar itálica y cursiva sinónimos).
+
+Sin embargo, las etiquetas anteriores deben ser utilizadas solo para cuando el propio texto requiera que se visualicen palabras o conjuntos de palabras en negrita o cursiva. Si es el diseño el que lo requiere (como por ejemplo en el caso de las tablillas) no debemos utilizarlas. Deberemos, en su lugar, utilizar las propiedades <code>font-weight</code> o <code>font-style</code> de CSS. Es decir, en vez de:
+<pre><code class="language-markup">&lt;div class="miTablilla"&gt;
+	&lt;div class="miTablilla__titulo"&gt;
+		&lt;b&gt;&lt;i&gt;&lt;!-- Título --&gt;&lt;/i&gt;&lt;/b&gt;
+	&lt;/div&gt;
+	&lt;div class="miTablilla__contenido"&gt;
+	Este es una frase y esta parte de la frase &lt;b&gt;quiero que aparezca en negrita&lt;/b&gt; y esta otra como es muy importante quiero que los lectores de pantalla que utilizan personas con problemas de visión la lean de manera distinta, con &lt;em&gt;énfasis&lt;/em&gt;.
+	&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+Debemos hacer:
+<pre><code class="language-markup">&lt;div class="miTablilla"&gt;
+	&lt;div class="miTablilla__titulo"&gt;
+		&lt;!-- Título --&gt;
+	&lt;/div&gt;
+	&lt;div class="miTablilla__contenido"&gt;
+	Este es una &lt;i&gt;frase&lt;/i&gt; y esta parte de la frase &lt;b&gt;quiero que aparezca en negrita&lt;/b&gt; y esta otra como es muy importante quiero que los lectores de pantalla que &lt;strong&gt;utilizan&lt;/strong&gt; personas con problemas de visión la lean de manera distinta, con &lt;em&gt;énfasis&lt;/em&gt;.
+	&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+Y luego en el CSS:
+<pre><code class="language-css">.miTablilla__titulo {
+	font-weight: bold;
+	font-style: italic;
+}
+</code></pre>
+Fíjate que las etiquetas <code>strong</code>, <code>em</code>, <code>b</code> e <code>i</code> se conservan en el «después». A pesar de que su uso sea bastante forzado, se conservan porque esa parte no es parte del diseño, sino un lugar donde aparecerá texto y, por lo tanto, conserva las etiquetas.
+<h2>Uso de tablas</h2>
+La etiqueta <code>table</code> y sus hijas <code>tr</code>, <code>td</code> y <code>th</code> (entre otras) se deben utilizar solamente para mostrar información tabulada. Mi truco es el siguiente, si en el Microsoft Office Word utilizarías una tabla, en HTML también. Es decir, en lugares donde estés escribiendo algo (por ejemplo, como parte de un artículo como este) y quieres mostrar información tabulada.
+
+Si solo las usas por razones de diseño, existen otro tipo de herramientas mucho más simples y lógicas. Es un caso similar al anterior, al de las etiquetas de negrita.
+
+Para saber qué hacer te recomiendo echarle un vistazo a mis guías «<a href="/entradas/columnas-like-a-boss">Columnas “like a boss”</a>» y «<a href="/entradas/aprendiendo-a-utilizar-flexbox">Aprendiendo a utilizar Flexbox</a>».
+
+Soy consciente de que otros autores han recomendado el uso de tablas para hacer tablillas. Aunque parezca lógico (al fin y al cabo tablas y tablillas comparten raíz), necesito que me creas de que es una muy mala práctica. Puedes buscar en internet razones en Internet de por qué no se deben utilizar para cuestiones de diseño (básicamente las tablillas son elementos de decoración —diseño), pero voy a dejar <a href="https://webmasters.stackexchange.com/questions/6036/why-arent-we-supposed-to-use-table-in-a-design/6037" target="_blank" rel="nofollow noreferrer">esta pregunta</a> de <em>Stack Exchange</em> (en inglés) porque resume muy bien las razones.
+
+<hr>
+
+Hasta aquí los errores más comunes que he encontrado a la hora de hacer tablillas. Espero que, a pesar de lo extenso que me ha salido el artículo, hayas llegado hasta el final y, lo más importante, que hayas tomado nota para evitar cometerlos.
+
+Dependiendo de lo bien que se reciba este artículo es posible que en un futuro cree yo una guía de cómo codificaría yo una tablilla (en ese mundo paralelo en el que Flerex hace tablillas), aplicando los conocimientos aquí explicados de manera teórica, junto con un par de técnicas más que me saco yo de la manga.</div>
+    </article>
+
+        </main>
+
+        <aside id="sidebar">
+
+        <div class="widget">
+            <div class="widget__heading">Categorias</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/actualizaciones">Actualizaciones</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/articulos">Artículos</a></span>
+                        <span class="bubble">7</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/codigos">Códigos</a></span>
+                        <span class="bubble">14</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/guias">Guías</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/meta">Meta</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/miscelanea">Miscelánea</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/recursos">Recursos</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/categorias/servicios">Servicios</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                            </ul>
+        </div>
+
+        <div class="widget">
+            <div class="widget__heading">Etiquetas</div>
+            <ul class="widget__list">
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/criticas">Críticas</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/css">CSS</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/desarrollo">Desarrollo</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/estandares">Estándares</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fainvision">FA/Invision</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/famodernbb">FA/ModernBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb2">FA/phpBB2</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/faphpbb3">FA/phpBB3</a></span>
+                        <span class="bubble">19</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fapunbb">FA/PunBB</a></span>
+                        <span class="bubble">8</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/fm-helper">FM-Helper</a></span>
+                        <span class="bubble">4</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/foroactivo">Foroactivo</a></span>
+                        <span class="bubble">22</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/jcink">Jcink</a></span>
+                        <span class="bubble">2</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/phpbb">phpBB</a></span>
+                        <span class="bubble">1</span>
+                    </li>
+                                    <li class="widget__listItem">
+                        <span><a href="/etiquetas/plugins">Plugins</a></span>
+                        <span class="bubble">5</span>
+                    </li>
+                            </ul>
+        </div>
+
+
+    </aside>
+    </div>
+</div>
+<footer id="footer">
+    <div class="footer__content container">
+        <span>&copy; Flerex Blog 2025</span>
+    </div>
+</footer>
+</body>
+</html>
