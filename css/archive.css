@@ -1,0 +1,56 @@
+/* Archive notice: the one addition to the original design.
+   Uses the blog's own complementary hue (296), which the original reserves
+   for its brand mark, so the notice reads as being about the blog itself. */
+
+.archive-notice {
+    --notice-bg: hsl(296, 35%, 95%);
+    --notice-text: hsl(296, 18%, 30%);
+    --notice-title: hsl(296, 30%, 24%);
+    --notice-icon: hsl(296, 40%, 48%);
+
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 32px;
+    padding: 16px 24px;
+    border-radius: 15px;
+    background-color: var(--notice-bg);
+    color: var(--notice-text);
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.archive-notice ion-icon {
+    flex: none;
+    margin-top: 2px;
+    font-size: 20px;
+    color: var(--notice-icon);
+}
+
+.archive-notice p {
+    margin: 0;
+}
+
+.archive-notice strong {
+    color: var(--notice-title);
+    font-weight: 700;
+}
+
+@media (prefers-color-scheme: dark) {
+    .archive-notice {
+        --notice-bg: hsl(296, 22%, 19%);
+        --notice-text: hsl(296, 25%, 80%);
+        --notice-title: hsl(296, 35%, 92%);
+        --notice-icon: hsl(296, 40%, 70%);
+        /* The same faint inner edge the original gives its cards in dark mode. */
+        box-shadow: 0 0 1px hsla(217, 100%, 95%, .2) inset;
+    }
+}
+
+@media (max-width: 600px) {
+    .archive-notice {
+        gap: 12px;
+        margin-bottom: 24px;
+        padding: 14px 16px;
+    }
+}
